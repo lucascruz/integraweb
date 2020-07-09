@@ -367,12 +367,12 @@
                 <ul>
                     <li>
                         <a href="#" data-toggle="tooltip" data-placement="right" title="Image"
-                           data-nav-target="#images" class="active">
+                           data-nav-target="#images">
                             <i data-feather="shopping-bag"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="Doctors"
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Doctor Manage"
                            data-nav-target="#user">
                             <i data-feather="users"></i>
                         </a>
@@ -427,7 +427,7 @@
             </div>
             <div class="navigation-menu-body">
                 <div class="navigation-menu-group">
-                    <div id="images" class="open">
+                    <div id="images">
                         <ul>
                             <?php $count = count(Request::segments());?>
                             <!-- <li>{{ $count }}</li> -->
@@ -516,196 +516,35 @@
                             </li>
                         </ul>
                     </div>
-                    <div id="projects">
+                
+                    <div id="user" >
                         <ul>
+                            <?php $count = count(Request::segments());?>
                             <li class="navigation-divider d-flex align-items-center">
-                                <i class="mr-2" data-feather="briefcase"></i> Projects
+                                <i class="mr-2" data-feather="users"></i> Doctor Forms
                             </li>
                             <li>
-                                <a @if(request()->segment(1) == 'projects-dashboard') class="active"
-                                   @endif href="{{ url('projects-dashboard') }}">Dashboard</a></li>
+                                <a @if(request()->segment($count) == 'doctor') class="active"
+                                   @endif href="{{ url('/admin/user/doctor') }}">Doctors</a></li>
                             <li>
-                                <a @if(request()->segment(1) == 'project-list') class="active"
-                                   @endif href="{{ url('project-list') }}">Project List</a></li>
+                                <a @if(request()->segment($count) == 'city') class="active"
+                                   @endif href="{{ url('/admin/user/city') }}">City Catalog</a></li>
                             <li>
-                                <a @if(request()->segment(1) == 'project-grid') class="active"
-                                   @endif href="{{ url('project-grid') }}">Project Grid</a></li>
+                                <a @if(request()->segment($count) == 'speciality') class="active"
+                                   @endif href="{{ url('/admin/user/speciality') }}">Speciality Catalog</a></li>
                             <li>
-                                <a @if(request()->segment(1) == 'project-detail') class="active"
-                                   @endif href="{{ url('project-detail') }}">Project Detail</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'clients') class="active"
-                                   @endif href="{{ url('clients') }}">Clients</a></li>
-                            <li class="navigation-divider">Summary</li>
-                            <li>
-                                <a href="#" class="d-flex align-items-start">
-                                    <div>
-                                        <figure class="avatar mr-2">
-                                <span class="avatar-title bg-warning rounded-circle">
-                                    <i class="ti-bar-chart-alt"></i>
-                                </span>
-                                        </figure>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-0">Total Sales</h6>
-                                        <p class="text-muted mb-0 small">This Mounth</p>
-                                        <h4 class="mb-0">$50.958</h4>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex align-items-start">
-                                    <div>
-                                        <figure class="avatar mr-2">
-                                <span class="avatar-title bg-success rounded-circle">
-                                    <i class="ti-world"></i>
-                                </span>
-                                        </figure>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-0">Projects</h6>
-                                        <p class="text-muted mb-0 small">Today</p>
-                                        <h4 class="mb-0">35</h4>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex align-items-start">
-                                    <div>
-                                        <figure class="avatar mr-2">
-                                <span class="avatar-title bg-info rounded-circle">
-                                    <i class="ti-user"></i>
-                                </span>
-                                        </figure>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-0">Total Visitor</h6>
-                                        <p class="text-muted mb-0 small">Today</p>
-                                        <h4 class="mb-0">5.301</h4>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="apps">
-                        <ul>
-                            <li class="navigation-divider d-flex align-items-center">
-                                <i class="mr-2" data-feather="globe"></i> Apps
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'chat') class="active"
-                                   @endif href="{{ url('chat') }}">
-                                    <span>Chat</span>
-                                    <span class="badge badge-danger">5</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'mail') class="active"
-                                   @endif href="{{ url('mail') }}">
-                                    <span>Mail</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'todo-list') class="active"
-                                   @endif href="{{ url('todo-list') }}">
-                                    <span>Todo List</span>
-                                    <span class="badge badge-warning">2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'file-manager') class="active"
-                                   @endif href="{{ url('file-manager') }}">
-                                    <span>File Manager</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'calendar') class="active"
-                                   @endif href="{{ url('calendar') }}">
-                                    <span>Calendar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'gallery') class="active"
-                                   @endif href="{{ url('gallery') }}">
-                                    <span>Gallery</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'invoice') class="active"
-                                   @endif href="{{ url('invoice') }}">Invoice</a></li>
-                            <li class="navigation-divider">Recent Contacts</li>
-                            <li>
-                                <div class="list-group list-group-flush">
-                                    <a href="#" class="list-group-item d-flex align-items-center">
-                                        <div>
-                                            <div class="avatar avatar-sm m-r-10">
-                                                <img src="{{ url('public/assets/media/image/user/man_avatar1.jpg') }}"
-                                                     class="rounded-circle" alt="image">
-                                            </div>
-                                        </div>
-                                        <span>Valentine Maton</span>
-                                    </a>
-                                    <a href="#" class="list-group-item d-flex align-items-center">
-                                        <div>
-                                            <div class="avatar avatar-sm m-r-10">
-                                                <img src="{{ url('public/assets/media/image/user/women_avatar2.jpg') }}"
-                                                     class="rounded-circle" alt="image">
-                                            </div>
-                                        </div>
-                                        <span>Holmes Cherryman</span>
-                                    </a>
-                                    <a href="#" class="list-group-item d-flex align-items-center">
-                                        <div>
-                                            <div class="avatar avatar-sm m-r-10">
-                                                <img src="{{ url('public/assets/media/image/user/women_avatar4.jpg') }}"
-                                                     class="rounded-circle" alt="image">
-                                            </div>
-                                        </div>
-                                        <span>Kenneth Hune</span>
-                                    </a>
-                                    <a href="#" class="list-group-item d-flex align-items-center">
-                                        <div>
-                                            <div class="avatar avatar-sm m-r-10">
-                                                <img src="{{ url('public/assets/media/image/user/women_avatar3.jpg') }}"
-                                                     class="rounded-circle" alt="image">
-                                            </div>
-                                        </div>
-                                        <span>Holmes Cherryman</span>
-                                    </a>
-                                    <a href="#" class="list-group-item d-flex align-items-center">
-                                        <div>
-                                            <div class="avatar avatar-sm m-r-10">
-                                                <img src="{{ url('public/assets/media/image/user/women_avatar5.jpg') }}"
-                                                     class="rounded-circle" alt="image">
-                                            </div>
-                                        </div>
-                                        <span>Kenneth Hune</span>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="user">
-                        <ul>
-                            <li class="navigation-divider d-flex align-items-center">
-                                <i class="mr-2" data-feather="users"></i> User Forms
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'profile') class="active"
-                                   @endif href="{{ url('profile') }}">Doctors</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'profile') class="active"
-                                   @endif href="{{ url('profile') }}">Profile</a></li>
-                            <li>
+                                <a @if(request()->segment($count) == 'formation') class="active"
+                                   @endif href="{{ url('/admin/user/formation') }}">Formation Catalog</a></li>                                   
+
+                            <!-- <li>
                                 <a @if(request()->segment(1) == 'user-list') class="active"
                                    @endif href="{{ url('user-list') }}">User List</a></li>
                             <li>
                                 <a @if(request()->segment(1) == 'user-edit') class="active"
-                                   @endif href="{{ url('user-edit') }}">User Edit</a></li>
+                                   @endif href="{{ url('user-edit') }}">User Edit</a></li> -->
                             
-                            </li>
                             
-                            <li class="navigation-divider">Users</li>
+                            <!-- <li class="navigation-divider">Users</li>
                             <li>
                                 <div class="avatar-group ml-4">
                                     <figure class="avatar avatar-sm">
@@ -786,245 +625,7 @@
                                         </a>
                                     </figure>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="components">
-                        <ul>
-                            <li class="navigation-divider d-flex align-items-center">
-                                <i class="mr-2" data-feather="layers"></i> Components
-                            </li>
-                            <li>
-                                <a href="#">Basic Components</a>
-                                <ul>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'alert') class="active"
-                                           @endif href="{{ url('alert') }}">Alerts</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'accordion') class="active"
-                                           @endif href="{{ url('accordion') }}">Accordion</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'buttons') class="active"
-                                           @endif href="{{ url('buttons') }}">Buttons</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'dropdown') class="active"
-                                           @endif href="{{ url('dropdown') }}">Dropdown</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'list-group') class="active"
-                                           @endif href="{{ url('list-group') }}">List Group</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'pagination') class="active"
-                                           @endif href="{{ url('pagination') }}">Pagination</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'typography') class="active"
-                                           @endif href="{{ url('typography') }}">Typography</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'media-object') class="active"
-                                           @endif href="{{ url('media-object') }}">Media Object</a>
-                                    </li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'progress') class="active"
-                                           @endif href="{{ url('progress') }}">Progress</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'modal') class="active"
-                                           @endif href="{{ url('modal') }}">Modal</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'spinners') class="active"
-                                           @endif href="{{ url('spinners') }}">Spinners</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'navs') class="active"
-                                           @endif href="{{ url('navs') }}">Navs</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'tab') class="active"
-                                           @endif href="{{ url('tab') }}">Tab</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'tooltip') class="active"
-                                           @endif href="{{ url('tooltip') }}">Tooltip</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'popovers') class="active"
-                                           @endif href="{{ url('popovers') }}">Popovers</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Cards</a>
-                                <ul>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'basic-cards') class="active"
-                                           @endif href="{{ url('basic-cards') }}">Basic Cards </a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'image-cards') class="active"
-                                           @endif href="{{ url('image-cards') }}">Image Cards </a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'scroll-cards') class="active"
-                                           @endif href="{{ url('scroll-cards') }}">Scroll Cards </a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'other-cards') class="active"
-                                           @endif href="{{ url('other-cards') }}">Others Cards</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Tables</a>
-                                <ul>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'basic-tables') class="active"
-                                           @endif href="{{ url('basic-tables') }}">Basic Tables</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'dataTable') class="active"
-                                           @endif href="{{ url('dataTable') }}">Datatable</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'responsive-tables') class="active"
-                                           @endif href="{{ url('responsive-tables') }}">Responsive Tables</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Charts</a>
-                                <ul>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'apexchart') class="active"
-                                           @endif href="{{ url('apexchart') }}">Apex Chart</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'chartjs') class="active"
-                                           @endif href="{{ url('chartjs') }}">Chartjs</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'justgage') class="active"
-                                           @endif href="{{ url('justgage') }}">Justgage</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'morsis') class="active"
-                                           @endif href="{{ url('morsis') }}">Morsis</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'peity') class="active"
-                                           @endif href="{{ url('peity') }}">Peity</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Maps</a>
-                                <ul>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'google-map') class="active"
-                                           @endif href="{{ url('google-map') }}">Google Map</a></li>
-                                    <li>
-                                        <a @if(request()->segment(1) == 'vector-map') class="active"
-                                           @endif href="{{ url('vector-map') }}">Vector Map</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'avatar') class="active"
-                                   @endif href="{{ url('avatar') }}">Avatar</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'icons') class="active"
-                                   @endif href="{{ url('icons') }}">Icons</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'colors') class="active"
-                                   @endif href="{{ url('colors') }}">Colors</a></li>
-                        </ul>
-                    </div>
-                    <div id="forms">
-                        <ul>
-                            <li class="navigation-divider d-flex align-items-center">
-                                <i class="mr-2" data-feather="edit-3"></i> Forms
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'basic-forms') class="active"
-                                   @endif href="{{ url('basic-forms') }}">Basic Forms</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'custom-forms') class="active"
-                                   @endif href="{{ url('custom-forms') }}">Custom Forms</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'advanced-forms') class="active"
-                                   @endif href="{{ url('advanced-forms') }}">Advanced Forms</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'form-validation') class="active"
-                                   @endif href="{{ url('form-validation') }}">Form Validation</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'form-wizard') class="active"
-                                   @endif href="{{ url('form-wizard') }}">Form Wizard</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'file-upload') class="active"
-                                   @endif href="{{ url('file-upload') }}">File Upload</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'datepicker') class="active"
-                                   @endif href="{{ url('datepicker') }}">Datepicker</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'timepicker') class="active"
-                                   @endif href="{{ url('timepicker') }}">Timepicker</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'colorpicker') class="active"
-                                   @endif href="{{ url('colorpicker') }}">Colorpicker</a></li>
-                        </ul>
-                    </div>
-                    <div id="plugins">
-                        <ul>
-                            <li class="navigation-divider d-flex align-items-center">
-                                <i class="mr-2" data-feather="gift"></i> Plugins
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'sweet-alert') class="active"
-                                   @endif href="{{ url('sweet-alert') }}">Sweet Alert</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'lightbox') class="active"
-                                   @endif href="{{ url('lightbox') }}">Lightbox</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'toast') class="active"
-                                   @endif href="{{ url('toast') }}">Toast</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'tour') class="active"
-                                   @endif href="{{ url('tour') }}">Tour</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'slick-slide') class="active"
-                                   @endif href="{{ url('slick-slide') }}">Slick Slide</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'nestable') class="active"
-                                   @endif href="{{ url('nestable') }}">Nestable</a></li>
-                        </ul>
-                    </div>
-                    <div id="pages">
-                        <ul>
-                            <li class="navigation-divider d-flex align-items-center">
-                                <i class="mr-2" data-feather="copy"></i> Pages
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'timeline') class="active"
-                                   @endif href="{{ url('timeline') }}">Timeline</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'pricing-table') class="active"
-                                   @endif href="{{ url('pricing-table') }}">Pricing Table</a></li>
-
-                            <li>
-                                <a @if(request()->segment(1) == 'pricing-table-2') class="active"
-                                   @endif href="{{ url('pricing-table-2') }}">Pricing Table 2</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'search-result') class="active"
-                                   @endif href="{{ url('search-result') }}">Search Result</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'mailing') class="active"
-                                   @endif href="{{ url('mailing') }}">Mailing</a></li>
-                            <li>
-                                <a href="#">Error Pages</a>
-                                <ul>
-                                    <li><a href="{{ url('404') }}" target="_blank">404</a></li>
-                                    <li><a href="{{ url('503') }}" target="_blank">503</a></li>
-                                    <li><a href="{{ url('mean-at-work') }}" target="_blank">Mean at
-                                            Work</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'blank-page') class="active"
-                                   @endif href="{{ url('blank-page') }}">Blank Page</a>
-                            </li>
-                            <li>
-                                <a href="#">Menu Level</a>
-                                <ul>
-                                    <li>
-                                        <a href="#">Menu Level</a>
-                                        <ul>
-                                            <li>
-                                                <a href="#">Menu Level </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>

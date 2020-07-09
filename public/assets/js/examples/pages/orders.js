@@ -11,10 +11,7 @@ $(function () {
                         '</div>';
                 }
             },
-            {
-                "orderable": false,
-                "targets": [0, 5]
-            }
+           
         ],
         'order': [1, 'asc']
     });

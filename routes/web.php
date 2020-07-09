@@ -22,9 +22,9 @@ Route::get('/', 'HomeController@index');
 
 
 Route::get('/doctor_list', 'HomeController@showDoctorList');
-Route::get('/doctor_detail', 'HomeController@showDoctorDetail');
-
+Route::get('/doctor_detail/{id}', 'HomeController@showDoctorDetail')->name('doctor.details');
 Route::get('/patient_account', 'HomeController@showPatientAccount');
+
 
 Route::get('/admin', 'HomeController@manageLogos');
 Route::get('/admin/media', 'HomeController@manageLogos');
@@ -32,6 +32,12 @@ Route::get('/admin/media/logo', 'HomeController@manageLogos');
 Route::get('/admin/media/image', 'HomeController@manageImages');
 Route::get('/admin/media/video', 'HomeController@manageVideos');
 Route::get('/admin/media/partner', 'HomeController@managePartner');
+
+Route::get('/admin/user/doctor', 'HomeController@manageDoctor');
+Route::get('/admin/user/city', 'HomeController@manageCity');
+Route::get('/admin/user/speciality', 'HomeController@manageSpeciality');
+Route::get('/admin/user/formation', 'HomeController@manageFormation');
+
 
 ///// ========   Admin Logo Edit  ========  //////////
 Route::post('/logo/addNewLogo', 'ImageManageController@addNewLogo');
@@ -49,6 +55,27 @@ Route::post('/logo/removeVideo', 'ImageManageController@removeVideo');
 Route::post('/logo/addNewPartner', 'ImageManageController@addNewPartner');
 Route::get('/logo/getPartner', 'ImageManageController@getPartner');
 Route::post('/logo/removePartner', 'ImageManageController@removePartner');
+
+
+Route::post('/doctor/addNewCity', 'DoctorManageController@addNewCity');
+Route::get('/doctor/getCity', 'DoctorManageController@getCity');
+Route::post('/doctor/removeCity', 'DoctorManageController@removeCity');
+
+Route::post('/doctor/addNewSpeciality', 'DoctorManageController@addNewSpeciality');
+Route::get('/doctor/getSpeciality', 'DoctorManageController@getSpeciality');
+Route::post('/doctor/removeSpeciality', 'DoctorManageController@removeSpeciality');
+
+Route::post('/doctor/addNewFormation', 'DoctorManageController@addNewFormation');
+Route::get('/doctor/getFormation', 'DoctorManageController@getFormation');
+Route::post('/doctor/removeFormation', 'DoctorManageController@removeFormation');
+
+
+Route::post('/doctor/addNewDoctor', 'DoctorManageController@addNewDoctor');
+Route::get('/doctor/getDoctor', 'DoctorManageController@getDoctor');
+Route::post('/doctor/removeDoctor', 'DoctorManageController@removeDoctor');
+Route::post('/doctor/editAdvanceDoctor', 'DoctorManageController@editAdvanceDoctor');
+
+
 
 //// =======  Truncate Table ===== /////////////
 Route::get('/admin/secret', 'HomeController@showSecret');

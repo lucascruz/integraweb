@@ -96,7 +96,7 @@
 										<div class="row">
 											<div class="col-12">
 												<div class="dr-name">
-													<h2>Dr.Pepito Perez</h2>
+													<h2>{{ $param['doctor_detail_info']->name }}</h2>
 													<h3>DERMATOLOGO</h3>
 													<p>Universidad Autonoma de Bucaramanga</p>
 												</div>	

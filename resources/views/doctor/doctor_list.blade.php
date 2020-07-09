@@ -146,36 +146,40 @@
 	<section class="team-section">
 		<section class="mb-5">
 			<div class="team-sec">
-				<div class="container">
+				<div class="" style="width:90%; margin:auto">
 					<div class="team">
 						<div class="owl-carousel" id="doctor">
+							@foreach($param['doctor_list'] as $row)
 							<div class="team-box text-center margin-section-one">
 								<div class="team-img">
-								<a href="{{ url('/doctor_detail') }}"><img src="{{ url('public/images/dr.jpg') }}" class="img-fluid" alt="images" /></a>
+								<a href="{{ route('doctor.details', $row->id) }}"><img src="{{ url('public/images/doctor_images'). '/'. $row->image }}" class="img-fluid" alt="images" /></a>
 								</div>
 								<div class="margin-section">
 									<h2>
-										<a href="{{ url('/doctor_detail') }}">
-											Dr.Pepito Perez		
+										<a href="{{ route('doctor.details', $row->id) }}">
+											{{ $row->name }}
 										</a>
 									</h2>
 									<h3 style="color:rgb(137,141,143);">
-										DERMATOLOGO
+										{{ $row->specialization }}
 									</h3>
 									<h3 style="color: rgb(13,201,223);">
-										<b>UNAB</b>
+										<b>{{ $row->university }}</b>
 									</h3>
-									<h3>
-										COP $100.000
+									<div class="d-flex justify-content-center">
+										<img src="{{ url('public/images/price_image.png') }}" class="img-fluid" alt="images" style="width:60px;"/>
+										<h3 style="padding-top: 20px;">COP $100.000</h3>
+									</div>
+									
+									<h3 style="color:rgb(137,141,143);">
+										{{ $row->address }}
 									</h3>
 									<h3 style="color:rgb(137,141,143);">
-										CRA 33 # 48 - 13
-									</h3>
-									<h3 style="color:rgb(137,141,143);">
-										Bucaramanga
+										{{ $row->city_name }}
 									</h3>
 								</div>
 							</div>
+							@endforeach
 						</div>
 					</div>
 				</div>
@@ -270,11 +274,14 @@
 
 @section('custom_js')
     <script>
-    $('document').ready(function(){
+	var APP_URL = {!! json_encode(url('/')) !!};
+
+    $(document).ready(function(){
+
         $("#doctor").owlCarousel({
         loop:true,
         autoplay:true,
-        autoplayTimeout:1000,
+        autoplayTimeout:4000,
         autoplayHoverPause:true,
         nav:false,
         margin:30,
@@ -290,13 +297,37 @@
                 991 :{
                     items:3,
                 },
-                1100:{
+				1100 :{
                     items:4,
-                }
+                },
             }
         });
+
+		$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+		});
     });
-    </script>
-    @endsection
+
+	function showDoctorDetail(doctor_id)
+	{
+		//alert(doctor_id);
+		$.ajax({
+		
+			type:'GET',
+			url: APP_URL + '/doctor_detail',
+			data:{
+				doctor_id: doctor_id,            
+			},
+			async:false,
+			success:function(data){
+				console.log(data);
+			}   
+		});
+	}
+	</script>
+
+@endsection
 
 
