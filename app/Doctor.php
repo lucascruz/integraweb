@@ -30,16 +30,26 @@ class Doctor extends Model
 
         if($result->speciality_list != '')
         {
-            $result->speciality_array = explode(',', $result->speciality_list);    
+            $array = explode(',', $result->speciality_list);
+            foreach($array as $row)
+            {
+                $temp = $this->getSpeciality($row);
+                array_push($result->speciality_array, $temp[0]->name);
+            }
         }
 
         $result->formation_array = array();
 
         if($result->formation_list != '')
         {
-            $result->formation_array = explode(',', $result->formation_list);    
+            $array = explode(',', $result->formation_list);    
+            foreach($array as $row)
+            {
+                $temp = $this->getFormation($row);
+                array_push($result->formation_array, $temp[0]->name);
+            }
         }
-        
+
         return $result;
     }
 

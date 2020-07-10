@@ -97,15 +97,15 @@
 											<div class="col-12">
 												<div class="dr-name">
 													<h2>{{ $param['doctor_detail_info']->name }}</h2>
-													<h3>DERMATOLOGO</h3>
-													<p>Universidad Autonoma de Bucaramanga</p>
+													<h3>{{ $param['doctor_detail_info']->specialization }}</h3>
+													<p>{{ $param['doctor_detail_info']->university }}</p>
 												</div>	
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-5">
 												<div class="team-img">
-													<img src="{{ url('public/images/dr.jpg') }}" class="img-fluid" alt="images" />
+													<img src="{{ url('public/images/doctor_images'). '/'. $param['doctor_detail_info']->image }}" class="img-fluid" alt="images" />
 												</div> 
 											</div>
 											<div class="col-7">
@@ -138,9 +138,9 @@
 														ESPECIALIDADES:
 												</h5>
 												<ul>
-													<li>Vitiligo</li>
-													<li>Psoriasis</li>
-													<li>Rosacea</li>
+													@foreach($param['doctor_detail_info']->speciality_array as $row)
+														<li>{{ $row }}</li>
+													@endforeach
 												</ul>
 											</div>
 											<div class="col-6">
@@ -148,8 +148,9 @@
 													FORMACION:
 												</h5>
 												<ul>
-													<li>Dermatologia clinica</li>
-													<li>Dermatologia quirurgica</li>
+													@foreach($param['doctor_detail_info']->formation_array as $row)
+														<li>{{ $row }}</li>
+													@endforeach
 												</ul>
 											</div>
 										</div>
@@ -475,11 +476,11 @@
 											</div>
 											<div class="contact-info">
 												<h5 style="color: rgb(112,114,115); font-size: 26px;">CRA 33 # 48 - 13</h5>
-												<h6 style="color: rgb(112,114,115); font-size: 24px; letter-spacing: 1px;">Bucaramanga</h6>
+												<h6 style="color: rgb(112,114,115); font-size: 24px; letter-spacing: 1px;">{{ $param['doctor_detail_info']->city_name }}</h6>
 												<p style="font-size: 22px; color: #186DAB;" class="my-3">
 													Telefonos:<br/>
-													(7) 6433333<br/>
-													3189999999
+													{{ $param['doctor_detail_info']->phone_number }}<br/>
+													
 												</p>
 											</div>
 										</div>
