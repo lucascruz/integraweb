@@ -52,6 +52,23 @@ CREATE TABLE `departamento` (
 
 /*Data for the table `departamento` */
 
+/*Table structure for table `doctor_services` */
+
+DROP TABLE IF EXISTS `doctor_services`;
+
+CREATE TABLE `doctor_services` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `doctor_id` bigint(20) DEFAULT NULL,
+  `services_id` bigint(20) DEFAULT NULL,
+  `price1` float DEFAULT 0,
+  `price2` float DEFAULT 0 COMMENT 'face to face',
+  `price3` float DEFAULT 0 COMMENT 'telemedicine',
+  `active` int(11) DEFAULT 0 COMMENT 'other',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `doctor_services` */
+
 /*Table structure for table `doctors` */
 
 DROP TABLE IF EXISTS `doctors`;
@@ -205,6 +222,41 @@ CREATE TABLE `password_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `password_resets` */
+
+/*Table structure for table `service_type` */
+
+DROP TABLE IF EXISTS `service_type`;
+
+CREATE TABLE `service_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `active` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+/*Data for the table `service_type` */
+
+insert  into `service_type`(`id`,`name`,`active`) values 
+(1,'procedimientos',1),
+(2,'enfermedades',1),
+(3,'seguros',1),
+(4,'servicios',1);
+
+/*Table structure for table `services` */
+
+DROP TABLE IF EXISTS `services`;
+
+CREATE TABLE `services` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) DEFAULT NULL,
+  `image` varchar(100) DEFAULT NULL,
+  `video` varchar(100) DEFAULT NULL,
+  `servicees_type_id` int(11) DEFAULT NULL,
+  `active` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `services` */
 
 /*Table structure for table `specialist` */
 
