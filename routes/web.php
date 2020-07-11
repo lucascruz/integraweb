@@ -32,6 +32,8 @@ Route::get('/admin/media/logo', 'HomeController@manageLogos');
 Route::get('/admin/media/image', 'HomeController@manageImages');
 Route::get('/admin/media/video', 'HomeController@manageVideos');
 Route::get('/admin/media/partner', 'HomeController@managePartner');
+Route::get('admin/media/benefit', 'HomeController@manageBenefit')->name('media.benefit');
+
 
 Route::get('/admin/user/doctor', 'HomeController@manageDoctor');
 Route::get('/admin/user/city', 'HomeController@manageCity');

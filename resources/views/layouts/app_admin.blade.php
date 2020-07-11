@@ -456,6 +456,10 @@
                             <li>
                                 <a @if(request()->segment($count) == 'partner') class="active"
                                    @endif href="{{ url('admin/media/partner') }}">Partner Companies</a></li>
+
+                            <li>
+                                <a @if(request()->segment($count) == 'benefit') class="active"
+                                   @endif href="{{ url('admin/media/benefit') }}">Benefits</a></li>
                             <!-- <li>
                                 <a @if(request()->segment(1) == 'product-detail') class="active"
                                    @endif href="{{ url('product-detail') }}">Product Detail</a></li> -->

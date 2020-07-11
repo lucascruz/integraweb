@@ -131,7 +131,8 @@
 										<p class="mb-2 text-light">
 											Busco un:
 										</p>
-										<input type="text" placeholder="EJE. DERMATOLGO" name="">
+										<input type="text" placeholder="EJE. DERMATOLGO" name=""> 
+									
 									</div>
 									<div class="col-5 p-0 p-md-2">
 										<p class="mb-2 text-light">

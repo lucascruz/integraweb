@@ -142,6 +142,16 @@ class HomeController extends Controller
         return view('admin.media.partner', compact('param'));
     }
 
+    public function manageBenefit()
+    {
+        $param = [];
+
+        $logo = new Logo();
+
+        //$param['service_type_list'] = $service->get
+        return view('admin.media.benefit', compact('param'));
+    }
+
     ////////// =================  Doctor Part  ============= /////////////////
     public function manageDoctor()
     {
@@ -207,4 +217,6 @@ class HomeController extends Controller
         $param['service_list'] = $service->getAllServices();
         return view('admin.service.services', compact('param'));
     }
+
+
 }   
