@@ -77,6 +77,7 @@ class Doctor extends Model
             }
             $result[$i]->str_specialist = $str_specialist;
         }
+
         for($i = 0; $i < count($result); $i++)
         {
             $result[$i]->str_formation = "";
@@ -265,3 +266,5 @@ class Doctor extends Model
       }
       /////////// ============================ //////////////////////
 }
+
+///////////////////// =========TEST AUTO UPLOAD===========  ////////////////////////////////////
