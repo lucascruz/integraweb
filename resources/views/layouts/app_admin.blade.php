@@ -378,6 +378,13 @@
                         </a>
                     </li>
                     <li>
+                        <a href="#" data-toggle="tooltip"
+                           data-placement="right" data-toggle="tooltip" data-placement="right" title="Service Offer" 
+                           data-nav-target="#service">
+                            <i data-feather="globe"></i>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#" data-toggle="tooltip" data-placement="right" title="Analytics"
                            data-nav-target="#analytics">
                             <i data-feather="activity"></i>
@@ -626,6 +633,30 @@
                                     </figure>
                                 </div>
                             </li> -->
+                        </ul>
+                    </div>
+
+                    <div id="service" >
+                        <ul>
+                            <?php $count = count(Request::segments());?>
+                            <li class="navigation-divider d-flex align-items-center">
+                                <i class="mr-2" data-feather="globe"></i> Service Manage
+                            </li>
+                            <li>
+                                <a @if(request()->segment($count) == 'services') class="active"
+                                   @endif href="{{ route('service.manage') }}">Services</a></li>
+                            <li>
+                                <a @if(request()->segment($count) == 'service_type') class="active"
+                                   @endif href="{{ route('service.type') }}">Service Type</a></li>
+                            <!-- <li>
+                                <a @if(request()->segment($count) == 'city') class="active"
+                                   @endif href="{{ url('/admin/user/city') }}">City Catalog</a></li>
+                            <li>
+                                <a @if(request()->segment($count) == 'speciality') class="active"
+                                   @endif href="{{ url('/admin/user/speciality') }}">Speciality Catalog</a></li>
+                            <li>
+                                <a @if(request()->segment($count) == 'formation') class="active"
+                                   @endif href="{{ url('/admin/user/formation') }}">Formation Catalog</a></li>                                    -->
                         </ul>
                     </div>
                 </div>

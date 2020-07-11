@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Logo;
 use App\Doctor;
+use App\Service;
+
 use Symfony\Component\VarDumper\Caster\DoctrineCaster;
 
 class HomeController extends Controller
@@ -101,7 +103,7 @@ class HomeController extends Controller
         $param['logo_list'] = $logo->getAdminLogoList();
         $param['catalog_list'] = $logo->getAdminCatalogList("Logo");
 
-        return view('admin.logo', compact('param'));
+        return view('admin.media.logo', compact('param'));
     }
 
     public function manageImages()
@@ -114,7 +116,7 @@ class HomeController extends Controller
         $param['image_list'] = $logo->getAdminImageList();
         $param['catalog_list'] = $logo->getAdminCatalogList("Image");
 
-        return view('admin.image', compact('param'));
+        return view('admin.media.image', compact('param'));
     }
 
     public function manageVideos()
@@ -127,7 +129,7 @@ class HomeController extends Controller
         $param['video_list'] = $logo->getAdminVideoList();
         $param['catalog_list'] = $logo->getAdminCatalogList("Video");
 
-        return view('admin.video', compact('param'));
+        return view('admin.media.video', compact('param'));
     }
 
     public function managePartner()
@@ -137,7 +139,7 @@ class HomeController extends Controller
         $logo = new Logo();
         $param['partner_list'] = $logo->getAdminPartnerList();
 
-        return view('admin.partner', compact('param'));
+        return view('admin.media.partner', compact('param'));
     }
 
     ////////// =================  Doctor Part  ============= /////////////////
@@ -152,7 +154,7 @@ class HomeController extends Controller
         $param['speciality_list'] = $doctor->getActiveSpecialityList();
         $param['formation_list'] = $doctor->getActiveFormationList();
 
-        return view('admin.doctor', compact('param'));
+        return view('admin.doctor.doctor', compact('param'));
     }
 
     public function manageCity()
@@ -162,7 +164,7 @@ class HomeController extends Controller
         $doctor = new Doctor();
         $param['city_list'] = $doctor->getCityList();
 
-        return view('admin.city', compact('param'));
+        return view('admin.doctor.city', compact('param'));
     }
 
     public function manageSpeciality()
@@ -172,7 +174,7 @@ class HomeController extends Controller
         $doctor = new Doctor();
         $param['speciality_list'] = $doctor->getAllSpeciality();
 
-        return view('admin.specialist', compact('param'));
+        return view('admin.doctor.specialist', compact('param'));
     }
     
     public function manageFormation()
@@ -182,6 +184,27 @@ class HomeController extends Controller
         $doctor = new Doctor();
         $param['formation_list'] = $doctor->getAllFormation();
 
-        return view('admin.formation', compact('param'));
+        return view('admin.doctor.formation', compact('param'));
     }
-}
+
+    public function manageServieType()
+    {
+        $param = [];
+
+        $service = new Service();
+        $param['service_type_list'] = $service->getAllServiceType();
+
+        return view('admin.service.service_type', compact('param'));
+    }
+
+    public function manageServies()
+    {
+        $param = [];
+
+        $service = new Service();
+
+        $param['service_type_list'] = $service->getAllServiceType();
+        $param['service_list'] = $service->getAllServices();
+        return view('admin.service.services', compact('param'));
+    }
+}   

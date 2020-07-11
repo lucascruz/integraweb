@@ -38,6 +38,8 @@ Route::get('/admin/user/city', 'HomeController@manageCity');
 Route::get('/admin/user/speciality', 'HomeController@manageSpeciality');
 Route::get('/admin/user/formation', 'HomeController@manageFormation');
 
+Route::get('/admin/service/service_type', 'HomeController@manageServieType')->name('service.type');
+Route::get('/admin/service/services', 'HomeController@manageServies')->name('service.manage');
 
 ///// ========   Admin Logo Edit  ========  //////////
 Route::post('/logo/addNewLogo', 'ImageManageController@addNewLogo');
@@ -56,6 +58,7 @@ Route::post('/logo/addNewPartner', 'ImageManageController@addNewPartner');
 Route::get('/logo/getPartner', 'ImageManageController@getPartner');
 Route::post('/logo/removePartner', 'ImageManageController@removePartner');
 
+/////  ======  Doctor Manage ======= ///////////
 
 Route::post('/doctor/addNewCity', 'DoctorManageController@addNewCity');
 Route::get('/doctor/getCity', 'DoctorManageController@getCity');
@@ -75,6 +78,15 @@ Route::get('/doctor/getDoctor', 'DoctorManageController@getDoctor');
 Route::post('/doctor/removeDoctor', 'DoctorManageController@removeDoctor');
 Route::post('/doctor/editAdvanceDoctor', 'DoctorManageController@editAdvanceDoctor');
 
+/////  ======  Service Manage ======= ///////////
+
+Route::post('/service/addNewServiceType', 'ServiceManageController@addNewServiceType');
+Route::get('/service/getServiceType', 'ServiceManageController@getServiceType');
+Route::post('/service/removeServiceType', 'ServiceManageController@removeServiceType');
+
+Route::post('/service/addNewService', 'ServiceManageController@addNewService');
+Route::get('/service/getService', 'ServiceManageController@getService');
+Route::post('/service/removeService', 'ServiceManageController@removeService');
 
 
 //// =======  Truncate Table ===== /////////////
