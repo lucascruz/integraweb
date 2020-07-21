@@ -4,6 +4,14 @@
 
 	<!-- ============== HEADER SECTION START ============== -->
 	<section>
+	<nav class="navbar navbar-light float-lg-right">
+	<form class="form-inline">
+
+		<input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+	</form>
+</nav>
 		<div class="header-sec py-3">
 			<div class="container-fluid">
 				<div class="row align-items-center">
@@ -169,8 +177,7 @@
 									<div class="d-flex justify-content-center">
 										<img src="{{ url('public/images/price_image.png') }}" class="img-fluid" alt="images" style="width:60px;"/>
 										<h3 style="padding-top: 20px;">COP $100.000</h3>
-									</div>
-									
+									</div>									
 									<h3 style="color:rgb(137,141,143);">
 										{{ $row->address }}
 									</h3>
@@ -329,5 +336,3 @@
 	</script>
 
 @endsection
-
-

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Doctor;
+use App\Tags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -104,12 +105,13 @@ class DoctorManageController extends Controller
         $action = $request->city_action;
         $status = $request->active;
         $name = $request->city_name;
+        $departamento = $request->city_departamento;
                 
         $active = ($status == "on" ? 1 : 0);
 
         $param = [
             'name' => $name,
-            'extra' => '',
+            'departamento' => $departamento,
             'code' => '',
             'departamento_id' => 0,
             'active' => $active,
@@ -132,6 +134,7 @@ class DoctorManageController extends Controller
         $doctor = new Doctor();
         $doctor->removeCity($city_id);
     }
+
     /////////////////////////////////////////////////////////////////////
 
     ///// =============  Speciality Part =============== ///////
@@ -221,4 +224,5 @@ class DoctorManageController extends Controller
         $doctor->removeFormation($formation_id);
     }
     /////////////////////////////////////////////////////////////////////
+
 }

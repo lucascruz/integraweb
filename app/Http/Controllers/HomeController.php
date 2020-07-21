@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Logo;
 use App\Doctor;
 use App\Service;
+use App\Tags;
+use Illuminate\Http\Request;
 
 use Symfony\Component\VarDumper\Caster\DoctrineCaster;
 
@@ -28,6 +30,16 @@ class HomeController extends Controller
 
     public function index()
     {
+        return view('home');
+    }
+
+    public function contact()
+    {
+        return view('contact');
+    }
+
+    public function welcome()
+    {
         $param = [
             'login'			=> false,
             'role'			=> -1
@@ -45,10 +57,10 @@ class HomeController extends Controller
         
 
         //$param = json_encode($param);
-        return view('home', compact('param'));
+        return view('welcome', compact('param'));
     }
 
-    public function showDoctorList()
+    public function showDoctorList(Request $request)
     {
         $param = [];
         $logo = new Logo();
@@ -57,9 +69,8 @@ class HomeController extends Controller
         $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
         $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
         $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
-
         $param['doctor_list'] = $doctor->getActiveDoctorList();
-        
+
         return view('doctor.doctor_list', compact('param'));
     }
 

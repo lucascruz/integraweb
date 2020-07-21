@@ -18,12 +18,68 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
 
+Route::get('/' , 'HomeController@welcome')->name('welcome');
 
-Route::get('/doctor_list', 'HomeController@showDoctorList');
+// CONTACT
+
+Route::get('/contact' , 'HomeController@contact')->name('contact');
+Route::post('/agregarContact' , 'ContactController@storeContact')->name('storeContact');
+
+// TAGS
+
+Route::get('/admin/service/tags' , 'TagsController@tags')->name('tags');
+Route::post('/agregarTag' , 'TagsController@storeTag')->name('storeTag');
+Route::get('/admin/service/tags-list' , 'TagsController@listtags')->name('tags-list');
+Route::get('/tags-edit/{id}' , 'TagsController@editTag')->name('tags-edit');
+Route::put('/updateTag/{id}' , 'TagsController@updateTag')->name('updateTag');
+Route::delete('/eliminarTag/{id}' , 'TagsController@destroyTag')->name('eliminarTag');
+
+// TYPES
+
+Route::get('/admin/user/type' , 'DoctorTypeController@type')->name('type');
+Route::post('/agregarType' , 'DoctorTypeController@storeType')->name('storeType');
+Route::get('/admin/user/type-list' , 'DoctorTypeController@listtype')->name('type-list');
+Route::get('/type-edit/{id}' , 'DoctorTypeController@editType')->name('type-edit');
+Route::put('/updateType/{id}' , 'DoctorTypeController@updateType')->name('updateType');
+Route::delete('/eliminarType/{id}' , 'DoctorTypeController@destroyType')->name('eliminarType');
+
+// DOCTOR SERVICES
+
+Route::get('/admin/user/service' , 'DoctorServiceController@service')->name('service');
+Route::post('/agregarService' , 'DoctorServiceController@storeService')->name('storeService');
+Route::get('/admin/user/service-list' , 'DoctorServiceController@listservice')->name('service-list');
+Route::get('/service-edit/{id}' , 'DoctorServiceController@editService')->name('service-edit');
+Route::put('/updateService/{id}' , 'DoctorServiceController@updateService')->name('updateService');
+Route::delete('/eliminarService/{id}' , 'DoctorServiceController@destroyService')->name('eliminarService');
+
+// OPINIONS
+
+Route::get('/doctor/opinions' , 'OpinionsController@opinions')->name('opinions');
+Route::post('/agregarOpinion' , 'OpinionsController@storeOpinion')->name('storeOpinion');
+
+// Appointment
+
+Route::post('/agregarAppointment' , 'AppointmentsController@storeAppointment')->name('storeAppointment');
+
+// MEDICAL MANAGE
+
+Route::get('/medical' , 'TagsController@medical')->name('medical');
+
+// INSURANCE
+
+Route::get('/admin/service/insurance' , 'InsuranceController@insurance')->name('insurance');
+Route::post('/agregarInsurance' , 'InsuranceController@storeInsurance')->name('storeInsurance');
+Route::get('/admin/service/insurance-list' , 'InsuranceController@listinsurance')->name('insurance-list');
+Route::get('/insurance-edit/{id}' , 'InsuranceController@editInsurance')->name('insurance-edit');
+Route::put('/updateInsurance/{id}' , 'InsuranceController@updateInsurance')->name('updateInsurance');
+Route::delete('/eliminarInsurance/{id}' , 'InsuranceController@destroyInsurance')->name('eliminarInsurance');
+
+// DOCTOR LIST
+
+Route::get('/doctor_list', 'HomeController@showDoctorList')->name('doctor_list');;
 Route::get('/doctor_detail/{id}', 'HomeController@showDoctorDetail')->name('doctor.details');
-Route::get('/patient_account', 'HomeController@showPatientAccount');
+Route::get('/patient_account' , 'HomeController@showPatientAccount')->name('patient_account');
 
 
 Route::get('/admin', 'HomeController@manageLogos');
@@ -94,3 +150,18 @@ Route::post('/service/removeService', 'ServiceManageController@removeService');
 //// =======  Truncate Table ===== /////////////
 Route::get('/admin/secret', 'HomeController@showSecret');
 Route::POST('/secret/truncate', 'HomeController@truncate');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
