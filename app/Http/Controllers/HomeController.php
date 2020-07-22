@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Logo;
 use App\Doctor;
+use App\Insurance;
 use App\Service;
 use App\Tags;
 use Illuminate\Http\Request;
-
+use PhpParser\Comment\Doc;
 use Symfony\Component\VarDumper\Caster\DoctrineCaster;
 
 class HomeController extends Controller
@@ -77,16 +78,16 @@ class HomeController extends Controller
     public function showDoctorDetail($id)
     {
         $param = [];
+        $insurances = Insurance::all();
         $logo = new Logo();
         $doctor = new Doctor();
 
         $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
         $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
         $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
-
         $param['doctor_detail_info'] = $doctor->getDoctorDetail($id);
 
-        return view('doctor.doctor_detail', compact('param'));
+        return view('doctor.doctor_detail')->with('param',$param)->with('insurances',$insurances);
     }
 
     public function showPatientAccount()

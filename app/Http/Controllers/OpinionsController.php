@@ -24,7 +24,8 @@ class OpinionsController extends Controller
         return view('/doctor/opinions', compact('opinions'));
     }
 
-    public function listtags() {
+    public function listtags()
+    {
         $tags = App\Tags::paginate(5);
         return view('/admin/service/tags-list', compact('tags'));
     }
@@ -57,7 +58,7 @@ class OpinionsController extends Controller
         $opinionAgregar->doctors_id = $request->doctors_id;
         $opinionAgregar->opinion_content = $request->opinion_content;
         $opinionAgregar->save();
-        return back()->with('agregarOpinion' , 'La Opinion se ha enviado correctamente');
+        return back()->with('agregarOpinion', 'La Opinion se ha enviado correctamente');
     }
 
     /**

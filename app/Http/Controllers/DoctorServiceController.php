@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App;
+use App\Doctor;
 use App\DoctorService;
+use App\Service;
 use Illuminate\Http\Request;
 
 class DoctorServiceController extends Controller
@@ -20,13 +22,17 @@ class DoctorServiceController extends Controller
 
     public function service()
     {
-        return view('/admin/doctor/service');
+        $doctors = Doctor::all();
+        $services = Service::all();
+        return view('/admin/doctor/service')->with('doctors',$doctors)->with('services',$services);
     }
 
     public function listservice()
     {
+        $doctors = Doctor::all();
+        $services = Service::all();
         $services = App\DoctorService::paginate(5);
-        return view('/admin/doctor/service-list', compact('services'));
+        return view('/admin/doctor/service-list')->with('doctors',$doctors)->with('services',$services);
     }
 
     /**
@@ -50,11 +56,13 @@ class DoctorServiceController extends Controller
         $serviceAgregar = new DoctorService();
         $request->validate([
             'doctor_id' => 'required',
+            'services_id' => 'required',
             'price1' => 'required',
             'price2' => 'required',
             'price3' => 'required',
         ]);
         $serviceAgregar->doctor_id = $request->doctor_id;
+        $serviceAgregar->services_id = $request->services_id;
         $serviceAgregar->price1 = $request->price1;
         $serviceAgregar->price2 = $request->price2;
         $serviceAgregar->price3 = $request->price3;
@@ -81,8 +89,10 @@ class DoctorServiceController extends Controller
      */
     public function editService($id)
     {
+        $doctors = Doctor::all();
+        $services = Service::all();
         $serviceActualizar = App\DoctorService::findOrFail($id);
-        return view('/admin/doctor/service-edit', compact('serviceActualizar'));
+        return view('/admin/doctor/service-edit')->with('serviceActualizar',$serviceActualizar)->with('doctors',$doctors)->with('services',$services);
     }
 
     /**
@@ -96,6 +106,7 @@ class DoctorServiceController extends Controller
     {
         $serviceUpdate = App\DoctorService::findOrFail($id);
         $serviceUpdate->doctor_id = $request->doctor_id;
+        $serviceUpdate->services_id = $request->services_id;
         $serviceUpdate->price1 = $request->price1;
         $serviceUpdate->price2 = $request->price2;
         $serviceUpdate->price3 = $request->price3;

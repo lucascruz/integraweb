@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-07-2020 a las 18:35:00
+-- Tiempo de generación: 23-07-2020 a las 00:44:25
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.7
 
@@ -32,19 +32,22 @@ CREATE TABLE `appointments` (
   `patient_id` bigint(20) DEFAULT NULL,
   `insurance_id` bigint(20) DEFAULT NULL,
   `reason` varchar(100) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `city_id` bigint(20) DEFAULT NULL,
-  `doctor_id` bigint(20) DEFAULT NULL,
-  `status` varchar(100) DEFAULT NULL COMMENT 'or it can be int(active or not)'
+  `date` datetime DEFAULT NULL,
+  `city_id` int(11) DEFAULT NULL,
+  `doctor_id` int(11) DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL COMMENT 'or it can be int(active or not)',
+  `city` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `appointments`
 --
 
-INSERT INTO `appointments` (`id`, `patient_id`, `insurance_id`, `reason`, `date`, `city_id`, `doctor_id`, `status`) VALUES
-(1, 2, NULL, 'Dolor de cabeza', '2020-07-18', NULL, NULL, NULL),
-(2, 2, NULL, 'PRUEBA', '2020-07-16', NULL, NULL, NULL);
+INSERT INTO `appointments` (`id`, `patient_id`, `insurance_id`, `reason`, `date`, `city_id`, `doctor_id`, `status`, `city`) VALUES
+(1, 2, 3, 'cita particular', '2020-07-24 10:43:00', NULL, 3, NULL, 'floridablanca'),
+(2, 2, 3, 'Examen físico', '2020-07-30 09:48:00', NULL, 3, NULL, 'bucaramanga'),
+(3, 2, 3, 'prueba', '2020-07-31 11:27:00', NULL, 3, NULL, 'giron'),
+(4, 2, 1, 'migraña', '2020-07-30 15:39:00', NULL, 3, NULL, 'medellin');
 
 -- --------------------------------------------------------
 
@@ -191,8 +194,8 @@ CREATE TABLE `doctor_schedule` (
 
 CREATE TABLE `doctor_services` (
   `id` bigint(20) NOT NULL,
-  `doctor_id` bigint(20) DEFAULT NULL,
-  `services_id` bigint(20) DEFAULT NULL,
+  `doctor_id` int(11) DEFAULT NULL,
+  `services_id` int(11) DEFAULT NULL,
   `price1` float DEFAULT 0,
   `price2` float DEFAULT 0 COMMENT 'face to face',
   `price3` float DEFAULT 0 COMMENT 'telemedicine',
@@ -204,8 +207,9 @@ CREATE TABLE `doctor_services` (
 --
 
 INSERT INTO `doctor_services` (`id`, `doctor_id`, `services_id`, `price1`, `price2`, `price3`, `active`) VALUES
-(1, 2, NULL, 1, 2, 3, 0),
-(2, 2, NULL, 10, 12, 13, 0);
+(1, 5, NULL, NULL, NULL, NULL, 0),
+(2, 1, 3, 100000, 60000, 40000, 0),
+(3, 3, 3, 50, 60, 80, 0);
 
 -- --------------------------------------------------------
 
@@ -236,7 +240,8 @@ CREATE TABLE `doctor_type` (
 --
 
 INSERT INTO `doctor_type` (`id`, `type`, `active`) VALUES
-(3, 'Prueba 2', NULL);
+(3, 'Prueba 4', NULL),
+(4, 'asda', NULL);
 
 -- --------------------------------------------------------
 
@@ -318,9 +323,9 @@ CREATE TABLE `insurance` (
 --
 
 INSERT INTO `insurance` (`id`, `name`, `active`) VALUES
-(1, 'SALUD TOTAL', NULL),
-(3, 'COOMEVA', NULL),
-(4, 'SALUD TOTAL 2', NULL);
+(1, 'Salud Total', NULL),
+(3, 'Coomeva', NULL),
+(4, 'Sura', NULL);
 
 -- --------------------------------------------------------
 
@@ -422,7 +427,10 @@ INSERT INTO `opinions` (`id`, `patient_id`, `opinion_date`, `opinion_content`, `
 (12, 4, NULL, 'Hola', 3),
 (13, 4, NULL, 'Excelente servicio', 2),
 (14, 4, NULL, 'excelente profesional', 5),
-(15, 4, NULL, 'Bien', 3);
+(15, 4, NULL, 'Bien', 3),
+(16, 1, NULL, 'tyr', 3),
+(17, 1, NULL, 'Hola2q', 3),
+(18, 1, NULL, 'F', 3);
 
 -- --------------------------------------------------------
 
@@ -545,7 +553,7 @@ CREATE TABLE `tags` (
 --
 
 INSERT INTO `tags` (`id`, `tag`) VALUES
-(3, 'SERVICIOS'),
+(3, 'SERVICIOSS'),
 (4, 'SEGURO'),
 (5, 'SINTOMAS'),
 (10, 'EDITAR');
@@ -575,7 +583,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (1, 'Manuel Ballesteros', 'emballesteros@gmail.com', NULL, '$2y$10$sxnhJIPgCwbD1wGULf3sZuLuJ92.KSZC4QX7a4wufvo7Pc7vAjdDe', NULL, '2020-07-17 03:38:38', '2020-07-17 03:38:38'),
 (2, 'Manuel Ballesteros', 'emballesteros@hotmail.com', NULL, '$2y$10$G/XYBmsBAeHcLSqFb5uqx.4vfemWR9ImO/eAERYUADxoQGHhCC3Lm', '7fLWkDHy7vbs2sxxGKB0YFzBrd9jq2XRvf2LKVdma2LxgeYBNjZJ1vVgsp1V', '2020-07-17 10:45:16', '2020-07-17 10:45:16'),
 (3, 'Beto', 'beto@gmail.com', NULL, '$2y$10$zZtDMZ1bxP5ROfGkq/vd0OAvv/Mdj90odW75kaxaY1GVX4/.eLNWG', NULL, '2020-07-17 19:18:06', '2020-07-17 19:18:06'),
-(4, 'Fernando', 'fernando@hotmail.com', NULL, '$2y$10$F.hqcgZav035NwPwen5BMeZwn9k6pDMg39B5gtUCqUvOZzlr/BV52', 'se2UgqIbd3LQiOMOFtItjAi4HRsu79Nb8Sa1TRgOFKPkM8z7W5EcCqZsGEw7', '2020-07-18 21:46:57', '2020-07-18 21:46:57');
+(4, 'Fernando', 'fernando@hotmail.com', NULL, '$2y$10$F.hqcgZav035NwPwen5BMeZwn9k6pDMg39B5gtUCqUvOZzlr/BV52', 'MfBTDxAg0n1x2qzOPu1KESIjSTVB6U5NbLXY0PJXEk4nXNyCJDJBpH79qjkm', '2020-07-18 21:46:57', '2020-07-18 21:46:57');
 
 -- --------------------------------------------------------
 
@@ -615,7 +623,9 @@ INSERT INTO `videos` (`id`, `title`, `catalog`, `active`) VALUES
 -- Indices de la tabla `appointments`
 --
 ALTER TABLE `appointments`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `doctor_id` (`doctor_id`) USING BTREE,
+  ADD KEY `insurance_id` (`insurance_id`);
 
 --
 -- Indices de la tabla `benefits`
@@ -663,7 +673,9 @@ ALTER TABLE `doctor_schedule`
 -- Indices de la tabla `doctor_services`
 --
 ALTER TABLE `doctor_services`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `doctor_id` (`doctor_id`),
+  ADD KEY `services_id` (`services_id`);
 
 --
 -- Indices de la tabla `doctor_tags`
@@ -777,7 +789,7 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT de la tabla `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `benefits`
@@ -825,7 +837,7 @@ ALTER TABLE `doctor_schedule`
 -- AUTO_INCREMENT de la tabla `doctor_services`
 --
 ALTER TABLE `doctor_services`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `doctor_tags`
@@ -837,7 +849,7 @@ ALTER TABLE `doctor_tags`
 -- AUTO_INCREMENT de la tabla `doctor_type`
 --
 ALTER TABLE `doctor_type`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `formation`
@@ -879,7 +891,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `opinions`
 --
 ALTER TABLE `opinions`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `partners`
@@ -926,6 +938,20 @@ ALTER TABLE `videos`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `appointments`
+--
+ALTER TABLE `appointments`
+  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`insurance_id`) REFERENCES `insurance` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `doctor_services`
+--
+ALTER TABLE `doctor_services`
+  ADD CONSTRAINT `doctor_services_ibfk_1` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `doctor_services_ibfk_2` FOREIGN KEY (`services_id`) REFERENCES `services` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `opinions`

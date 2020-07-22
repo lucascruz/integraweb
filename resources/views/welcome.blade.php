@@ -26,7 +26,7 @@
 								</li>
 								<li class="nav-item">-</li>
 								<li class="nav-item">
-									<a href="">
+									<a href="https://www.softwaremedico.com.co/inicio-2/software-de-historia-clinica-2-peru/">
 										Soy Profesional en salud
 									</a>
 								</li>
@@ -38,7 +38,7 @@
 								</li>
 								<li class="nav-item">-</li>
 								<li class="nav-item">
-									<a href="#register_befenift">
+									<a href="{{ route('register') }}">
 										Regístro
 									</a>
 								</li>
@@ -104,15 +104,15 @@
 					<div class="row mt-0 mt-md-5">
 						<div class="col-6 text-center">
 							<button class="btn btn-solid">
-							<a href="#patient_part">
-								<h1>SOY PACIENTE</h1>
+							<a href="#patient_part">	
+								<h2>SOY PACIENTE</h2>
 							</a>
 							</button>
 						</div>
 						<div class="col-6 text-center">
 							<button class="btn btn-solid">
 								<a href="https://www.softwaremedico.com.co/inicio-2/software-de-historia-clinica-2-peru/">
-									<h1>SOY MEDICO</h1>
+									<h2 style="padding-left: 5px;">SOY PROFESIONAL</h2>
 								</a>
 							</button>
 						</div>
@@ -366,12 +366,12 @@
 						<div class="social-media">
 							<ul class="nav">
 								<li class="nav-item">
-									<a href="" class="nav-link"> 
+									<a href="https://www.facebook.com/softwaredemedicos" class="nav-link"> 
 										<i class="fa fa-facebook facebook"></i>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="" class="nav-link">
+									<a href="https://www.youtube.com/channel/UCxvAr4-Q0Ihb8jqxYtbhNDA?view_as=subscriber" class="nav-link">
 										<i class="fa fa-youtube youtube"></i>
 									</a>
 								</li>

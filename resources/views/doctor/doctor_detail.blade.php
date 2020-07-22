@@ -610,46 +610,42 @@
 											</div>
 
 											<div class="form-group">
-												<input type="date" class="form-control" name="date" id="date" value="{{old('date')}}" rows="3"></input>
+												<input id="doctor_id" name="doctor_id" type="hidden" value="{{ $param['doctor_detail_info']->id }}">
 											</div>
 
 											<div class="form-group">
+												<label for="ciudad">Ciudad</label>
+												<input placeholder="Por favor digite la ciudad" id="city" name="city" type="text" value="{{old('city')}}">
+											</div>
+
+											<div class="form-group">
+												<label for="seguro">Seguro</label>
+												<select class="form-control" name="insurance_id" id="insurance_id" value="">
+													<option>--- Escoja el Seguro ---</option>
+													@foreach ($insurances as $insurance)
+													<option value="{{ $insurance['id'] }}">{{ $insurance['name'] }}</option>
+													@endforeach
+													<option>Otro / No tengo seguro</option>
+												</select>
+											</div>
+
+											<div class="form-group">
+												<label for="fecha">Fecha</label>
+												<input type="datetime-local" class="form-control" name="date" id="date" value="{{old('date')}}" rows="3"></input>
+											</div>
+
+											<div class="form-group">
+												<label for="reason">Reason</label>
 												<textarea class="form-control" name="reason" id="reason" value="{{old('reason')}}" rows="3"></textarea>
 											</div>
 
-											<button type="submit" class="btn btn-primary">Enviar</button>
+											<button type="submit" class="btn btn-primary">Agendar</button>
 											<div class="col-md-6 d-md-none"></div>
 									</div>
 									</form>
 								</div>
 							</div>
-							<div class="col-md-4 col-12">
-								<div class="team right-team">
-									<div class="team-box text-center margin-section-two">
-										<div class="team-img">
-											<img src="{{ url('public/images/dr.jpg') }}" class="img-fluid" alt="images" />
-										</div>
-										<div class="margin-section">
-											<h5>Dr.Pepito Perez</h5>
-											<h5 style="color:rgb(137,141,143);">
-												DERMATOLOGO
-											</h5>
-											<h3 style="color: rgb(13,201,223);">
-												<b>UNAB</b>
-											</h3>
-											<h5>
-												COP $100.000
-											</h5>
-											<h5 style="color:rgb(137,141,143);">
-												CRA 33 # 48 - 13
-											</h5>
-											<h5 style="color:rgb(137,141,143);">
-												Bucaramanga
-											</h5>
-										</div>
-									</div>
-								</div>
-							</div>
+							<!-- ========== INFO DOCTOR ========== -->
 						</div>
 					</div>
 				</div>
@@ -685,7 +681,7 @@
 							</div>
 
 							<div class="form-group">
-								<input id="doctors_id" name="doctors_id" type="hidden" value="{{ $param['doctor_detail_info']->id }}"> 
+								<input id="doctors_id" name="doctors_id" type="hidden" value="{{ $param['doctor_detail_info']->id }}">
 							</div>
 
 							<div class="form-group">

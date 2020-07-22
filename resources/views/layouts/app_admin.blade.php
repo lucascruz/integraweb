@@ -529,11 +529,18 @@
                                     <a @if(request()->segment($count) == 'formation') class="active"
                                         @endif href="{{ url('/admin/user/formation') }}">Formation Catalog</a></li>
                                 <li>
-                                    <a @if(request()->segment($count) == 'formation') class="active"
+                                    <a @if(request()->segment($count) == 'type') class="active"
                                         @endif href="{{ url('/admin/user/type') }}">Doctor Type</a></li>
                                 <li>
-                                    <a @if(request()->segment($count) == 'formation') class="active"
-                                        @endif href="{{ url('/admin/user/formation') }}">Doctor Services</a></li>
+                                    <a hidden @if(request()->segment($count) == 'type-list') class="active"
+                                        @endif href="{{ url('/admin/user/type-list') }}"></a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'service') class="active"
+                                        @endif href="{{ url('/admin/user/service') }}">Doctor Services</a></li>
+                                <li>
+                                    <a hidden @if(request()->segment($count) == 'service-list') class="active"
+                                        @endif href="{{ url('/admin/user/service-list') }}"></a></li>
+                                <li>
 
                                 <!-- <li>
                                 <a @if(request()->segment(1) == 'user-list') class="active"
@@ -641,11 +648,17 @@
                                     <a @if(request()->segment($count) == 'service_type') class="active"
                                         @endif href="{{ route('service.type') }}">Service Type</a></li>
                                 <li>
-                                    <a @if(request()->segment($count) == 'service_type') class="active"
+                                    <a @if(request()->segment($count) == 'tags') class="active"
                                         @endif href="{{ route('tags') }}">Tags</a></li>
                                 <li>
-                                    <a @if(request()->segment($count) == 'service_type') class="active"
+                                    <a @if(request()->segment($count) == 'insurance') class="active"
                                         @endif href="{{ route('insurance') }}">Insurance</a></li>
+                                <li>
+                                    <a hidden @if(request()->segment($count) == 'tags-list') class="active"
+                                        @endif href="{{ route('tags-list') }}"></a></li>
+                                <li>
+                                    <a hidden @if(request()->segment($count) == 'insurance-list') class="active"
+                                        @endif href="{{ route('insurance-list') }}"></a></li>
                             </ul>
                         </div>
                     </div>
@@ -662,16 +675,7 @@
                 </div>
 
                 <!-- begin::footer -->
-                <footer class="content-footer">
-                    <div>© {{ date('Y') }} Nago - <a href="http://laborasyon.com" target="_blank">Laborasyon</a></div>
-                    <div>
-                        <nav class="nav">
-                            <a href="https://themeforest.net/licenses/standard" class="nav-link">Licenses</a>
-                            <a href="#" class="nav-link">Change Log</a>
-                            <a href="#" class="nav-link">Get Help</a>
-                        </nav>
-                    </div>
-                </footer>
+
                 <!-- end::footer -->
 
             </div>

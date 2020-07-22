@@ -20,11 +20,13 @@
                   <thead class="thead-dark">
                     <tr>
                       <th>Opinion</th>
+                      <th>Médico</th>
                     </tr>
                   </thead>
                   <tbody>
                   @foreach ($opinions as $item)
                     <tr>
+                        <td>{{$item->doctors_id}}</td>
                         <td>{{$item->opinion_content}}</td>
                     </tr>
                     @endforeach

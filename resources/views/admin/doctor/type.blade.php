@@ -1,11 +1,15 @@
-<head>
+@extends('layouts.app_admin')
 
-<title>Add Doctor Type</title>
+@section('pageTitle', 'Add Doctor Type')
 
+@section('head')
+<!-- Datatable -->
+<link rel="stylesheet" href="{{ url('public/vendors/dataTable/datatables.min.css') }}" type="text/css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-</head>
-<p></p>
+@endsection
+
+@section('content')
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -32,7 +36,6 @@
                     <a href="{{URL::route('type-list')}}" class="btn btn-success">List</a> 
                     <a>
                     <a>
-                    <a href="{{ url('/admin/user/doctor') }}" class="btn btn-danger">Back</a> 
                   </form>
                   @if (session('agregarType'))
                 <div class="alert alert-success mt-3">
@@ -50,3 +53,5 @@
 
       </div>
       <!-- End of Main Content -->
+
+@endsection
