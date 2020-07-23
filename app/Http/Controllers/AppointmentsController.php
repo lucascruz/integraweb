@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Logo;
 use App;
 use App\Appointments;
 use Illuminate\Http\Request;
@@ -16,6 +17,28 @@ class AppointmentsController extends Controller
     public function index()
     {
         //
+    }
+
+    public function appointments()
+    {
+        $param = [];
+        $logo = new Logo();
+        $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
+        $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
+        $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
+
+        return view('/patient/appointment_history', compact('param'));
+    }
+
+    public function accountconfiguration()
+    {
+        $param = [];
+        $logo = new Logo();
+        $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
+        $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
+        $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
+
+        return view('/patient/account_configuration', compact('param'));
     }
 
     /**
@@ -52,7 +75,7 @@ class AppointmentsController extends Controller
         $appointmentAgregar->date = $request->date;
         $appointmentAgregar->city = $request->city;
         $appointmentAgregar->save();
-        return back()->with('agregarAppointment' , 'La cita se ha enviado correctamente');
+        return back()->with('agregarAppointment', 'La cita se ha enviado correctamente');
     }
 
     /**

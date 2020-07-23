@@ -104,7 +104,7 @@
 					<div class="row mt-0 mt-md-5">
 						<div class="col-6 text-center">
 							<button class="btn btn-solid">
-							<a href="#patient_part">	
+							<a href="{{ url('/doctor_list') }}">	
 								<h2>SOY PACIENTE</h2>
 							</a>
 							</button>

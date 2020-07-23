@@ -77,6 +77,7 @@ class TagsController extends Controller
      * @param  \App\Tags  $tags
      * @return \Illuminate\Http\Response
      */
+
     public function editTag($id)
     {
         $tagActualizar = App\Tags::findOrFail($id);

@@ -58,13 +58,21 @@ Route::delete('/eliminarService/{id}' , 'DoctorServiceController@destroyService'
 Route::get('/doctor/opinions' , 'OpinionsController@opinions')->name('opinions');
 Route::post('/agregarOpinion' , 'OpinionsController@storeOpinion')->name('storeOpinion');
 
-// Appointment
+// Appointments
 
+Route::get('/appointment_history' , 'AppointmentsController@appointments')->name('appointment_history');
+Route::get('/account_configuration' , 'AppointmentsController@accountconfiguration')->name('account_configuration');
 Route::post('/agregarAppointment' , 'AppointmentsController@storeAppointment')->name('storeAppointment');
 
-// MEDICAL MANAGE
+// PROFESSIONAL MANAGE
 
-Route::get('/medical' , 'TagsController@medical')->name('medical');
+Route::get('/professional' , 'ProfessionalController@account')->name('account');
+Route::get('/professional/accountpage' , 'ProfessionalController@account')->name('account');
+Route::get('/professional/report' , 'ProfessionalController@report')->name('report');
+Route::get('/professional/scheduling' , 'ProfessionalController@scheduling')->name('scheduling');
+
+Route::get('/professional/edit-account/{id}' , 'ProfessionalController@editAccount')->name('edit-account');
+Route::put('/professional/updateAccount/{id}' , 'ProfessionalController@updateAccount')->name('updateAccount');
 
 // INSURANCE
 

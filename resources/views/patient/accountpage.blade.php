@@ -111,12 +111,12 @@
 												<div class="row align-items-center">
 													<div class="col-md-4 col-6">
 														<button class="btn btn-solid">
-															Historial
+															<a href="{{URL::route('appointment_history')}}">Historial</a>
 														</button>
 													</div>
 													<div class="col-md-4 col-6">
 														<button class="btn my-2 btn-solid">
-															Configuracion
+															<a href="{{URL::route('account_configuration')}}">Configuracion</a>
 														</button>
 													</div>
 													<div class="col-md-4"></div>

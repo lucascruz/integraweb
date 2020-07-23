@@ -32,8 +32,36 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <label for="doctor">Médico</label>
-                                        <input type="number" class="form-control" name="doctor_id" id="doctor_id" value="{{$serviceActualizar->doctor_id}}" required>
+                                        <label for="seguro">Médico</label>
+                                        <select class="form-control" name="doctor_id" id="doctor_id" value="{{$serviceActualizar->doctor_id}}">
+                                            @foreach ($doctors as $doctor)
+                                            <option value="{{ $doctor['id'] }}">{{ $doctor['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="seguro">Service</label>
+                                        <select class="form-control" name="services_id" id="services_id" value="{{$serviceActualizar->services_id}}">
+                                            @foreach ($services as $service)
+                                            <option value="{{ $service['id'] }}">{{ $service['title'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="price1">Price 1 Face to Face</label>
+                                        <input type="number" class="form-control" name="price1" id="price1" value="{{$serviceActualizar->price1}}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="title">Price 2 Telemedicine</label>
+                                        <input type="number" class="form-control" name="price2" id="price2" value="{{$serviceActualizar->price2}}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="title">Price 3 Other</label>
+                                        <input type="number" class="form-control" name="price3" id="price3" value="{{$serviceActualizar->price3}}">
                                     </div>
 
                                     <button type="submit" class="btn btn-warning">Save</button>

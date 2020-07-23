@@ -27,7 +27,7 @@
 
                             <div class="form-group">
                                 <label for="seguro">Médico</label>
-                                <select class="form-control" name="doctor_id" id="doctor_id" value="">
+                                <select class="form-control" name="doctor_id" id="doctor_id" value="{{old('doctor_id')}}">
                                     <option>--- Escoja el Médico ---</option>
                                     @foreach ($doctors as $doctor)
                                     <option value="{{ $doctor['id'] }}">{{ $doctor['name'] }}</option>
@@ -37,7 +37,7 @@
 
                             <div class="form-group">
                                 <label for="seguro">Service</label>
-                                <select class="form-control" name="services_id" id="services_id" value="">
+                                <select class="form-control" name="services_id" id="services_id" value="{{old('services_id')}}">
                                     <option>--- Escoja el Tipo de Servicio ---</option>
                                     @foreach ($services as $service)
                                     <option value="{{ $service['id'] }}">{{ $service['title'] }}</option>
