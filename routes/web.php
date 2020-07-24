@@ -61,7 +61,7 @@ Route::post('/agregarOpinion' , 'OpinionsController@storeOpinion')->name('storeO
 // Appointments
 
 Route::get('/appointment_history' , 'AppointmentsController@appointments')->name('appointment_history');
-Route::get('/account_configuration' , 'AppointmentsController@accountconfiguration')->name('account_configuration');
+Route::get('/account_configuration/{id}' , 'AppointmentsController@accountconfiguration')->name('account_configuration');
 Route::post('/agregarAppointment' , 'AppointmentsController@storeAppointment')->name('storeAppointment');
 
 // PROFESSIONAL MANAGE
@@ -70,6 +70,7 @@ Route::get('/professional' , 'ProfessionalController@account')->name('account');
 Route::get('/professional/accountpage' , 'ProfessionalController@account')->name('account');
 Route::get('/professional/report' , 'ProfessionalController@report')->name('report');
 Route::get('/professional/scheduling' , 'ProfessionalController@scheduling')->name('scheduling');
+Route::get('/professional/services' , 'ProfessionalController@services')->name('services');
 
 Route::get('/professional/edit-account/{id}' , 'ProfessionalController@editAccount')->name('edit-account');
 Route::put('/professional/updateAccount/{id}' , 'ProfessionalController@updateAccount')->name('updateAccount');

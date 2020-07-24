@@ -116,7 +116,7 @@
 													</div>
 													<div class="col-md-4 col-6">
 														<button class="btn my-2 btn-solid">
-															<a href="{{URL::route('account_configuration')}}">Configuracion</a>
+															<a href="{{route('account_configuration' , Auth::user()->id)}}">Configuracion</a>
 														</button>
 													</div>
 													<div class="col-md-4"></div>

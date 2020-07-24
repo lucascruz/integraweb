@@ -35,7 +35,24 @@ class HomeController extends Controller
 
     public function contact()
     {
-        return view('contact');
+        $param = [
+            'login'            => false,
+            'role'            => -1
+        ];
+
+        $logo = new Logo();
+        $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
+        $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
+        $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
+
+        $param['home_big_back_ground'] = $logo->getLogoBasePath(4) . '/' . $logo->getImageByCatalog(4);
+        $param['home_back_video'] = $logo->getVideoByCatalog(5);
+
+        $param['partner_logos'] = $logo->getParnerList();
+
+        //$param = json_encode($param);
+        return view('contact', compact('param'));
+        
     }
 
     public function welcome()
@@ -54,7 +71,6 @@ class HomeController extends Controller
         $param['home_back_video'] = $logo->getVideoByCatalog(5);
 
         $param['partner_logos'] = $logo->getParnerList();
-
 
         //$param = json_encode($param);
         return view('welcome', compact('param'));

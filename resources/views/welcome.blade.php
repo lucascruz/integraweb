@@ -20,7 +20,7 @@
 						<div class="menu">
 							<ul class="nav justify-content-center mt-2">
 								<li class="nav-item">
-									<a href="#">
+									<a href="{{ route('welcome') }}">
 										Inicio
 									</a>
 								</li>
@@ -333,7 +333,7 @@
 				<div class="owl-carousel align-items-center" id="sponsor">
 					@foreach($param['partner_logos'] as $row)	
 						<div class="sponsors">
-							<img src="{{ url('public/images/partner_logos'). '/'. $row->title }}"  width="150" height="80">
+							<img src="{{ url('public/images/partner_logos'). '/'. $row->title }}" height="40">
 						</div>
 					@endforeach
 				</div>

@@ -38,12 +38,14 @@ class ContactController extends Controller
         $contactAgregar = new Contact;
         $request->validate([
             'title' => 'required',
-            'intro_text' => 'required',
+            'email' => 'required',
+            'reason' => 'required',
         ]);
         $contactAgregar->title = $request->title;
-        $contactAgregar->intro_text = $request->intro_text;
+        $contactAgregar->email = $request->email;
+        $contactAgregar->reason = $request->reason;
         $contactAgregar->save();
-        return back()->with('agregarContact' , 'El formulario se ha enviado correctamente');
+        return back()->with('agregarContact' , 'El formulario se ha enviado correctamente, te contactaremos en  breve');
     }
 
     /**

@@ -33,6 +33,11 @@ class ProfessionalController extends Controller
         return view('/professional/scheduling');
     }
 
+    public function services()
+    {
+        return view('/professional/services');
+    }
+
 
     /**
      * Show the form for creating a new resource.

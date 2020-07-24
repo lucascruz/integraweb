@@ -48,14 +48,17 @@ class OpinionsController extends Controller
      */
     public function storeOpinion(Request $request)
     {
+
         $opinionAgregar = new Opinions;
         $request->validate([
             'patient_id' => 'required',
             'doctors_id' => 'required',
+            'opinion_date' => 'required',
             'opinion_content' => 'required',
         ]);
         $opinionAgregar->patient_id = $request->patient_id;
         $opinionAgregar->doctors_id = $request->doctors_id;
+        $opinionAgregar->opinion_date = now();
         $opinionAgregar->opinion_content = $request->opinion_content;
         $opinionAgregar->save();
         return back()->with('agregarOpinion', 'La Opinion se ha enviado correctamente');

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Logo;
 use App;
+use App\Logo;
 use App\Appointments;
 use Illuminate\Http\Request;
 
@@ -30,15 +30,16 @@ class AppointmentsController extends Controller
         return view('/patient/appointment_history', compact('param'));
     }
 
-    public function accountconfiguration()
+    public function accountconfiguration($id)
     {
         $param = [];
         $logo = new Logo();
+        $accountActualizar = App\User::findOrFail($id);
         $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
         $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
         $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
 
-        return view('/patient/account_configuration', compact('param'));
+        return view('/patient/account_configuration')->with('param',$param)->with('accountActualizar',$accountActualizar);
     }
 
     /**

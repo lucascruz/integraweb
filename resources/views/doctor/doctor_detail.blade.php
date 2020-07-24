@@ -130,11 +130,6 @@
 													Presencial
 												</a>
 											</button>
-											<button class="btn btn-round">
-												<a href="">
-													Enviar Mensaje
-												</a>
-											</button>
 										</div>
 									</div>
 									<div class="row mt-3">
@@ -682,6 +677,10 @@
 
 							<div class="form-group">
 								<input id="doctors_id" name="doctors_id" type="hidden" value="{{ $param['doctor_detail_info']->id }}">
+							</div>
+
+							<div class="form-group">
+								<input id="opinion_date" name="opinion_date" type="hidden" value="<?php echo date_default_timezone_get();?>">
 							</div>
 
 							<div class="form-group">

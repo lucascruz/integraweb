@@ -512,6 +512,9 @@
                                 <li>
                                     <a @if(request()->segment($count) == 'report') class="active"
                                         @endif href="{{ url('/professional/report') }}">Report</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'services') class="active"
+                                        @endif href="{{ url('/professional/services') }}">Services</a></li>
 
                                 <!-- <li>
                                 <a @if(request()->segment(1) == 'user-list') class="active"
@@ -606,32 +609,6 @@
                             </ul>
                         </div>
 
-                        <div id="service">
-                            <ul>
-                                <?php $count = count(Request::segments()); ?>
-                                <li class="navigation-divider d-flex align-items-center">
-                                    <i class="mr-2" data-feather="globe"></i> Service Manage
-                                </li>
-                                <li>
-                                    <a @if(request()->segment($count) == 'services') class="active"
-                                        @endif href="{{ route('service.manage') }}">Services</a></li>
-                                <li>
-                                    <a @if(request()->segment($count) == 'service_type') class="active"
-                                        @endif href="{{ route('service.type') }}">Service Type</a></li>
-                                <li>
-                                    <a @if(request()->segment($count) == 'tags') class="active"
-                                        @endif href="{{ route('tags') }}">Tags</a></li>
-                                <li>
-                                    <a @if(request()->segment($count) == 'insurance') class="active"
-                                        @endif href="{{ route('insurance') }}">Insurance</a></li>
-                                <li>
-                                    <a hidden @if(request()->segment($count) == 'tags-list') class="active"
-                                        @endif href="{{ route('tags-list') }}"></a></li>
-                                <li>
-                                    <a hidden @if(request()->segment($count) == 'insurance-list') class="active"
-                                        @endif href="{{ route('insurance-list') }}"></a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>

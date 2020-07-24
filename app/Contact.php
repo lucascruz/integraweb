@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-    public $table = "contact_form";
+    public $table = "contact_index";
     public $timestamps = false;
 }

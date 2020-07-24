@@ -102,25 +102,40 @@
                                         </div>
                                         <div class="col-md-9 col-12">
                                             <div class="details">
-                                                <h2>
-                                                    {{ Auth::user()->name }}
-                                                </h2>
-                                                <h3>
-                                                    {{ Auth::user()->email }}
-                                                </h3>
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-4 col-6">
-                                                        <button class="btn btn-solid">
-                                                            Historial
-                                                        </button>
-                                                    </div>
-                                                    <div class="col-md-4 col-6">
-                                                        <button class="btn my-2 btn-solid">
-                                                            Configuracion
-                                                        </button>
-                                                    </div>
-                                                    <div class="col-md-4"></div>
-                                                </div>
+
+                                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <form action="{{route('updateAccount' , $accountActualizar->id)}}" method="POST">
+                                                            @method('PUT')
+                                                            @csrf
+
+                                                            <div class="form-group">
+                                                                <label for="tag">Name</label>
+                                                                <input type="text" class="form-control" name="name" id="name" value="{{$accountActualizar->name}}" required>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="tag">Email</label>
+                                                                <input type="text" class="form-control" name="email" id="email" value="{{$accountActualizar->email}}" required>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="tag">New Password</label>
+                                                                <input type="password" pattern=".{6,}" class="form-control" name="password" id="password" value="{{$accountActualizar->password}}" required>
+                                                            </div>
+
+                                                            <button type="submit" class="btn btn-warning">Save</button>
+                                                            <a>
+                                                                <a>
+                                                                    <a href="{{URL::route('account')}}" class="btn btn-danger">Back</a>
+                                                        </form>
+                                                        @if (session('updateAccount'))
+                                                        <div class="alert alert-success mt-3">
+                                                            {{session('updateAccount')}}
+                                                        </div>
+                                                        @endif
+                                                        </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
