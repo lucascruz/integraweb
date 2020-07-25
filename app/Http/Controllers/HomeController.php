@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Logo;
+use App\User;
 use App\Doctor;
 use App\Insurance;
 use App\Service;
 use App\Tags;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Comment\Doc;
 use Symfony\Component\VarDumper\Caster\DoctrineCaster;
 
@@ -57,6 +59,8 @@ class HomeController extends Controller
 
     public function welcome()
     {
+        $user= new User();
+
         $param = [
             'login'            => false,
             'role'            => -1
@@ -73,6 +77,7 @@ class HomeController extends Controller
         $param['partner_logos'] = $logo->getParnerList();
 
         //$param = json_encode($param);
+
         return view('welcome', compact('param'));
     }
 

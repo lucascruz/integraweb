@@ -601,10 +601,6 @@
 											@csrf
 
 											<div class="form-group">
-												<input id="patient_id" name="patient_id" type="hidden" value="{{ Auth::user()->id }}">
-											</div>
-
-											<div class="form-group">
 												<input id="doctor_id" name="doctor_id" type="hidden" value="{{ $param['doctor_detail_info']->id }}">
 											</div>
 
@@ -670,10 +666,6 @@
 						</div>
 						<form action="{{route('storeOpinion')}}" method="POST">
 							@csrf
-
-							<div class="form-group">
-								<input id="patient_id" name="patient_id" type="hidden" value="{{ Auth::user()->id }}">
-							</div>
 
 							<div class="form-group">
 								<input id="doctors_id" name="doctors_id" type="hidden" value="{{ $param['doctor_detail_info']->id }}">

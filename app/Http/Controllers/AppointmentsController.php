@@ -62,14 +62,12 @@ class AppointmentsController extends Controller
     {
         $appointmentAgregar = new Appointments;
         $request->validate([
-            'patient_id' => 'required',
             'doctor_id' => 'required',
             'insurance_id' => 'required',
             'reason' => 'required',
             'date' => 'required',
             'city' => 'required',
         ]);
-        $appointmentAgregar->patient_id = $request->patient_id;
         $appointmentAgregar->doctor_id = $request->doctor_id;
         $appointmentAgregar->insurance_id = $request->insurance_id;
         $appointmentAgregar->reason = $request->reason;
