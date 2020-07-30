@@ -29,7 +29,7 @@
 									</div>
 									<div class="col-md-2 col-12 py-2">
 										<button class="btn-search">
-											<a href="{{ url('/doctor_list') }}">
+											<a href="">
 												VAMOS
 											</a>
 										</button>
@@ -60,43 +60,17 @@
 					<div class="menu">
 						<ul class="nav justify-content-end mb-1">
 							<li class="nav-item">
-								<ul class="navbar-nav ml-auto">
-									<!-- Authentication Links -->
-									@guest
-									<li class="nav-item">
-										<a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
-									</li>
-									@if (Route::has('register'))
-									<li class="nav-item">
-										<a class="nav-link" href="{{ route('register') }}">Registrarse</a>
-									</li>
-									@endif
-									@else
-									<li class="nav-item dropdown">
-										<a class="btn btn-danger btn-user btn-block" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-											{{ __('CERRAR SESIÓN') }}
-										</a>
-
-										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-											@csrf
-										</form>
+								<a href="{{ route('login') }}">
+									<button type="button" class="btn btn-success">Escritorio</button>
+								</a>
+							</li>
+						</ul>
 					</div>
-					</li>
-					@endguest
-					</ul>
 				</div>
 			</div>
-			</nav>
-			</li>
-			</ul>
 		</div>
 	</div>
-	</div>
-	</div>
-	</div>
 </section>
-
 <!-- ============== BANNER SECTION END ============== -->
 
 <!-- ============== MIDDLE SECTION START ============== -->
@@ -128,45 +102,32 @@
 										</div>
 										<div class="col-md-9 col-12">
 											<div class="details">
-												<h6>Estas registrado como paciente y con esta cuenta puedes agendar citas con profesionales en salud.</h6>
+											<h6>Estas registrado como paciente y con esta cuenta puedes agendar citas con profesionales en salud.</h6>
 												<p>
-													<div class="col-5">
-														<div class="team-img">
-															<!--	<img src="{{ url('public/images/dr.jpg') }}" class="img-fluid" alt="images" /> -->
-														</div>
+												<h2>
+													{{ Auth::user()->name }}
+												</h2>
+												<p>
+												<h2>
+													{{ Auth::user()->email }}
+												</h2>
+												<p>
+												<div class="row align-items-center">
+													<div class="col-md-4 col-6">
+														<button class="btn btn-solid">
+															<a href="{{URL::route('appointment_history')}}">Historial</a>
+														</button>
 													</div>
-													<h2>
-														Nombre: {{ Auth::user()->name }}
-													</h2>
-													<p>
-														<h2>
-															Ciudad: {{ Auth::user()->city }}
-														</h2>
-														<p>
-															<h2>
-																Telefono: {{ Auth::user()->cel }}
-															</h2>
-															<p>
-																<h2>
-																	Email: {{ Auth::user()->email }}
-																</h2>
-																<p>
-																	<div class="row align-items-center">
-																		<div class="col-md-4 col-6">
-																			<button class="btn btn-solid">
-																				<a href="{{URL::route('appointment_history')}}">Historial</a>
-																			</button>
-																		</div>
-																		<div class="col-md-4 col-6">
-																			<button class="btn my-2 btn-solid">
-																				<a href="{{route('account_configuration' , Auth::user()->id)}}">Configuracion</a>
-																			</button>
-																		</div>
-																		<div class="col-md-4"></div>
-																	</div>
+													<div class="col-md-4 col-6">
+														<button class="btn my-2 btn-solid">
+															<a href="{{route('account_configuration' , Auth::user()->id)}}">Configuracion</a>
+														</button>
+													</div>
+													<div class="col-md-4"></div>
+												</div>
 											</div>
 											<p></p>
-											<h7>Si eres profesional de salud y quieres hacer parte de esta red haz clic <a href="https://www.softwaremedico.com.co/inicio-2/software-telemedicina/" target="_blank">AQUÍ</a>.</h7>
+											<h7>Si eres profesional de salud y quieres hacer parte de esta red haz clic <a href="https://www.softwaremedico.com.co/inicio-2/software-de-historia-clinica-2-peru/" target="_blank">AQUÍ</a>.</h7>
 										</div>
 									</div>
 								</div>
