@@ -48,14 +48,7 @@
             <div class="card mb-0 card-body shadow-none">
                 <div class="mb-4">
                     <div class="list-group list-group-flush">
-                        <a href="{{ url('profile') }}" class="list-group-item p-l-r-0">Profile</a>
-                        <a href="#" class="list-group-item p-l-r-0 d-flex">Followers</a>
-                        <a href="{{ url('mail') }}" class="list-group-item p-l-r-0 d-flex">
-                            Inbox <span class="badge badge-danger ml-auto">2</span>
-                        </a>
-                        <a href="#" class="list-group-item p-l-r-0">Billing</a>
-                        <a href="#" class="list-group-item p-l-r-0" data-sidebar-target="#settings">Settings</a>
-                        <a href="{{ url('login') }}" class="list-group-item p-l-r-0 text-danger" data-sidebar-target="#settings">Sign Out!</a>
+                        <a href="{{ route('logout') }}" class="list-group-item p-l-r-0 text-danger">Sign Out!</a>
                     </div>
                 </div>
                 <div class="mb-4">
@@ -329,6 +322,7 @@
                                     <img src="{{ url('public/assets/media/image/user/women_avatar1.jpg') }}" class="rounded-circle" alt="avatar">
                                 </figure>
                             </a>
+                            
                         </li>
                         <!-- end::user menu -->
 
