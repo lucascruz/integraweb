@@ -57,7 +57,7 @@
                             <button type="submit" class="btn btn-primary">Agregar</button>
                             <a>
                                 <a>
-                                    <a href="{{route('service-list' , Auth::user()->id)}}" class="btn btn-success">Listado</a>
+                                    <a href="#" class="btn btn-success">Listado</a>
                                     <a>
                                         <a>
                         </form>

@@ -258,22 +258,6 @@ class Doctor extends Model
             ->get();
     }
     /////////// ============================ //////////////////////
-
-    // Scope - Buscador Doctor List
-
-    public function scopeName($query, $name)
-    {
-        if($name){
-            return $query->where('name', 'LIKE', "%$name%");
-        }
-    }
-
-    public function scopeCity($query, $city_id)
-    {
-        if($city_id){
-            return $query->where('city_id', 'LIKE', "%$city_id%");
-        }
-    }
 }
 
 ///////////////////// =========TEST AUTO UPLOAD===========  ////////////////////////////////////

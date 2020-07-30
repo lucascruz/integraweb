@@ -516,9 +516,6 @@
                                     <a @if(request()->segment($count) == 'services') class="active"
                                         @endif href="{{ url('/professional/services') }}">Services</a></li>
                                 <li>
-                                    <a hidden @if(request()->segment($count) == 'services-list/{id}' ) class="active"
-                                        @endif href="{{route('service-list' , Auth::user()->id)}}">Services List</a></li>
-                                <li>
                                     <a hidden @if(request()->segment($count) == 'edit-account') class="active"
                                         @endif href="{{ url('/professional/edit-account') }}">Edit Acccount</a></li>
 
