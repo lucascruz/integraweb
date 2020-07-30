@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +9,7 @@
     <title>Telemedicina Admin</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url('public/assets/media/image/favicon.png') }}"/>
+    <link rel="shortcut icon" href="{{ url('public/assets/media/image/favicon.png') }}" />
 
     <!-- Plugin styles -->
     <link rel="stylesheet" href="{{ url('public/vendors/bundle.css') }}" type="text/css">
@@ -19,378 +20,356 @@
     <link rel="stylesheet" href="{{ url('public/assets/css/app.min.css') }}" type="text/css">
 
     <link rel="stylesheet" href="{{ url('public/css/image-preview.css') }}" type="text/css">
-    
+
 </head>
+
 <body @if (trim($__env->yieldContent('bodyClass'))) class="@yield('bodyClass')" @endif>
 
-<!-- begin::preloader-->
-<div class="preloader">
-    <div class="preloader-icon"></div>
-</div>
-<!-- end::preloader -->
+    <!-- begin::preloader-->
+    <div class="preloader">
+        <div class="preloader-icon"></div>
+    </div>
+    <!-- end::preloader -->
 
-<!-- BEGIN: Sidebar Group -->
-<div class="sidebar-group">
+    <!-- BEGIN: Sidebar Group -->
+    <div class="sidebar-group">
 
-    <!-- BEGIN: User Menu -->
-    <div class="sidebar" id="user-menu">
-        <div class="py-4 text-center" data-backround-image="{{ url('public/assets/media/image/image1.jpg') }}">
-            <figure class="avatar avatar-lg mb-3 border-0">
-                <img src="{{ url('public/assets/media/image/user/women_avatar1.jpg') }}" class="rounded-circle" alt="image">
-            </figure>
-            <h5 class="d-flex align-items-center justify-content-center">Roxana Roussell</h5>
-            <div>
-                Balance: <strong>$500</strong>
+        <!-- BEGIN: User Menu -->
+        <div class="sidebar" id="user-menu">
+            <div class="py-4 text-center" data-backround-image="{{ url('public/assets/media/image/image1.jpg') }}">
+                <figure class="avatar avatar-lg mb-3 border-0">
+                    <img src="{{ url('public/assets/media/image/user/women_avatar1.jpg') }}" class="rounded-circle" alt="image">
+                </figure>
+                <h5 class="d-flex align-items-center justify-content-center">{{ Auth::user()->name }}</h5>
+                <div>
+                    Balance: <strong>$500</strong>
+                </div>
+            </div>
+            <div class="card mb-0 card-body shadow-none">
+                <div class="mb-4">
+                    <div class="list-group list-group-flush">
+                        <a href="{{ route('logout') }}" class="list-group-item p-l-r-0 text-danger">Sign Out!</a>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h6 class="d-flex justify-content-between">
+                        Completed Tasks
+                        <span class="float-right">%68</span>
+                    </h6>
+                    <div class="progress" style="height:5px;">
+                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 68%;" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h6 class="d-flex justify-content-between">
+                        Storage
+                        <span>%25</span>
+                    </h6>
+                    <div class="progress" style="height: 5px;">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h6>About</h6>
+                    <p class="text-muted mb-0">I love reading, traveling and discovering new things. You need to be happy in
+                        life.</p>
+                </div>
+                <div class="mb-4">
+                    <h6>City</h6>
+                    <p class="text-muted mb-0">Germany / Berlin</p>
+                </div>
+                <div class="mb-4">
+                    <h6>Social Links</h6>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="#" class="btn btn-sm btn-floating btn-facebook">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="btn btn-sm btn-floating btn-twitter">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="btn btn-sm btn-floating btn-dribbble">
+                                <i class="fa fa-dribbble"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="btn btn-sm btn-floating btn-whatsapp">
+                                <i class="fa fa-whatsapp"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="btn btn-sm btn-floating btn-linkedin">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="card mb-0 card-body shadow-none">
-            <div class="mb-4">
-                <div class="list-group list-group-flush">
-                    <a href="{{ url('profile') }}" class="list-group-item p-l-r-0">Profile</a>
-                    <a href="#" class="list-group-item p-l-r-0 d-flex">Followers</a>
-                    <a href="{{ url('mail') }}" class="list-group-item p-l-r-0 d-flex">
-                        Inbox <span class="badge badge-danger ml-auto">2</span>
+        <!-- END: User Menu -->
+
+        <!-- BEGIN: Settings -->
+        <div class="sidebar" id="settings">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Settings</h6>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item pl-0 pr-0">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                                <label class="custom-control-label" for="customSwitch1">Allow notifications.</label>
+                            </div>
+                        </li>
+                        <li class="list-group-item pl-0 pr-0">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                <label class="custom-control-label" for="customSwitch2">Hide user requests</label>
+                            </div>
+                        </li>
+                        <li class="list-group-item pl-0 pr-0">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch3" checked>
+                                <label class="custom-control-label" for="customSwitch3">Speed up demands</label>
+                            </div>
+                        </li>
+                        <li class="list-group-item pl-0 pr-0">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch4" checked>
+                                <label class="custom-control-label" for="customSwitch4">Hide menus</label>
+                            </div>
+                        </li>
+                        <li class="list-group-item pl-0 pr-0">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch5">
+                                <label class="custom-control-label" for="customSwitch5">Remember next visits</label>
+                            </div>
+                        </li>
+                        <li class="list-group-item pl-0 pr-0">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch6">
+                                <label class="custom-control-label" for="customSwitch6">Enable report
+                                    generation.</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- END: Settings -->
+
+    </div>
+    <!-- END: Sidebar Group -->
+
+    <!-- begin::main -->
+    <div class="layout-wrapper">
+
+        <!-- begin::header -->
+        <div class="header d-print-none">
+
+            <div class="header-left">
+                <div class="navigation-toggler">
+                    <a href="#" data-action="navigation-toggler">
+                        <i data-feather="menu"></i>
                     </a>
-                    <a href="#" class="list-group-item p-l-r-0">Billing</a>
-                    <a href="#" class="list-group-item p-l-r-0" data-sidebar-target="#settings">Settings</a>
-                    <a href="{{ url('login') }}" class="list-group-item p-l-r-0 text-danger" data-sidebar-target="#settings">Sign Out!</a>
+                </div>
+                <div class="header-logo">
+                    <a href="{{ url('/') }}">
+                        <img class="logo" src="{{ url('public/assets/media/image/logo.png') }}" alt="logo" style="width: 80%;">
+                        <!-- <img class="logo-light" src="{{ url('public/assets/media/image/logo-light.png') }}" alt="light logo"> -->
+                    </a>
                 </div>
             </div>
-            <div class="mb-4">
-                <h6 class="d-flex justify-content-between">
-                    Completed Tasks
-                    <span class="float-right">%68</span>
-                </h6>
-                <div class="progress" style="height:5px;">
-                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 68%;"
-                         aria-valuenow="68"
-                         aria-valuemin="0" aria-valuemax="100"></div>
+
+            <div class="header-body">
+                <div class="header-body-left">
+                    <div class="page-title">
+                        <h4>@yield('pageTitle')</h4>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-4">
-                <h6 class="d-flex justify-content-between">
-                    Storage
-                    <span>%25</span>
-                </h6>
-                <div class="progress" style="height: 5px;">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 40%;" aria-valuenow="40"
-                         aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            <div class="mb-4">
-                <h6>About</h6>
-                <p class="text-muted mb-0">I love reading, traveling and discovering new things. You need to be happy in
-                    life.</p>
-            </div>
-            <div class="mb-4">
-                <h6>City</h6>
-                <p class="text-muted mb-0">Germany / Berlin</p>
-            </div>
-            <div class="mb-4">
-                <h6>Social Links</h6>
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a href="#" class="btn btn-sm btn-floating btn-facebook">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="btn btn-sm btn-floating btn-twitter">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="btn btn-sm btn-floating btn-dribbble">
-                            <i class="fa fa-dribbble"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="btn btn-sm btn-floating btn-whatsapp">
-                            <i class="fa fa-whatsapp"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="btn btn-sm btn-floating btn-linkedin">
-                            <i class="fa fa-linkedin"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- END: User Menu -->
+                <div class="header-body-right">
+                    <ul class="navbar-nav">
 
-    <!-- BEGIN: Settings -->
-    <div class="sidebar" id="settings">
-        <div class="card">
-            <div class="card-body">
-                <h6 class="card-title">Settings</h6>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item pl-0 pr-0">
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                            <label class="custom-control-label" for="customSwitch1">Allow notifications.</label>
-                        </div>
-                    </li>
-                    <li class="list-group-item pl-0 pr-0">
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                            <label class="custom-control-label" for="customSwitch2">Hide user requests</label>
-                        </div>
-                    </li>
-                    <li class="list-group-item pl-0 pr-0">
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch3" checked>
-                            <label class="custom-control-label" for="customSwitch3">Speed up demands</label>
-                        </div>
-                    </li>
-                    <li class="list-group-item pl-0 pr-0">
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch4" checked>
-                            <label class="custom-control-label" for="customSwitch4">Hide menus</label>
-                        </div>
-                    </li>
-                    <li class="list-group-item pl-0 pr-0">
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch5">
-                            <label class="custom-control-label" for="customSwitch5">Remember next visits</label>
-                        </div>
-                    </li>
-                    <li class="list-group-item pl-0 pr-0">
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch6">
-                            <label class="custom-control-label" for="customSwitch6">Enable report
-                                generation.</label>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- END: Settings -->
+                        <!-- begin::header fullscreen -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" title="Fullscreen" data-toggle="fullscreen">
+                                <i class="maximize" data-feather="maximize"></i>
+                                <i class="minimize" data-feather="minimize"></i>
+                            </a>
+                        </li>
+                        <!-- end::header fullscreen -->
 
-</div>
-<!-- END: Sidebar Group -->
 
-<!-- begin::main -->
-<div class="layout-wrapper">
 
-    <!-- begin::header -->
-    <div class="header d-print-none">
-
-        <div class="header-left">
-            <div class="navigation-toggler">
-                <a href="#" data-action="navigation-toggler">
-                    <i data-feather="menu"></i>
-                </a>
-            </div>
-            <div class="header-logo">
-                <a href="{{ url('/') }}">
-                    <img class="logo" src="{{ url('public/assets/media/image/logo.png') }}" alt="logo" style="width: 80%;">
-                    <!-- <img class="logo-light" src="{{ url('public/assets/media/image/logo-light.png') }}" alt="light logo"> -->
-                </a>
-            </div>
-        </div>
-
-        <div class="header-body">
-            <div class="header-body-left">
-                <div class="page-title">
-                    <h4>@yield('pageTitle')</h4>
-                </div>
-            </div>
-            <div class="header-body-right">
-                <ul class="navbar-nav">
-
-                    <!-- begin::header fullscreen -->
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link" title="Fullscreen" data-toggle="fullscreen">
-                            <i class="maximize" data-feather="maximize"></i>
-                            <i class="minimize" data-feather="minimize"></i>
-                        </a>
-                    </li>
-                    <!-- end::header fullscreen -->
-
-                   
-
-                    <!-- begin::header notification dropdown -->
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link nav-link-notify" title="Notifications" data-toggle="dropdown">
-                            <i data-feather="bell"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-big">
-                            <div class="bg-dark p-4 text-center d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">Notifications</h5>
-                                <small class="opacity-7">1 unread notifications</small>
+                        <!-- begin::header notification dropdown -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link nav-link-notify" title="Notifications" data-toggle="dropdown">
+                                <i data-feather="bell"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-big">
+                                <div class="bg-dark p-4 text-center d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Notifications</h5>
+                                    <small class="opacity-7">1 unread notifications</small>
+                                </div>
+                                <div>
+                                    <ul class="list-group list-group-flush">
+                                        <li>
+                                            <a href="#" class="list-group-item d-flex align-items-center hide-show-toggler">
+                                                <div>
+                                                    <figure class="avatar mr-2">
+                                                        <span class="avatar-title bg-success-bright text-success rounded-circle">
+                                                            <i class="ti-user"></i>
+                                                        </span>
+                                                    </figure>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0 line-height-20 d-flex justify-content-between">
+                                                        New customer registered
+                                                        <i title="Mark as read" data-toggle="tooltip" class="hide-show-toggler-item fa fa-circle-o font-size-11"></i>
+                                                    </p>
+                                                    <span class="text-muted small">20 min ago</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="text-divider small pb-2 pl-3 pt-3">
+                                            <span>Old notifications</span>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="list-group-item d-flex align-items-center hide-show-toggler">
+                                                <div>
+                                                    <figure class="avatar mr-2">
+                                                        <span class="avatar-title bg-warning-bright text-warning rounded-circle">
+                                                            <i class="ti-package"></i>
+                                                        </span>
+                                                    </figure>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0 line-height-20 d-flex justify-content-between">
+                                                        New Order Recieved
+                                                        <i title="Mark as unread" data-toggle="tooltip" class="hide-show-toggler-item fa fa-check font-size-11"></i>
+                                                    </p>
+                                                    <span class="text-muted small">45 sec ago</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="list-group-item d-flex align-items-center hide-show-toggler">
+                                                <div>
+                                                    <figure class="avatar mr-2">
+                                                        <span class="avatar-title bg-danger-bright text-danger rounded-circle">
+                                                            <i class="ti-server"></i>
+                                                        </span>
+                                                    </figure>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0 line-height-20 d-flex justify-content-between">
+                                                        Server Limit Reached!
+                                                        <i title="Mark as unread" data-toggle="tooltip" class="hide-show-toggler-item fa fa-check font-size-11"></i>
+                                                    </p>
+                                                    <span class="text-muted small">55 sec ago</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="list-group-item d-flex align-items-center hide-show-toggler">
+                                                <div>
+                                                    <figure class="avatar mr-2">
+                                                        <span class="avatar-title bg-info-bright text-info rounded-circle">
+                                                            <i class="ti-layers"></i>
+                                                        </span>
+                                                    </figure>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0 line-height-20 d-flex align-items-center justify-content-between">
+                                                        Apps are ready for update
+                                                        <i title="Mark as unread" data-toggle="tooltip" class="hide-show-toggler-item fa fa-check font-size-11"></i>
+                                                    </p>
+                                                    <span class="text-muted small">Yesterday</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="p-2 text-right border-top">
+                                    <ul class="list-inline small">
+                                        <li class="list-inline-item mb-0">
+                                            <a href="#">Mark All Read</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div>
-                                <ul class="list-group list-group-flush">
-                                    <li>
-                                        <a href="#" class="list-group-item d-flex align-items-center hide-show-toggler">
-                                            <div>
-                                                <figure class="avatar mr-2">
-                                                <span
-                                                    class="avatar-title bg-success-bright text-success rounded-circle">
-                                                    <i class="ti-user"></i>
-                                                </span>
-                                                </figure>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                    New customer registered
-                                                    <i title="Mark as read" data-toggle="tooltip"
-                                                       class="hide-show-toggler-item fa fa-circle-o font-size-11"></i>
-                                                </p>
-                                                <span class="text-muted small">20 min ago</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="text-divider small pb-2 pl-3 pt-3">
-                                        <span>Old notifications</span>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="list-group-item d-flex align-items-center hide-show-toggler">
-                                            <div>
-                                                <figure class="avatar mr-2">
-                                                <span
-                                                    class="avatar-title bg-warning-bright text-warning rounded-circle">
-                                                    <i class="ti-package"></i>
-                                                </span>
-                                                </figure>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                    New Order Recieved
-                                                    <i title="Mark as unread" data-toggle="tooltip"
-                                                       class="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                                </p>
-                                                <span class="text-muted small">45 sec ago</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           class="list-group-item d-flex align-items-center hide-show-toggler">
-                                            <div>
-                                                <figure class="avatar mr-2">
-                                                <span class="avatar-title bg-danger-bright text-danger rounded-circle">
-                                                    <i class="ti-server"></i>
-                                                </span>
-                                                </figure>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                    Server Limit Reached!
-                                                    <i title="Mark as unread" data-toggle="tooltip"
-                                                       class="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                                </p>
-                                                <span class="text-muted small">55 sec ago</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           class="list-group-item d-flex align-items-center hide-show-toggler">
-                                            <div>
-                                                <figure class="avatar mr-2">
-                                                <span class="avatar-title bg-info-bright text-info rounded-circle">
-                                                    <i class="ti-layers"></i>
-                                                </span>
-                                                </figure>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0 line-height-20 d-flex align-items-center justify-content-between">
-                                                    Apps are ready for update
-                                                    <i title="Mark as unread" data-toggle="tooltip"
-                                                       class="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                                </p>
-                                                <span class="text-muted small">Yesterday</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="p-2 text-right border-top">
-                                <ul class="list-inline small">
-                                    <li class="list-inline-item mb-0">
-                                        <a href="#">Mark All Read</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- end::header notification dropdown -->
+                        </li>
+                        <!-- end::header notification dropdown -->
 
-                   
 
-                    <!-- begin::settings -->
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link" title="Settings" data-sidebar-target="#settings">
-                            <i data-feather="settings"></i>
-                        </a>
-                    </li>
-                    <!-- end::settings -->
 
-                    <!-- begin::user menu -->
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link" title="User menu" data-sidebar-target="#user-menu">
-                            <span class="mr-2 d-sm-inline d-none">Roxana Roussell</span>
-                            <figure class="avatar avatar-sm">
-                                <img src="{{ url('public/assets/media/image/user/women_avatar1.jpg') }}" class="rounded-circle"
-                                     alt="avatar">
-                            </figure>
-                        </a>
-                    </li>
-                    <!-- end::user menu -->
+                        <!-- begin::settings -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" title="Settings" data-sidebar-target="#settings">
+                                <i data-feather="settings"></i>
+                            </a>
+                        </li>
+                        <!-- end::settings -->
 
-                </ul>
+                        <!-- begin::user menu -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" title="User menu" data-sidebar-target="#user-menu">
+                                <span class="mr-2 d-sm-inline d-none">{{ Auth::user()->name }}</span>
+                                <figure class="avatar avatar-sm">
+                                    <img src="{{ url('public/assets/media/image/user/women_avatar1.jpg') }}" class="rounded-circle" alt="avatar">
+                                </figure>
+                            </a>
+                            
+                        </li>
+                        <!-- end::user menu -->
 
-                <!-- begin::mobile header toggler -->
-                <ul class="navbar-nav d-flex align-items-center">
-                    <li class="nav-item header-toggler">
-                        <a href="#" class="nav-link">
-                            <i data-feather="arrow-down"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- end::mobile header toggler -->
+                    </ul>
+
+                    <!-- begin::mobile header toggler -->
+                    <ul class="navbar-nav d-flex align-items-center">
+                        <li class="nav-item header-toggler">
+                            <a href="#" class="nav-link">
+                                <i data-feather="arrow-down"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- end::mobile header toggler -->
+                </div>
             </div>
+
         </div>
+        <!-- end::header -->
 
-    </div>
-    <!-- end::header -->
+        <div class="content-wrapper">
 
-    <div class="content-wrapper">
-
-        <!-- begin::navigation -->
-        <div class="navigation">
-            <div class="navigation-menu-tab">
-                <ul>
-                    <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="Image"
-                           data-nav-target="#images">
-                            <i data-feather="shopping-bag"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="Doctor Manage"
-                           data-nav-target="#user">
-                            <i data-feather="users"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="tooltip"
-                           data-placement="right" data-toggle="tooltip" data-placement="right" title="Service Offer" 
-                           data-nav-target="#service">
-                            <i data-feather="globe"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="Analytics"
-                           data-nav-target="#analytics">
-                            <i data-feather="activity"></i>
-                        </a>
-                    </li>
-                    <!-- <li>
+            <!-- begin::navigation -->
+            <div class="navigation">
+                <div class="navigation-menu-tab">
+                    <ul>
+                        <li>
+                            <a href="#" data-toggle="tooltip" data-placement="right" title="Image" data-nav-target="#images">
+                                <i data-feather="shopping-bag"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="tooltip" data-placement="right" title="Doctor Manage" data-nav-target="#user">
+                                <i data-feather="users"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="tooltip" data-placement="right" data-toggle="tooltip" data-placement="right" title="Service Offer" data-nav-target="#service">
+                                <i data-feather="globe"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="tooltip" data-placement="right" title="Analytics" data-nav-target="#analytics">
+                                <i data-feather="activity"></i>
+                            </a>
+                        </li>
+                        <!-- <li>
                         <a href="#" data-toggle="tooltip" data-placement="right" title="Projects"
                            data-nav-target="#projects">
                             <i data-feather="briefcase"></i>
@@ -430,132 +409,159 @@
                             <i data-feather="copy"></i>
                         </a>
                     </li> -->
-                </ul>
-            </div>
-            <div class="navigation-menu-body">
-                <div class="navigation-menu-group">
-                    <div id="images">
-                        <ul>
-                            <?php $count = count(Request::segments());?>
-                            <!-- <li>{{ $count }}</li> -->
-                            <li class="navigation-divider d-flex align-items-center">
-                                <i class="mr-2" data-feather="shopping-bag"></i> Media
-                            </li>
-                            <!-- <li>
+                    </ul>
+                </div>
+                <div class="navigation-menu-body">
+                    <div class="navigation-menu-group">
+                        <div id="images">
+                            <ul>
+                                <?php $count = count(Request::segments()); ?>
+                                <!-- <li>{{ $count }}</li> -->
+                                <li class="navigation-divider d-flex align-items-center">
+                                    <i class="mr-2" data-feather="shopping-bag"></i> Media
+                                </li>
+                                <!-- <li>
                                 <a @if(!request()->segment(1) || request()->segment(1) == 'ecommerce-dashboard') class="active"
                                    @endif href="{{ url('ecommerce-dashboard') }}">Dashboard</a></li> -->
-                            <li>
-                                <a @if(request()->segment($count) == 'admin' || request()->segment($count) == 'media' || request()->segment($count) == 'logo') class="active"
-                                   @endif href="{{ url('admin/media/logo') }}">Logo</a></li>
-                            <li>
-                                <a @if(request()->segment($count) == 'image') class="active"
-                                   @endif href="{{ url('admin/media/image') }}">Images</a></li>
-                            <li>
-                                <a @if(request()->segment($count) == 'video') class="active"
-                                   @endif href="{{ url('admin/media/video') }}">Videos</a></li>
-                            <li>
-                                <a @if(request()->segment($count) == 'partner') class="active"
-                                   @endif href="{{ url('admin/media/partner') }}">Partner Companies</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'admin' || request()->segment($count) == 'media' || request()->segment($count) == 'logo') class="active"
+                                        @endif href="{{ url('admin/media/logo') }}">Logo</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'image') class="active"
+                                        @endif href="{{ url('admin/media/image') }}">Images</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'video') class="active"
+                                        @endif href="{{ url('admin/media/video') }}">Videos</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'partner') class="active"
+                                        @endif href="{{ url('admin/media/partner') }}">Partner Companies</a></li>
 
-                            <li>
-                                <a @if(request()->segment($count) == 'benefit') class="active"
-                                   @endif href="{{ url('admin/media/benefit') }}">Benefits</a></li>
-                            <!-- <li>
-                                <a @if(request()->segment(1) == 'product-detail') class="active"
-                                   @endif href="{{ url('product-detail') }}">Product Detail</a></li> -->
-                        </ul>
-                    </div>
-                    <div id="analytics">
-                        <ul>
-                            <li class="navigation-divider d-flex align-items-center">
-                                <i class="mr-2" data-feather="activity"></i> Analytics
-                            </li>
-                            <li>
-                                <a @if(request()->segment(1) == 'analytics-dashboard') class="active"
-                                   @endif href="{{ url('analytics-dashboard') }}">Dashboard</a></li>
-                            <li>
-                                <a @if(request()->segment(1) == 'customers') class="active"
-                                   @endif href="{{ url('customers') }}">Customers</a></li>
-                            <li class="navigation-divider">Summary</li>
-                            <li>
-                                <a href="#" class="d-flex align-items-start">
-                                    <div>
-                                        <figure class="avatar mr-2">
-                                <span class="avatar-title bg-warning rounded-circle">
-                                    <i class="ti-bar-chart-alt"></i>
-                                </span>
-                                        </figure>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-0">Total Sales</h6>
-                                        <p class="text-muted mb-0 small">This Mounth</p>
-                                        <h4 class="mb-0">$50.958</h4>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex align-items-start">
-                                    <div>
-                                        <figure class="avatar mr-2">
-                                <span class="avatar-title bg-success rounded-circle">
-                                    <i class="ti-world"></i>
-                                </span>
-                                        </figure>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-0">Projects</h6>
-                                        <p class="text-muted mb-0 small">Today</p>
-                                        <h4 class="mb-0">35</h4>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex align-items-start">
-                                    <div>
-                                        <figure class="avatar mr-2">
-                                <span class="avatar-title bg-info rounded-circle">
-                                    <i class="ti-user"></i>
-                                </span>
-                                        </figure>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-0">Total Visitor</h6>
-                                        <p class="text-muted mb-0 small">Today</p>
-                                        <h4 class="mb-0">5.301</h4>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                
-                    <div id="user" >
-                        <ul>
-                            <?php $count = count(Request::segments());?>
-                            <li class="navigation-divider d-flex align-items-center">
-                                <i class="mr-2" data-feather="users"></i> Doctor Forms
-                            </li>
-                            <li>
-                                <a @if(request()->segment($count) == 'doctor') class="active"
-                                   @endif href="{{ url('/admin/user/doctor') }}">Doctors</a></li>
-                            <li>
-                                <a @if(request()->segment($count) == 'city') class="active"
-                                   @endif href="{{ url('/admin/user/city') }}">City Catalog</a></li>
-                            <li>
-                                <a @if(request()->segment($count) == 'speciality') class="active"
-                                   @endif href="{{ url('/admin/user/speciality') }}">Speciality Catalog</a></li>
-                            <li>
-                                <a @if(request()->segment($count) == 'formation') class="active"
-                                   @endif href="{{ url('/admin/user/formation') }}">Formation Catalog</a></li>                                   
+                                <li>
+                                    <a @if(request()->segment($count) == 'benefit') class="active"
+                                        @endif href="{{ url('admin/media/benefit') }}">Benefits</a></li>
+                            </ul>
+                        </div>
+                        <div id="analytics">
+                            <ul>
+                                <li class="navigation-divider d-flex align-items-center">
+                                    <i class="mr-2" data-feather="activity"></i> Analytics
+                                </li>
+                                <li>
+                                    <a @if(request()->segment(1) == 'analytics-dashboard') class="active"
+                                        @endif href="{{ url('analytics-dashboard') }}">Dashboard</a></li>
+                                <li>
+                                    <a @if(request()->segment(1) == 'customers') class="active"
+                                        @endif href="{{ url('customers') }}">Customers</a></li>
+                                <li class="navigation-divider">Summary</li>
+                                <li>
+                                    <a href="#" class="d-flex align-items-start">
+                                        <div>
+                                            <figure class="avatar mr-2">
+                                                <span class="avatar-title bg-warning rounded-circle">
+                                                    <i class="ti-bar-chart-alt"></i>
+                                                </span>
+                                            </figure>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Total Sales</h6>
+                                            <p class="text-muted mb-0 small">This Mounth</p>
+                                            <h4 class="mb-0">$50.958</h4>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex align-items-start">
+                                        <div>
+                                            <figure class="avatar mr-2">
+                                                <span class="avatar-title bg-success rounded-circle">
+                                                    <i class="ti-world"></i>
+                                                </span>
+                                            </figure>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Projects</h6>
+                                            <p class="text-muted mb-0 small">Today</p>
+                                            <h4 class="mb-0">35</h4>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex align-items-start">
+                                        <div>
+                                            <figure class="avatar mr-2">
+                                                <span class="avatar-title bg-info rounded-circle">
+                                                    <i class="ti-user"></i>
+                                                </span>
+                                            </figure>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Total Visitor</h6>
+                                            <p class="text-muted mb-0 small">Today</p>
+                                            <h4 class="mb-0">5.301</h4>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
-                            <!-- <li>
+                        <div id="user">
+                            <ul>
+                                <?php $count = count(Request::segments()); ?>
+                                <li class="navigation-divider d-flex align-items-center">
+                                    <i class="mr-2" data-feather="users"></i> Doctor Forms
+                                </li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'doctor') class="active"
+                                        @endif href="{{ url('/admin/user/doctor') }}">Doctors</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'city') class="active"
+                                        @endif href="{{ url('/admin/user/city') }}">City Catalog</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'speciality') class="active"
+                                        @endif href="{{ url('/admin/user/speciality') }}">Speciality Catalog</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'formation') class="active"
+                                        @endif href="{{ url('/admin/user/formation') }}">Formation Catalog</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'type') class="active"
+                                        @endif href="{{ url('/admin/user/type') }}">Doctor Type</a></li>
+                                <li>
+                                    <a hidden @if(request()->segment($count) == 'type-list') class="active"
+                                        @endif href="{{ url('/admin/user/type-list') }}"></a></li>
+                                <li>
+                                    <a hidden @if(request()->segment($count) == 'service') class="active"
+                                        @endif href="{{ url('/admin/user/service') }}">Doctor Services</a></li>
+                                <li>
+                                    <a hidden @if(request()->segment($count) == 'service-list') class="active"
+                                        @endif href="{{ url('/admin/user/service-list') }}"></a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'add-doctor-user') class="active"
+                                        @endif href="{{ url('/admin/user/add-doctor-user') }}">Add Doctor User</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'doctor-user-list') class="active"
+                                        @endif href="{{ url('/admin/user/doctor-user-list') }}">Doctor User List</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'contact-list') class="active"
+                                        @endif href="{{ url('/admin/user/contact-list') }}">Contact Messages</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'doctors-forms') class="active"
+                                        @endif href="{{ url('/admin/user/doctors-forms') }}">Doctors Forms</a></li>
+                                <li>
+                                    <a hidden @if(request()->segment($count) == 'doctor-form-list') class="active"
+                                        @endif href="{{ url('/admin/user/doctor-form-list') }}">Doctors Forms List</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'form-items') class="active"
+                                        @endif href="{{ url('/admin/user/form-items') }}">Form Items</a></li>
+
+                                <!-- <li>
                                 <a @if(request()->segment(1) == 'user-list') class="active"
                                    @endif href="{{ url('user-list') }}">User List</a></li>
                             <li>
                                 <a @if(request()->segment(1) == 'user-edit') class="active"
                                    @endif href="{{ url('user-edit') }}">User Edit</a></li> -->
-                            
-                            
-                            <!-- <li class="navigation-divider">Users</li>
+
+
+                                <!-- <li class="navigation-divider">Users</li>
                             <li>
                                 <div class="avatar-group ml-4">
                                     <figure class="avatar avatar-sm">
@@ -637,72 +643,67 @@
                                     </figure>
                                 </div>
                             </li> -->
-                        </ul>
-                    </div>
+                            </ul>
+                        </div>
 
-                    <div id="service" >
-                        <ul>
-                            <?php $count = count(Request::segments());?>
-                            <li class="navigation-divider d-flex align-items-center">
-                                <i class="mr-2" data-feather="globe"></i> Service Manage
-                            </li>
-                            <li>
-                                <a @if(request()->segment($count) == 'services') class="active"
-                                   @endif href="{{ route('service.manage') }}">Services</a></li>
-                            <li>
-                                <a @if(request()->segment($count) == 'service_type') class="active"
-                                   @endif href="{{ route('service.type') }}">Service Type</a></li>
-                            <!-- <li>
-                                <a @if(request()->segment($count) == 'city') class="active"
-                                   @endif href="{{ url('/admin/user/city') }}">City Catalog</a></li>
-                            <li>
-                                <a @if(request()->segment($count) == 'speciality') class="active"
-                                   @endif href="{{ url('/admin/user/speciality') }}">Speciality Catalog</a></li>
-                            <li>
-                                <a @if(request()->segment($count) == 'formation') class="active"
-                                   @endif href="{{ url('/admin/user/formation') }}">Formation Catalog</a></li>                                    -->
-                        </ul>
+                        <div id="service">
+                            <ul>
+                                <?php $count = count(Request::segments()); ?>
+                                <li class="navigation-divider d-flex align-items-center">
+                                    <i class="mr-2" data-feather="globe"></i> Service Manage
+                                </li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'services') class="active"
+                                        @endif href="{{ route('service.manage') }}">Services</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'service_type') class="active"
+                                        @endif href="{{ route('service.type') }}">Service Type</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'tags') class="active"
+                                        @endif href="{{ route('tags') }}">Tags</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'insurance') class="active"
+                                        @endif href="{{ route('insurance') }}">Insurance</a></li>
+                                <li>
+                                    <a hidden @if(request()->segment($count) == 'tags-list') class="active"
+                                        @endif href="{{ route('tags-list') }}"></a></li>
+                                <li>
+                                    <a hidden @if(request()->segment($count) == 'insurance-list') class="active"
+                                        @endif href="{{ route('insurance-list') }}"></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- end::navigation -->
+            <!-- end::navigation -->
 
-        <div class="content-body">
+            <div class="content-body">
 
-            <div class="content">
+                <div class="content">
 
-                @yield('content')
+                    @yield('content')
+
+                </div>
+
+                <!-- begin::footer -->
+
+                <!-- end::footer -->
 
             </div>
-
-            <!-- begin::footer -->
-            <footer class="content-footer">
-                <div>© {{ date('Y') }} Nago - <a href="http://laborasyon.com" target="_blank">Laborasyon</a></div>
-                <div>
-                    <nav class="nav">
-                        <a href="https://themeforest.net/licenses/standard" class="nav-link">Licenses</a>
-                        <a href="#" class="nav-link">Change Log</a>
-                        <a href="#" class="nav-link">Get Help</a>
-                    </nav>
-                </div>
-            </footer>
-            <!-- end::footer -->
 
         </div>
 
     </div>
+    <!-- end::main -->
 
-</div>
-<!-- end::main -->
+    <!-- Plugin scripts -->
+    <script src="{{ url('public/vendors/bundle.js') }}"></script>
 
-<!-- Plugin scripts -->
-<script src="{{ url('public/vendors/bundle.js') }}"></script>
+    @yield('script')
 
-@yield('script')
-
-<!-- App scripts -->
-<script src="{{ url('public/assets/js/app.min.js') }}"></script>
+    <!-- App scripts -->
+    <script src="{{ url('public/assets/js/app.min.js') }}"></script>
 
 </body>
+
 </html>

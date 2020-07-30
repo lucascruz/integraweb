@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Logo;
+use App\User;
 use App\Doctor;
+use App\Insurance;
 use App\Service;
-
+use App\Tags;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use PhpParser\Comment\Doc;
 use Symfony\Component\VarDumper\Caster\DoctrineCaster;
 
 class HomeController extends Controller
 {
     public function __construct()
     {
-        
     }
     public function truncate()
     {
@@ -28,27 +32,72 @@ class HomeController extends Controller
 
     public function index()
     {
-        $param = [
-            'login'			=> false,
-            'role'			=> -1
-        ];
-        
+        $param = [];
         $logo = new Logo();
         $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
         $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
         $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
-        
-        $param['home_big_back_ground'] = $logo->getLogoBasePath(4) . '/' . $logo->getImageByCatalog(4);
-        $param['home_back_video'] = $logo->getVideoByCatalog(5);
-        
-        $param['partner_logos'] = $logo->getParnerList();
-        
 
-        //$param = json_encode($param);
-        return view('home', compact('param'));
+
+        $user=Auth::user();
+
+        if($user->Patient()){
+            return view('patient.accountpage', compact('param'));
+        }elseif($user->Admin()){
+            Echo "Eres Administrador";
+        }
+
+        return view('patient.accountpage');
     }
 
-    public function showDoctorList()
+    public function contact()
+    {
+        $param = [
+            'login'            => false,
+            'role'            => -1
+        ];
+
+        $logo = new Logo();
+        $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
+        $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
+        $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
+
+        $param['home_big_back_ground'] = $logo->getLogoBasePath(4) . '/' . $logo->getImageByCatalog(4);
+        $param['home_back_video'] = $logo->getVideoByCatalog(5);
+
+        $param['partner_logos'] = $logo->getParnerList();
+
+        //$param = json_encode($param);
+        return view('contact', compact('param'));
+        
+    }
+
+    public function welcome()
+    {
+        $user= Auth::user();
+
+        $param = [
+            'login'            => false,
+            'role'            => -1
+        ];
+
+        $logo = new Logo();
+        $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
+        $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
+        $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
+
+        $param['home_big_back_ground'] = $logo->getLogoBasePath(4) . '/' . $logo->getImageByCatalog(4);
+        $param['home_back_video'] = $logo->getVideoByCatalog(5);
+
+        $param['partner_logos'] = $logo->getParnerList();
+
+        //$param = json_encode($param);
+
+
+        return view('welcome', compact('param'));
+    }
+
+    public function showDoctorList(Request $request)
     {
         $param = [];
         $logo = new Logo();
@@ -57,25 +106,25 @@ class HomeController extends Controller
         $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
         $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
         $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
-
         $param['doctor_list'] = $doctor->getActiveDoctorList();
-        
+
         return view('doctor.doctor_list', compact('param'));
     }
+
 
     public function showDoctorDetail($id)
     {
         $param = [];
+        $insurances = Insurance::all();
         $logo = new Logo();
         $doctor = new Doctor();
 
         $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
         $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
         $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
-
         $param['doctor_detail_info'] = $doctor->getDoctorDetail($id);
 
-        return view('doctor.doctor_detail', compact('param'));
+        return view('doctor.doctor_detail')->with('param', $param)->with('insurances', $insurances);
     }
 
     public function showPatientAccount()
@@ -86,18 +135,28 @@ class HomeController extends Controller
         $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
         $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
 
+
+        $user=Auth::user();
+
+        if($user->Patient()){
+            return view('patient.accountpage', compact('param'));
+        }elseif($user->Professional()){
+            return redirect('/professional');
+        }elseif($user->Admin()){
+            return redirect('/admin');
+        }
+
         return view('patient.accountpage', compact('param'));
     }
-
 
     ///// =============   Admin Manage Controller  ============ //////////////
 
     public function manageLogos()
     {
         $param = [
-    		'logo_list'		=> null,
-            'login'			=> false,
-            'role'		 	=> -1
+            'logo_list'        => null,
+            'login'            => false,
+            'role'             => -1
         ];
         $logo = new Logo();
         $param['logo_list'] = $logo->getAdminLogoList();
@@ -108,9 +167,7 @@ class HomeController extends Controller
 
     public function manageImages()
     {
-        $param = [
-
-        ];
+        $param = [];
 
         $logo = new Logo();
         $param['image_list'] = $logo->getAdminImageList();
@@ -121,9 +178,7 @@ class HomeController extends Controller
 
     public function manageVideos()
     {
-        $param = [
-
-        ];
+        $param = [];
 
         $logo = new Logo();
         $param['video_list'] = $logo->getAdminVideoList();
@@ -186,7 +241,7 @@ class HomeController extends Controller
 
         return view('admin.doctor.specialist', compact('param'));
     }
-    
+
     public function manageFormation()
     {
         $param = [];
@@ -217,6 +272,4 @@ class HomeController extends Controller
         $param['service_list'] = $service->getAllServices();
         return view('admin.service.services', compact('param'));
     }
-
-
-}   
+}

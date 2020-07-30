@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\Doctor;
+use App\User;
+use App\Tags;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -11,6 +15,30 @@ class DoctorManageController extends Controller
     public function __construct()
     {
         
+    }
+
+    public function doctoruser()
+    {
+        return view('/admin/doctor/add-doctor-user');
+    }
+
+    public function doctoruserlist()
+    {
+        $user = App\User::paginate(5);
+        return view('/admin/doctor/doctor-user-list', compact('user'));
+    }
+
+    protected function storeDoctorUser(Request $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'cel' => $data['cel'],
+            'city' => $data['city'],
+            'role_id' => $data['role_id'],
+        ]);
+        return back()->with('agregarDoctorUser', 'El usuario se ha agregado correctamente');
     }
 
     /////// ============== Doctor Part ============= //////////////
@@ -104,12 +132,13 @@ class DoctorManageController extends Controller
         $action = $request->city_action;
         $status = $request->active;
         $name = $request->city_name;
+        $departamento = $request->city_departamento;
                 
         $active = ($status == "on" ? 1 : 0);
 
         $param = [
             'name' => $name,
-            'extra' => '',
+            'departamento' => $departamento,
             'code' => '',
             'departamento_id' => 0,
             'active' => $active,
@@ -132,6 +161,7 @@ class DoctorManageController extends Controller
         $doctor = new Doctor();
         $doctor->removeCity($city_id);
     }
+
     /////////////////////////////////////////////////////////////////////
 
     ///// =============  Speciality Part =============== ///////
@@ -221,4 +251,5 @@ class DoctorManageController extends Controller
         $doctor->removeFormation($formation_id);
     }
     /////////////////////////////////////////////////////////////////////
+
 }

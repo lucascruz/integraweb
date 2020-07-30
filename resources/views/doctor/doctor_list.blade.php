@@ -4,6 +4,10 @@
 
 	<!-- ============== HEADER SECTION START ============== -->
 	<section>
+	<nav class="navbar navbar-light float-lg-right">
+	<form class="form-inline">
+	</form>
+</nav>
 		<div class="header-sec py-3">
 			<div class="container-fluid">
 				<div class="row align-items-center">
@@ -25,10 +29,10 @@
 											<p class="mb-2 text-light">
 												En:
 											</p>
-											<input type="text" placeholder="BUCARAMANGA" name="">
+											<input type="search" placeholder="BUCARAMANGA" name="buscarpor">
 										</div>
 										<div class="col-md-2 col-12 py-2">
-											<button class="btn-search">
+											<button class="btn-search" type="submit">
 												<a href="">
 													VAMOS
 												</a>
@@ -54,34 +58,51 @@
 	<!-- ============== BANNER SECTION START ============== -->
 	<section>
 		<div class="lightblue-box">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12">
-						<div class="menu">
-							<ul class="nav justify-content-end mb-1">
-								<li class="nav-item">
-									<a href="">
-										Inicia Sesion
-									</a>
-								</li>
-								<li class="nav-item">|</li>
-								<li class="nav-item">
-									<a href="">
-										Eres Nuevo?
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="">
-										Registry
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+
+		<nav class="navbar navbar-expand-lg navbar-light lightblue-box"">
+            <div class="container">
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                       <font color="red">Cerrar Sesión</font>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
 		</div>
 	</section>
+
 	<!-- ============== BANNER SECTION END ============== -->
 
 	<!-- ============== FILTER SECTION START ============== -->
@@ -169,8 +190,7 @@
 									<div class="d-flex justify-content-center">
 										<img src="{{ url('public/images/price_image.png') }}" class="img-fluid" alt="images" style="width:60px;"/>
 										<h3 style="padding-top: 20px;">COP $100.000</h3>
-									</div>
-									
+									</div>									
 									<h3 style="color:rgb(137,141,143);">
 										{{ $row->address }}
 									</h3>
@@ -329,5 +349,3 @@
 	</script>
 
 @endsection
-
-
