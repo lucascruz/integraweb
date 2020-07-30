@@ -93,6 +93,7 @@ class HomeController extends Controller
 
         //$param = json_encode($param);
 
+
         return view('welcome', compact('param'));
     }
 
