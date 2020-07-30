@@ -1,19 +1,29 @@
-@extends('layouts.app')
+@extends('layouts.app_admin')
+
+@section('pageTitle', 'Add Doctor User')
+
+@section('head')
+<!-- Datatable -->
+<link rel="stylesheet" href="{{ url('public/vendors/dataTable/datatables.min.css') }}" type="text/css">
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Add Doctor User</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <form action="{{ route('storeDoctorUser') }}" method="POST">
+                            @csrf
 
-                        <div class="text-center">Debes registrarte para poder agendar citas y hacer uso completo de la plataforma</div>
-                        <p>
-                            <input id="role_id" type="hidden" class="form-control{{ $errors->has('role_id') ? ' is-invalid' : '' }}" name="role_id" value="2" required>
+                            <input id="role_id" type="hidden" class="form-control{{ $errors->has('role_id') ? ' is-invalid' : '' }}" name="role_id" value="3" required>
 
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -28,8 +38,6 @@
                                     @endif
                                 </div>
                             </div>
-
-                            <input type="file" name="image" id="image" value="{{ old('image') }}">
 
                             <div class="form-group row">
                                 <label for="cel" class="col-md-4 col-form-label text-md-right">{{ __('Cell Phone') }}</label>
@@ -75,25 +83,28 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                                </div>
-                            </div>
-
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                                        {{ __('Registrar') }}
                                     </button>
                                 </div>
                             </div>
-                    </form>
-                </div>
+                        </form>
+                        @if (session('agregarDoctorUser'))
+                        <div class="alert alert-success mt-3">
+                            {{session('agregarDoctorUser')}}
+                        </div>
+                        @endif
+                        </tbody>
+                </table>
             </div>
         </div>
     </div>
+
 </div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
 @endsection

@@ -8,4 +8,9 @@ class Opinions extends Model
 {
     public $table = "opinions";
     public $timestamps = false;
+
+    public function doctor(){ 
+        return $this->belongsTo('App\Doctor','id');
+    }
+
 }

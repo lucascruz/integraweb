@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class DoctorForm extends Model
 {
-    public $table = "user_roles";
+    public $table = "doctor_form";
     public $timestamps = false;
 }
