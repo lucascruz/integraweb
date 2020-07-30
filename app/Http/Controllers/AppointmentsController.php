@@ -63,17 +63,18 @@ class AppointmentsController extends Controller
         $appointmentAgregar = new Appointments;
         $request->validate([
             'doctor_id' => 'required',
+            'insurance_id' => 'required',
             'reason' => 'required',
             'date' => 'required',
             'city' => 'required',
         ]);
         $appointmentAgregar->doctor_id = $request->doctor_id;
+        $appointmentAgregar->insurance_id = $request->insurance_id;
         $appointmentAgregar->reason = $request->reason;
         $appointmentAgregar->date = $request->date;
         $appointmentAgregar->city = $request->city;
         $appointmentAgregar->save();
-        return redirect('/register');
-       // return back()->with('agregarAppointment', 'La cita se ha enviado correctamente');
+        return back()->with('agregarAppointment', 'La cita se ha enviado correctamente');
     }
 
     /**

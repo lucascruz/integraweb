@@ -11,8 +11,6 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <input id="role_id" type="hidden" class="form-control{{ $errors->has('role_id') ? ' is-invalid' : '' }}" name="role_id" value="2" required>
-
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -20,28 +18,10 @@
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('name') }}</strong>
-                                </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
                                 @endif
-                            </div>
-                        </div>
-
-                        <input type="file" name="image" id="image">
-
-                        <div class="form-group row">
-                            <label for="cel" class="col-md-4 col-form-label text-md-right">{{ __('Cell Phone') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="cel" type="text" class="form-control" name="cel" value="{{ old('cel') }}" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
-
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="city" id="city" value="{{old('city')}}" required>
                             </div>
                         </div>
 
@@ -52,9 +32,9 @@
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
@@ -66,9 +46,9 @@
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>

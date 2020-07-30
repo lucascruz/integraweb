@@ -515,9 +515,6 @@
                                 <li>
                                     <a @if(request()->segment($count) == 'services') class="active"
                                         @endif href="{{ url('/professional/services') }}">Services</a></li>
-                                <li>
-                                    <a hidden @if(request()->segment($count) == 'edit-account') class="active"
-                                        @endif href="{{ url('/professional/edit-account') }}">Edit Acccount</a></li>
 
                                 <!-- <li>
                                 <a @if(request()->segment(1) == 'user-list') class="active"

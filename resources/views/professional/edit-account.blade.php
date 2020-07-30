@@ -17,21 +17,9 @@
             @method('PUT')
             @csrf
 
-            <input id="role_id" type="hidden" class="form-control{{ $errors->has('role_id') ? ' is-invalid' : '' }}" name="role_id" value="3" required>
-
             <div class="form-group">
                 <label for="tag">Professional Name</label>
                 <input type="text" class="form-control" name="name" id="name" value="{{$accountActualizar->name}}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="tag">Cell Phone</label>
-                <input type="text" class="form-control" name="cel" id="cel" value="{{$accountActualizar->cel}}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="tag">City</label>
-                <input type="text" class="form-control" name="city" id="city" value="{{$accountActualizar->city}}" required>
             </div>
 
             <div class="form-group">
@@ -44,12 +32,12 @@
                 <input type="password" pattern=".{6,}" class="form-control" name="password" id="password" value="{{$accountActualizar->password}}" required>
             </div>
 
-            <button type="submit" class="btn btn-warning">Guardar</button>
+            <button type="submit" class="btn btn-warning">Save</button>
             <a>
                 <a>
-                    <a href="{{URL::route('account')}}" class="btn btn-danger">Volver</a>
+                    <a href="{{URL::route('account')}}" class="btn btn-danger">Back</a>
         </form>
-        @if (session('updateAccount'))
+        @if (session('updateAccount')) 
         <div class="alert alert-success mt-3">
             {{session('updateAccount')}}
         </div>

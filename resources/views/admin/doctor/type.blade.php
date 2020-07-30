@@ -10,48 +10,48 @@
 @endsection
 
 @section('content')
-<!-- Begin Page Content -->
-<div class="container-fluid">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
 
-  <!-- DataTales Example -->
-  <div class="card shadow mb-4">
-    <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Add Doctor Type</h6>
-    </div>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-            <form action="{{route('storeType')}}" method="POST">
-              @csrf
-
-              <div class="form-group">
-                <label for="title">Type</label>
-                <input type="text" class="form-control" name="type" id="type" value="{{old('type')}}" required>
-              </div>
-
-              <button type="submit" class="btn btn-primary">Add</button>
-              <a>
-                <a>
-                  <a href="{{URL::route('type-list')}}" class="btn btn-success">List</a>
-                  <a>
-                    <a>
-            </form>
-            @if (session('agregarType'))
-            <div class="alert alert-success mt-3">
-              {{session('agregarType')}}
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Add Doctor Type</h6>
             </div>
-            @endif
-            </tbody>
-        </table>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                   <form action="{{route('storeType')}}" method="POST">
+                   @csrf
+
+                   <div class="form-group">           
+                      <label for="title">Type</label>
+                      <input type="text" class="form-control" name="type" id="type"  value="{{old('type')}}" required>
+                      </div>
+
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    <a>
+                    <a>
+                    <a href="{{URL::route('type-list')}}" class="btn btn-success">List</a> 
+                    <a>
+                    <a>
+                  </form>
+                  @if (session('agregarType'))
+                <div class="alert alert-success mt-3">
+                    {{session('agregarType')}}
+                </div>
+                  @endif
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
       </div>
-    </div>
-  </div>
-
-</div>
-<!-- /.container-fluid -->
-
-</div>
-<!-- End of Main Content -->
+      <!-- End of Main Content -->
 
 @endsection

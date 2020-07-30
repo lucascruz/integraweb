@@ -25,22 +25,20 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Nombre</th>
-                            <th>Numero de Contacto</th>
-                            <th>Ciudad</th>
+                            <th>Name</th>
                             <th>Email</th>
-                            <th>Actualizar</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>{{ Auth::user()->name }}</td>
-                            <td>{{ Auth::user()->cel }}</td>
-                            <td>{{ Auth::user()->city }}</td>
                             <td>{{ Auth::user()->email }}</td>
                             <td>
-                                <a href="{{route('edit-account' , Auth::user()->id)}}" class="btn btn-warning">Editar</a>
+                                <a href="{{route('edit-account' , Auth::user()->id)}}" class="btn btn-warning">Edit</a>
                                 <form action="#" method="POST" class="d-inline">
+
+
                                 </form>
                             </td>
                         </tr>

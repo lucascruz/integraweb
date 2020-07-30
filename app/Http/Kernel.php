@@ -63,7 +63,7 @@ class Kernel extends HttpKernel
 
         'role' => \App\Http\Middleware\RoleMiddleware::class,
 
-        'Admin' => \App\Http\Middleware\Admin::class,
+        'EsAdmin' => \App\Http\Middleware\EsAdmin::class,
     ];
 
     /**
