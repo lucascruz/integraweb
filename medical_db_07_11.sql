@@ -232,7 +232,7 @@ CREATE TABLE `service_type` (
   `name` varchar(100) DEFAULT NULL,
   `active` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `service_type` */
 
@@ -251,12 +251,18 @@ CREATE TABLE `services` (
   `title` varchar(100) DEFAULT NULL,
   `image` varchar(100) DEFAULT NULL,
   `video` varchar(100) DEFAULT NULL,
-  `servicees_type_id` int(11) DEFAULT NULL,
+  `services_type_id` int(11) DEFAULT NULL,
   `active` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `services` */
+
+insert  into `services`(`id`,`title`,`image`,`video`,`services_type_id`,`active`) values 
+(2,'Excision and repair of benign excision skin lesions','images.jpg','telemedicinacolombia.com',4,1),
+(3,'Angioplasty','images.jpg','http://telemedicinacolombia.com',2,1),
+(4,'Spontaneous abortion','images.jpg','http://telemedicinacolombia.com',2,1),
+(5,'Peritonsillar abscess','images (1).jpg','http://telemedicinacolombia.com',3,1);
 
 /*Table structure for table `specialist` */
 

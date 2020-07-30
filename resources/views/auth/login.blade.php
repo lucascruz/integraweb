@@ -1,73 +1,55 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+    <!-- logo -->
+    <div id="logo">
+        <img class="logo" src="{{ url('public/assets/media/image/logo_small.png') }}" style="width:80%" alt="image">
+        <img class="logo-dark" src="{{ url('public/assets/media/image/logo-dark.png') }}" alt="image">
     </div>
-</div>
+    <!-- ./ logo -->
+
+    <h5>Sign in</h5>
+
+    <!-- form -->
+    <form>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter your email" required autofocus>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" required>
+        </div>
+        <div class="form-group d-flex justify-content-between">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" checked="" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Remember me</label>
+            </div>
+            
+        </div>
+        <button class="btn btn-primary btn-block">Sign in</button>
+        <!-- <hr>
+        <p class="text-muted">Login with your social media account.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="#" class="btn btn-floating btn-facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#" class="btn btn-floating btn-dribbble">
+                    <i class="fa fa-dribbble"></i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#" class="btn btn-floating btn-google">
+                    <i class="fa fa-google"></i>
+                </a>
+            </li>
+        </ul> -->
+        <hr>
+        <p class="text-muted">Don't have an account?</p>
+        <a href="{{ url('/'). '#register_befenift' }}" class="btn btn-outline-light btn-sm">Register now!</a>
+    </form>
+    <!-- ./ form -->
+
 @endsection

@@ -359,7 +359,7 @@
                                         <span>Email </span><input type="text" id="doctor_email" name = "doctor_email" class="form-control" placeholder="Input Email of Doctor..."/>    
                                     </div>
                                     <div style="padding-top: 10px;">
-                                        <span>Especialidad </span><input type="text" id="doctor_sepcialization" name = "doctor_sepcialization" class="form-control" placeholder="Input Specialization of Doctor..."/>    
+                                        <span>Specialization </span><input type="text" id="doctor_sepcialization" name = "doctor_sepcialization" class="form-control" placeholder="Input Specialization of Doctor..."/>    
                                     </div>
                                     <div style="padding-top: 10px;">
                                         <span>University </span><input type="text" id="doctor_university" name = "doctor_university" class="form-control" placeholder="Input University of Doctor..."/>    
@@ -434,7 +434,7 @@
                             </div>	
                             
                             <div class="container" style="padding-top: 20px;">
-                                <span>Especialización: </span>
+                                <span>Choose Specialization: </span>
                                 <div class="form-group">
                                     <select id="specialization_list" name="specialization_list" class="js-example-basic-single" multiple>
                                         @foreach($param['speciality_list'] as $row)

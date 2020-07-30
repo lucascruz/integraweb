@@ -47,7 +47,6 @@
                                 </th>   
                                 <th>ID</th>
                                 <th>City Name</th>
-                                <th>Departamento</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -60,7 +59,6 @@
                                         <a href="#">{{ $row->id }}</a>
                                     </td>
                                     <td>{{ $row->name }}</td>
-                                    <td>{{ $row->departamento }}</td>
                                     <td>
                                         @if($row->active == 1)
                                             <span class="badge bg-danger-bright text-danger">Active (Using)</span>
@@ -104,52 +102,13 @@
                             <div class="modal-body">
                             
                             <input id="city_action" name="city_action" value="add" hidden/>
-                            <input id="city_id" name="city_id" value="0" hidden/>                               
+                            <input id="city_id" name="city_id" value="0" hidden/>
+
+                                
                             
                             <div class="container" style="padding-top: 20px;">
                                 <span>Input City Name</span>
                                 <input type="text" id="city_name" name = "city_name" class="form-control" placeholder="Input City Name Here..."/>
-                            </div>
-
-                            <div class="container" style="padding-top: 20px;">
-                                <span>Choose Departamento: </span>
-                                <div class="form-group">                            
-                                    <select id="city_departamento" name="city_departamento">
-                                        <option value="">-- Escoja el Departamento --</option>
-                                        <option value="Amazonas">Amazonas</option>
-                                        <option value="Antioquia">Antioquia</option>
-                                        <option value="Arauca">Arauca</option>
-                                        <option value="Atlántico">Atlántico</option>
-                                        <option value="Bolívar">Bolívar</option>
-                                        <option value="Boyacá">Boyacá</option>
-                                        <option value="Caldas">Caldas</option>
-                                        <option value="Caquetá">Caquetá</option>
-                                        <option value="Casanare">Casanare</option>
-                                        <option value="Cauca">Cauca</option>
-                                        <option value="Cesar">Cesar</option>
-                                        <option value="Chocó">Chocó</option>
-                                        <option value="Córdoba">Córdoba</option>
-                                        <option value="Cundinamarca">Cundinamarca</option>
-                                        <option value="Guainía">Guainía</option>
-                                        <option value="Guaviare">Guaviare</option>
-                                        <option value="Huila">Huila</option>
-                                        <option value="La Guajira">La Guajira</option>
-                                        <option value="Magdalena">Magdalena</option>
-                                        <option value="Meta">Meta</option>
-                                        <option value="Nariño">Nariño</option>
-                                        <option value="Norte de Santander">Norte de Santander</option>
-                                        <option value="Putumayo">Putumayo</option>
-                                        <option value="Quindío">Quindío</option>
-                                        <option value="Risaralda">Risaralda</option>
-                                        <option value="San Andrés y Providencia">San Andrés y Providencia</option>
-                                        <option value="Santander">Santander</option>
-                                        <option value="Sucre">Sucre</option>
-                                        <option value="Tolima">Tolima</option>
-                                        <option value="Valle del Cauca">Valle del Cauca</option>
-                                        <option value="Vaupés">Vaupés</option>
-                                        <option value="Vichada">Vichada</option>
-                                    </select>
-                                </div>
                             </div>
 
                             <div class="container" style="padding-top: 20px;"> 
@@ -205,11 +164,6 @@
                     alert("Input City Name please.");
                     return false;
                 }
-                if($("#city_departamento").val() == "")
-                {
-                    alert("Input City Name please.");
-                    return false;
-                }
                 return true;
              });
         });
@@ -229,7 +183,6 @@
                 async:false,
                 success:function(data){
                     $("#city_name").val(data[0]['name']);
-                    $("#city_departamento").val(data[0]['departamento']);
                     console.log(data);
 
                 }   
