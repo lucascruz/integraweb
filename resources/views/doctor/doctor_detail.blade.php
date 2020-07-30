@@ -52,35 +52,51 @@
 
 <!-- ============== BANNER SECTION START ============== -->
 <section>
-	<div class="lightblue-box">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-12">
-					<div class="menu">
-						<ul class="nav justify-content-end mb-1">
-							<li class="nav-item">
-								<a href="">
-									Inicia Sesion
-								</a>
-							</li>
-							<li class="nav-item">|</li>
-							<li class="nav-item">
-								<a href="">
-									Eres Nuevo?
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="">
-									Registry
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+		<div class="lightblue-box">
+
+		<nav class="navbar navbar-expand-lg navbar-light lightblue-box"">
+            <div class="container">
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                       <font color="red">Cerrar Sesión</font>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
 		</div>
-	</div>
-</section>
+	</section>
 <!-- ============== BANNER SECTION END ============== -->
 
 <!-- ============== MIDDLE SECTION START ============== -->
@@ -468,7 +484,7 @@
 									<div class="contact-sec text-center">
 										<button class="btn btn-round">
 											<h4 class="m-0">
-												CANTACO
+												DIRECCIÓN
 											</h4>
 										</button>
 										<div class="google-map my-3">
@@ -480,7 +496,6 @@
 											<p style="font-size: 22px; color: #186DAB;" class="my-3">
 												Telefonos:<br />
 												{{ $param['doctor_detail_info']->phone_number }}<br />
-
 											</p>
 										</div>
 									</div>
@@ -610,23 +625,12 @@
 											</div>
 
 											<div class="form-group">
-												<label for="seguro">Seguro</label>
-												<select class="form-control" name="insurance_id" id="insurance_id" value="">
-													<option>--- Escoja el Seguro ---</option>
-													@foreach ($insurances as $insurance)
-													<option value="{{ $insurance['id'] }}">{{ $insurance['name'] }}</option>
-													@endforeach
-													<option>Otro / No tengo seguro</option>
-												</select>
-											</div>
-
-											<div class="form-group">
 												<label for="fecha">Fecha</label>
 												<input type="datetime-local" class="form-control" name="date" id="date" value="{{old('date')}}" rows="3"></input>
 											</div>
 
 											<div class="form-group">
-												<label for="reason">Reason</label>
+												<label for="reason">Necesidad</label>
 												<textarea class="form-control" name="reason" id="reason" value="{{old('reason')}}" rows="3"></textarea>
 											</div>
 
@@ -635,6 +639,7 @@
 									</div>
 									</form>
 								</div>
+
 							</div>
 							<!-- ========== INFO DOCTOR ========== -->
 						</div>
@@ -667,12 +672,13 @@
 						<form action="{{route('storeOpinion')}}" method="POST">
 							@csrf
 
+							
 							<div class="form-group">
 								<input id="doctors_id" name="doctors_id" type="hidden" value="{{ $param['doctor_detail_info']->id }}">
 							</div>
 
 							<div class="form-group">
-								<input id="opinion_date" name="opinion_date" type="hidden" value="<?php echo date_default_timezone_get();?>">
+								<input id="opinion_date" name="opinion_date" type="hidden" value="<?php echo date_default_timezone_get(); ?>">
 							</div>
 
 							<div class="form-group">

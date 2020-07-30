@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App;
+use App\Doctor;
 use App\Opinions;
 use Illuminate\Http\Request;
 
@@ -20,8 +21,10 @@ class OpinionsController extends Controller
 
     public function opinions()
     {
-        $opinions = App\Opinions::paginate(5);
+       // $doctors = Doctor::all();
+        $opinions = App\Opinions::paginate(50);
         return view('/doctor/opinions', compact('opinions'));
+        // return view('/doctor/opinions')->with('opinions',$opinions)->with('doctors',$doctors);
     }
 
     public function listtags()

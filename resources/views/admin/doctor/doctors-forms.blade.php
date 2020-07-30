@@ -1,6 +1,6 @@
 @extends('layouts.app_admin')
 
-@section('pageTitle', 'Add Doctor Type')
+@section('pageTitle', 'Add Doctors Forms')
 
 @section('head')
 <!-- Datatable -->
@@ -16,30 +16,35 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Add Doctor Type</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Add Doctor Form</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
-            <form action="{{route('storeType')}}" method="POST">
+            <form action="{{route('storeDoctorForm')}}" method="POST">
               @csrf
 
               <div class="form-group">
-                <label for="title">Type</label>
-                <input type="text" class="form-control" name="type" id="type" value="{{old('type')}}" required>
+                <label for="title">Titulo</label>
+                <input type="text" class="form-control" name="title" id="title" value="{{old('title')}}" required>
+              </div>
+
+              <div class="form-group">
+                <label for="title">Intro Text</label>
+                <input type="text" class="form-control" name="intro_text" id="intro_text" value="{{old('intro_text')}}" required>
               </div>
 
               <button type="submit" class="btn btn-primary">Add</button>
               <a>
                 <a>
-                  <a href="{{URL::route('type-list')}}" class="btn btn-success">List</a>
+                  <a href="{{URL::route('doctor-form-list')}}" class="btn btn-success">List</a>
                   <a>
                     <a>
             </form>
-            @if (session('agregarType'))
+            @if (session('agregarDoctorForm'))
             <div class="alert alert-success mt-3">
-              {{session('agregarType')}}
+              {{session('agregarDoctorForm')}}
             </div>
             @endif
             </tbody>
@@ -53,5 +58,4 @@
 
 </div>
 <!-- End of Main Content -->
-
 @endsection

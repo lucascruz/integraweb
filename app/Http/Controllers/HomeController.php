@@ -32,7 +32,22 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home');
+        $param = [];
+        $logo = new Logo();
+        $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
+        $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
+        $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
+
+
+        $user=Auth::user();
+
+        if($user->Patient()){
+            return view('patient.accountpage', compact('param'));
+        }elseif($user->Admin()){
+            Echo "Eres Administrador";
+        }
+        
+        return view('patient.accountpage');
     }
 
     public function contact()
@@ -59,7 +74,7 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        $user= new User();
+        $user= Auth::user();
 
         $param = [
             'login'            => false,
@@ -78,6 +93,7 @@ class HomeController extends Controller
 
         //$param = json_encode($param);
 
+
         return view('welcome', compact('param'));
     }
 
@@ -94,6 +110,7 @@ class HomeController extends Controller
 
         return view('doctor.doctor_list', compact('param'));
     }
+
 
     public function showDoctorDetail($id)
     {
@@ -117,6 +134,15 @@ class HomeController extends Controller
         $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
         $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
         $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
+
+
+        $user=Auth::user();
+
+        if($user->Patient()){
+            return view('patient.accountpage', compact('param'));
+        }elseif($user->Admin()){
+            Echo "Eres Administrador";
+        }
 
         return view('patient.accountpage', compact('param'));
     }

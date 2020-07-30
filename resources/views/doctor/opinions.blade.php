@@ -19,14 +19,16 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead class="thead-dark">
                     <tr>
-                      <th>Opinion</th>
                       <th>Médico</th>
+                      <th>Fecha</th>
+                      <th>Opinion</th>
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach ($opinions as $item)
+                  @foreach ($opinions as $item) 
                     <tr>
                         <td>{{$item->doctors_id}}</td>
+                        <td>{{$item->opinion_date}}</td>
                         <td>{{$item->opinion_content}}</td>
                     </tr>
                     @endforeach

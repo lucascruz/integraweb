@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App;
-use App\Contact;
+use App\FormItem;
 use Illuminate\Http\Request;
 
-class ContactController extends Controller
+class FormItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,6 +16,11 @@ class ContactController extends Controller
     public function index()
     {
         //
+    }
+
+    public function formitem()
+    {
+        return view('/admin/doctor/form-items');
     }
 
     /**
@@ -28,39 +33,32 @@ class ContactController extends Controller
         //
     }
 
-    public function listcontact() {
-        $contacts = App\Contact::paginate(5); 
-        return view('/admin/doctor/contact-list', compact('contacts'));
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeContact(Request $request)
+    public function storeFormItem(Request $request)
     {
-        $contactAgregar = new Contact;
+        $formitemAgregar = new FormItem();
         $request->validate([
-            'title' => 'required',
-            'email' => 'required',
-            'reason' => 'required',
+            'item' => 'required',
+            'type' => 'required',
         ]);
-        $contactAgregar->title = $request->title;
-        $contactAgregar->email = $request->email;
-        $contactAgregar->reason = $request->reason;
-        $contactAgregar->save();
-        return back()->with('agregarContact' , 'El formulario se ha enviado correctamente, te contactaremos en  breve');
+        $formitemAgregar->title = $request->title;
+        $formitemAgregar->intro_text = $request->intro_text;
+        $formitemAgregar->save();
+        return back()->with('agregarDoctorForm' , 'El doctor form se ha agregado correctamente');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Contact  $contact
+     * @param  \App\FormItem  $formItem
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show(FormItem $formItem)
     {
         //
     }
@@ -68,10 +66,10 @@ class ContactController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Contact  $contact
+     * @param  \App\FormItem  $formItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact $contact)
+    public function edit(FormItem $formItem)
     {
         //
     }
@@ -80,10 +78,10 @@ class ContactController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Contact  $contact
+     * @param  \App\FormItem  $formItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, FormItem $formItem)
     {
         //
     }
@@ -91,10 +89,10 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Contact  $contact
+     * @param  \App\FormItem  $formItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy(FormItem $formItem)
     {
         //
     }

@@ -24,7 +24,6 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>Doctor ID</th>
-                            <th>Doctor</th>
                             <th>Service</th>
                             <th>Price 1</th>
                             <th>Price 2 Face To Face</th>
@@ -36,7 +35,6 @@
                         @foreach ($services as $item)
                         <tr>
                             <td>{{$item->doctor_id}}</td>
-                            <td>{{$item->doctor->name}}</td>
                             <td>{{$item->services_id}}</td>
                             <td>{{$item->price1}}</td>
                             <td>{{$item->price2}}</td>
