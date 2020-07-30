@@ -59,14 +59,19 @@
 					<div class="menu">
 						<ul class="nav justify-content-end mb-1">
 							<li class="nav-item">
-								<a href="{{ route('login') }}">
+								<a href="">
 									Inicia Sesion
 								</a>
 							</li>
 							<li class="nav-item">|</li>
 							<li class="nav-item">
-								<a href="{{ route('register') }}">
-									Eres Nuevo? Registrate
+								<a href="">
+									Eres Nuevo?
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="">
+									Registry
 								</a>
 							</li>
 						</ul>
@@ -463,7 +468,7 @@
 									<div class="contact-sec text-center">
 										<button class="btn btn-round">
 											<h4 class="m-0">
-												DIRECCIÓN
+												CANTACO
 											</h4>
 										</button>
 										<div class="google-map my-3">
@@ -475,6 +480,7 @@
 											<p style="font-size: 22px; color: #186DAB;" class="my-3">
 												Telefonos:<br />
 												{{ $param['doctor_detail_info']->phone_number }}<br />
+
 											</p>
 										</div>
 									</div>
@@ -604,12 +610,23 @@
 											</div>
 
 											<div class="form-group">
+												<label for="seguro">Seguro</label>
+												<select class="form-control" name="insurance_id" id="insurance_id" value="">
+													<option>--- Escoja el Seguro ---</option>
+													@foreach ($insurances as $insurance)
+													<option value="{{ $insurance['id'] }}">{{ $insurance['name'] }}</option>
+													@endforeach
+													<option>Otro / No tengo seguro</option>
+												</select>
+											</div>
+
+											<div class="form-group">
 												<label for="fecha">Fecha</label>
 												<input type="datetime-local" class="form-control" name="date" id="date" value="{{old('date')}}" rows="3"></input>
 											</div>
 
 											<div class="form-group">
-												<label for="reason">Necesidad</label>
+												<label for="reason">Reason</label>
 												<textarea class="form-control" name="reason" id="reason" value="{{old('reason')}}" rows="3"></textarea>
 											</div>
 
@@ -618,7 +635,6 @@
 									</div>
 									</form>
 								</div>
-
 							</div>
 							<!-- ========== INFO DOCTOR ========== -->
 						</div>
@@ -656,7 +672,7 @@
 							</div>
 
 							<div class="form-group">
-								<input id="opinion_date" name="opinion_date" type="hidden" value="<?php echo date_default_timezone_get(); ?>">
+								<input id="opinion_date" name="opinion_date" type="hidden" value="<?php echo date_default_timezone_get();?>">
 							</div>
 
 							<div class="form-group">

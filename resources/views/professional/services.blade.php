@@ -2,7 +2,7 @@
 
 @extends('layouts.app_professional')
 
-@section('pageTitle', 'Servicios')
+@section('pageTitle', 'Scheduling')
 
 @section('head')
 <!-- Datatable -->
@@ -13,64 +13,20 @@
 @section('content')
 <!-- Begin Page Content -->
 <div class="container-fluid">
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Add Doctor Service Type</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Services</h6>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <form action="{{route('storeService')}}" method="POST">
-                            @csrf
 
-                            <div class="form-group">
-                                <input id="doctor_id" type="hidden" class="form-control" name="doctor_id" value="{{ Auth::user()->id }}" required>
-                            </div>
+            <h1>LISTADO DE MIS SERVICIOS</h1>
 
-                            <div class="form-group">
-                                <label for="seguro">Service</label>
-                                <select class="form-control" name="services_id" id="services_id" value="{{old('services_id')}}">
-                                    <option>--- Escoja el Tipo de Servicio ---</option>
-                                    @foreach ($services as $service)
-                                    <option value="{{ $service['id'] }}">{{ $service['title'] }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="title">Price Face to Face</label>
-                                <input type="number" class="form-control" name="price1" id="price1" value="{{old('price1')}}" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="title">Price 2 Telemedicina</label>
-                                <input type="number" class="form-control" name="price2" id="price2" value="{{old('price2')}}" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="title">Price 3 Other</label>
-                                <input type="number" class="form-control" name="price3" id="price3" value="{{old('price3')}}" required>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Agregar</button>
-                            <a>
-                                <a>
-                                    <a href="#" class="btn btn-success">Listado</a>
-                                    <a>
-                                        <a>
-                        </form>
-                        @if (session('agregarService'))
-                        <div class="alert alert-success mt-3">
-                            {{session('agregarService')}}
-                        </div>
-                        @endif
-                        </tbody>
-                </table>
-            </div>
         </div>
     </div>
+</div>
+
 </div>
 <!-- /.container-fluid -->
 

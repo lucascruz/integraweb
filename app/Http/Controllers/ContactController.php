@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App;
 use App\Contact;
 use Illuminate\Http\Request;
 
@@ -26,11 +25,6 @@ class ContactController extends Controller
     public function create()
     {
         //
-    }
-
-    public function listcontact() {
-        $contacts = App\Contact::paginate(5); 
-        return view('/admin/doctor/contact-list', compact('contacts'));
     }
 
     /**

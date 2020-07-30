@@ -102,16 +102,12 @@
 										</div>
 										<div class="col-md-9 col-12">
 											<div class="details">
-											<h6>Estas registrado como paciente y con esta cuenta puedes agendar citas con profesionales en salud.</h6>
-												<p>
 												<h2>
 													{{ Auth::user()->name }}
 												</h2>
-												<p>
-												<h2>
+												<h3>
 													{{ Auth::user()->email }}
-												</h2>
-												<p>
+												</h3>
 												<div class="row align-items-center">
 													<div class="col-md-4 col-6">
 														<button class="btn btn-solid">
@@ -126,8 +122,6 @@
 													<div class="col-md-4"></div>
 												</div>
 											</div>
-											<p></p>
-											<h7>Si eres profesional de salud y quieres hacer parte de esta red haz clic <a href="https://www.softwaremedico.com.co/inicio-2/software-de-historia-clinica-2-peru/" target="_blank">AQUÍ</a>.</h7>
 										</div>
 									</div>
 								</div>
