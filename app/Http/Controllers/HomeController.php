@@ -59,7 +59,7 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        $user= new User();
+        $user= Auth::user();
 
         $param = [
             'login'            => false,
@@ -77,6 +77,7 @@ class HomeController extends Controller
         $param['partner_logos'] = $logo->getParnerList();
 
         //$param = json_encode($param);
+
 
         return view('welcome', compact('param'));
     }

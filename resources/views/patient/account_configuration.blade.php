@@ -109,9 +109,21 @@
                                                             @method('PUT')
                                                             @csrf
 
+                                                            <input id="role_id" type="hidden" class="form-control{{ $errors->has('role_id') ? ' is-invalid' : '' }}" name="role_id" value="2" required>
+
                                                             <div class="form-group">
                                                                 <label for="tag">Name</label>
                                                                 <input type="text" class="form-control" name="name" id="name" value="{{$accountActualizar->name}}" required>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="tag">Cell Phone</label>
+                                                                <input type="text" class="form-control" name="cel" id="cel" value="{{$accountActualizar->cel}}" required>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="tag">City</label>
+                                                                <input type="text" class="form-control" name="city" id="city" value="{{$accountActualizar->city}}" required>
                                                             </div>
 
                                                             <div class="form-group">
@@ -124,10 +136,10 @@
                                                                 <input type="password" pattern=".{6,}" class="form-control" name="password" id="password" value="{{$accountActualizar->password}}" required>
                                                             </div>
 
-                                                            <button type="submit" class="btn btn-warning">Save</button>
+                                                            <button type="submit" class="btn btn-warning">Guardar</button>
                                                             <a>
                                                                 <a>
-                                                                    <a href="{{URL::route('account')}}" class="btn btn-danger">Back</a>
+                                                                    <a href="{{URL::route('patient_account')}}" class="btn btn-danger">Volver</a>
                                                         </form>
                                                         @if (session('updateAccount'))
                                                         <div class="alert alert-success mt-3">
@@ -155,11 +167,17 @@
                                         <div class="col-md-9 col-12">
                                             <div class="details">
                                                 <h2>
-                                                    {{ Auth::user()->name }}
+                                                   Name: {{ Auth::user()->name }}
                                                 </h2>
-                                                <h3>
-                                                    {{ Auth::user()->email }}
-                                                </h3>
+                                                <h2>
+                                                   Cell Phone: {{ Auth::user()->cel }}
+                                                </h2>
+                                                <h2>
+                                                    City: {{ Auth::user()->city }}
+                                                </h2>
+                                                <h2>
+                                                    Email: {{ Auth::user()->email }}
+                                                </h2>
                                             </div>
                                         </div>
                                     </div>

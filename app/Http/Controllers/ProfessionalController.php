@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use App\Professional;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfessionalController extends Controller
 {
@@ -86,9 +87,12 @@ class ProfessionalController extends Controller
     public function updateAccount(Request $request, $id)
     {
         $accountUpdate = App\User::findOrFail($id);
+        $accountUpdate->role_id = $request->role_id;
         $accountUpdate->name = $request->name;
+        $accountUpdate->cel = $request->cel;
+        $accountUpdate->city = $request->city;
         $accountUpdate->email = $request->email;
-        $accountUpdate->password = $request->password;
+        $accountUpdate->password = bcrypt($request->password);
         $accountUpdate->save();
         return back()->with('updateAccount' , 'Los datos han sido actualizados correctamente');
     }

@@ -10,7 +10,7 @@ class DoctorService extends Model
     public $timestamps = false;
 
     public function doctor(){
-        return $this->belongsTo('App\Doctor','id');
+        return $this->belongsTo('App\User','id');
     }
 
     public function servicestitle(){

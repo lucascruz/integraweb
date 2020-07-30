@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App;
+use App\User;
 use App\Doctor;
 use App\DoctorService;
 use App\Service;
@@ -22,17 +23,16 @@ class DoctorServiceController extends Controller
 
     public function service()
     {
-        $doctors = Doctor::all();
+        $doctors = User::all();
         $services = Service::all();
-        return view('/admin/doctor/service')->with('doctors',$doctors)->with('services',$services);
+        return view('/professional/services')->with('services',$services);
     }
 
-    public function listservice()
+    public function listservice($doctor_id)
     {
-        $doctors = Doctor::all();
-        $services = Service::all();
-        $services = App\DoctorService::paginate(5);
-        return view('/admin/doctor/service-list')->with('doctors',$doctors)->with('services',$services);
+        $services = DoctorService::find($doctor_id);
+        $services = App\DoctorService::paginate(50);
+        return view('/professional/service-list', compact('services'));
     }
 
     /**

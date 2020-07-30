@@ -68,19 +68,14 @@
 						<div class="menu">
 							<ul class="nav justify-content-end mb-1">
 								<li class="nav-item">
-									<a href="">
+									<a href="{{ route('login') }}">
 										Inicia Sesion
 									</a>
 								</li>
 								<li class="nav-item">|</li>
 								<li class="nav-item">
-									<a href="">
-										Eres Nuevo?
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="">
-										Registry
+									<a href="{{ route('register') }}">
+										Eres Nuevo? Registrate
 									</a>
 								</li>
 							</ul>

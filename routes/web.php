@@ -26,6 +26,8 @@ Route::get('/' , 'HomeController@welcome')->name('welcome');
 Route::get('/contact' , 'HomeController@contact')->name('contact');
 Route::post('/agregarContact' , 'ContactController@storeContact')->name('storeContact');
 
+Route::get('/admin/user/contact-list' , 'ContactController@listcontact')->name('contact-list');
+
 // TAGS
 
 Route::get('/admin/service/tags' , 'TagsController@tags')->name('tags');
@@ -53,6 +55,13 @@ Route::get('/service-edit/{id}' , 'DoctorServiceController@editService')->name('
 Route::put('/updateService/{id}' , 'DoctorServiceController@updateService')->name('updateService');
 Route::delete('/eliminarService/{id}' , 'DoctorServiceController@destroyService')->name('eliminarService');
 
+// DOCTOR USER
+
+Route::get('/admin/user/add-doctor-user' , 'DoctorManageController@doctoruser')->name('add-doctor-user');
+Route::post('/agregarDoctorUser' , 'DoctorManageController@storeDoctorUser')->name('storeDoctorUser');
+
+Route::get('/admin/user/doctor-user-list' , 'DoctorManageController@doctoruserlist')->name('doctor-user-list');
+
 // OPINIONS
 
 Route::get('/doctor/opinions' , 'OpinionsController@opinions')->name('opinions');
@@ -70,10 +79,13 @@ Route::get('/professional' , 'ProfessionalController@account')->name('account');
 Route::get('/professional/accountpage' , 'ProfessionalController@account')->name('account');
 Route::get('/professional/report' , 'ProfessionalController@report')->name('report');
 Route::get('/professional/scheduling' , 'ProfessionalController@scheduling')->name('scheduling');
-Route::get('/professional/services' , 'ProfessionalController@services')->name('services');
+Route::get('/professional/services' , 'DoctorServiceController@service')->name('services');
+Route::get('/professional/service-list/{id}' , 'DoctorServiceController@listservice')->name('service-list');
+
 
 Route::get('/professional/edit-account/{id}' , 'ProfessionalController@editAccount')->name('edit-account');
 Route::put('/professional/updateAccount/{id}' , 'ProfessionalController@updateAccount')->name('updateAccount');
+
 
 // INSURANCE
 

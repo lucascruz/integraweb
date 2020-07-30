@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name','image','email','password','cel','city','role_id'
     ];
 
     /**
@@ -39,18 +39,36 @@ class User extends Authenticatable
 
     public function role()
     {
-
         return $this->belongsTo('App\Role');
     }
 
     public function Admin()
     {
+        $role = new Role();
 
         if ($this->role->role_name == 'admin') {
-
             return true;
         }
+        return false;
+    }
 
+    public function Patient()
+    {
+        $role = new Role();
+
+        if ($this->role->role_name == 'patient') {
+            return true;
+        }
+        return false;
+    }
+
+    public function Professional()
+    {
+        $role = new Role();
+
+        if ($this->role->role_name == 'professional') {
+            return true;
+        }
         return false;
     }
 }

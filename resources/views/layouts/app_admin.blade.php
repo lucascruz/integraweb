@@ -535,12 +535,20 @@
                                     <a hidden @if(request()->segment($count) == 'type-list') class="active"
                                         @endif href="{{ url('/admin/user/type-list') }}"></a></li>
                                 <li>
-                                    <a @if(request()->segment($count) == 'service') class="active"
+                                    <a hidden @if(request()->segment($count) == 'service') class="active"
                                         @endif href="{{ url('/admin/user/service') }}">Doctor Services</a></li>
                                 <li>
                                     <a hidden @if(request()->segment($count) == 'service-list') class="active"
                                         @endif href="{{ url('/admin/user/service-list') }}"></a></li>
                                 <li>
+                                    <a @if(request()->segment($count) == 'add-doctor-user') class="active"
+                                        @endif href="{{ url('/admin/user/add-doctor-user') }}">Add Doctor User</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'doctor-user-list') class="active"
+                                        @endif href="{{ url('/admin/user/doctor-user-list') }}">Doctor User List</a></li>
+                                <li>
+                                    <a @if(request()->segment($count) == 'contact-list') class="active"
+                                        @endif href="{{ url('/admin/user/contact-list') }}">Contact Messages</a></li>
 
                                 <!-- <li>
                                 <a @if(request()->segment(1) == 'user-list') class="active"
