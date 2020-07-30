@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+
 use App;
 use App\User;
 use App\Doctor;
@@ -25,13 +27,13 @@ class DoctorServiceController extends Controller
     {
         $doctors = User::all();
         $services = Service::all();
-        return view('/professional/services')->with('services',$services);
+        return view('/professional/services')->with('services', $services);
     }
 
-    public function listservice($doctor_id)
+    public function listservice($id)
     {
-        $services = DoctorService::find($doctor_id);
-        $services = App\DoctorService::paginate(50);
+        // $services = App\DoctorService::findOrFail($id);
+        $services = DoctorService::get();
         return view('/professional/service-list', compact('services'));
     }
 
@@ -92,7 +94,7 @@ class DoctorServiceController extends Controller
         $doctors = Doctor::all();
         $services = Service::all();
         $serviceActualizar = App\DoctorService::findOrFail($id);
-        return view('/admin/doctor/service-edit')->with('serviceActualizar',$serviceActualizar)->with('doctors',$doctors)->with('services',$services);
+        return view('/admin/doctor/service-edit')->with('serviceActualizar', $serviceActualizar)->with('doctors', $doctors)->with('services', $services);
     }
 
     /**
@@ -124,6 +126,6 @@ class DoctorServiceController extends Controller
     {
         $serviceEliminar = App\DoctorService::findOrFail($id);
         $serviceEliminar->delete();
-        return back()->with('eliminarService' , 'El service ha sido eliminado correctamente');        
+        return back()->with('eliminarService', 'El service ha sido eliminado correctamente');
     }
 }

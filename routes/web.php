@@ -98,9 +98,27 @@ Route::delete('/eliminarInsurance/{id}' , 'InsuranceController@destroyInsurance'
 
 // DOCTOR LIST
 
-Route::get('/doctor_list', 'HomeController@showDoctorList')->name('doctor_list');;
+Route::get('/doctor_list', 'HomeController@showDoctorList')->name('doctor_list');
 Route::get('/doctor_detail/{id}', 'HomeController@showDoctorDetail')->name('doctor.details');
 Route::get('/patient_account' , 'HomeController@showPatientAccount')->name('patient_account');
+
+// BUSCADOR DOCTOR LIST
+
+
+// DOCTOR FORMS
+
+Route::get('/admin/user/doctors-forms' , 'DoctorFormController@doctorform')->name('doctorform');
+Route::post('/agregarDoctorForm' , 'DoctorFormController@storeDoctorForm')->name('storeDoctorForm');
+Route::get('/admin/user/doctor-form-list' , 'DoctorFormController@listdoctorform')->name('doctor-form-list');
+Route::get('/doctor-form-edit/{id}' , 'DoctorFormController@editDoctorForm')->name('doctor-form-edit');
+Route::put('/updateDoctorForm/{id}' , 'DoctorFormController@updateDoctorForm')->name('updateDoctorForm');
+Route::delete('/eliminarDoctorForm/{id}' , 'DoctorFormController@destroyDoctorForm')->name('eliminarDoctorForm');
+
+
+// FORM ITEMS
+
+Route::get('/admin/user/form-items' , 'FormItemController@formitem')->name('formitem');
+
 
 
 Route::get('/admin', 'HomeController@manageLogos');
@@ -176,13 +194,3 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

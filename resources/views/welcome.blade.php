@@ -56,29 +56,52 @@
 		<div class="banner-section w-100">
 			<div class="white-box"></div>
 			<div class="blue-box"></div>
-			<div class="lightblue-box">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-12">
-							<div class="menu">
-								<ul class="nav mb-1">
-									<li class="nav-item">
-										<a href="{{ route('login') }}">
-											Iniciar Sesión
-										</a>
-									</li>
-									<li class="nav-item"> | </li>
-									<li class="nav-item">
-										<a href="{{ route('register') }}">
-											¿Eres Nuevo?   Regístrate
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<section>
+		<div class="lightblue-box">
+
+		<nav class="navbar navbar-expand-lg navbar-light lightblue-box"">
+            <div class="container">
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                       <font color="red">Cerrar Sesión</font>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+		</div>
+	</section>
 			<div class="row p-0 m-0">
 				<div class="col-4 p-0">
 					<div class="title"></div>
@@ -104,7 +127,7 @@
 					<div class="row mt-0 mt-md-5">
 						<div class="col-6 text-center">
 							<button class="btn btn-solid">
-							<a href="{{ url('/doctor_list') }}">	
+							<a href="{{ url('/login') }}">	
 								<h2>SOY PACIENTE</h2>
 							</a>
 							</button>
