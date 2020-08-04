@@ -322,14 +322,57 @@
                         <!-- end::settings -->
 
                         <!-- begin::user menu -->
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link" title="User menu" data-sidebar-target="#user-menu">
-                                <span class="mr-2 d-sm-inline d-none">{{ Auth::user()->name }}</span>
-                                <figure class="avatar avatar-sm">
-                                    <img src="{{ url('public/assets/media/image/user/women_avatar1.jpg') }}" class="rounded-circle" alt="avatar">
-                                </figure>
-                            </a>
-                        </li>
+                        <section>
+		<div class="lightblue-box">
+
+		<nav class="navbar navbar-expand-lg navbar-light lightblue-box"">
+            <div class="container">
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ route('account') }}">
+                                       <font color="blue">Mi Cuenta</font>
+									</a>
+									
+								<a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                       <font color="blue">Cerrar Sesión</font>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+		</div>
+	</section>
+
                         <!-- end::user menu -->
 
                     </ul>
@@ -498,23 +541,23 @@
                             <ul>
                                 <?php $count = count(Request::segments()); ?>
                                 <li class="navigation-divider d-flex align-items-center">
-                                    <i class="mr-2" data-feather="users"></i> Professional Manage
+                                    <i class="mr-2" data-feather="users"></i> Modulo Profesional
                                 </li>
                                 <li>
                                     <a hidden @if(request()->segment($count) == 'professional') class="active"
                                         @endif href="{{ url('/professional/accountpage') }}">professional</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'accountpage') class="active"
-                                        @endif href="{{ url('/professional/accountpage') }}">Account</a></li>
+                                        @endif href="{{ url('/professional/accountpage') }}">Cuenta</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'scheduling') class="active"
-                                        @endif href="{{ url('/professional/scheduling') }}">Scheduling</a></li>
+                                        @endif href="{{ url('/professional/scheduling') }}">Agenda</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'report') class="active"
-                                        @endif href="{{ url('/professional/report') }}">Report</a></li>
+                                        @endif href="{{ url('/professional/report') }}">Reportes</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'services') class="active"
-                                        @endif href="{{ url('/professional/services') }}">Services</a></li>
+                                        @endif href="{{ url('/professional/services') }}">Servicios</a></li>
                                 <li>
                                     <a hidden @if(request()->segment($count) == 'services-list/{id}' ) class="active"
                                         @endif href="{{route('service-list' , Auth::user()->id)}}">Services List</a></li>

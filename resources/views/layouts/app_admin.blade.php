@@ -315,15 +315,52 @@
                         <!-- end::settings -->
 
                         <!-- begin::user menu -->
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link" title="User menu" data-sidebar-target="#user-menu">
-                                <span class="mr-2 d-sm-inline d-none">{{ Auth::user()->name }}</span>
-                                <figure class="avatar avatar-sm">
-                                    <img src="{{ url('public/assets/media/image/user/women_avatar1.jpg') }}" class="rounded-circle" alt="avatar">
-                                </figure>
-                            </a>
-                            
-                        </li>
+                        <section>
+		<div class="lightblue-box">
+
+		<nav class="navbar navbar-expand-lg navbar-light lightblue-box"">
+            <div class="container">
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">						
+								<a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                       <font color="blue">Cerrar Sesión</font>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+		</div>
+	</section>
                         <!-- end::user menu -->
 
                     </ul>
@@ -425,16 +462,16 @@
                                    @endif href="{{ url('ecommerce-dashboard') }}">Dashboard</a></li> -->
                                 <li>
                                     <a @if(request()->segment($count) == 'admin' || request()->segment($count) == 'media' || request()->segment($count) == 'logo') class="active"
-                                        @endif href="{{ url('admin/media/logo') }}">Logo</a></li>
+                                        @endif href="{{ url('admin/media/logo') }}">Logos</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'image') class="active"
-                                        @endif href="{{ url('admin/media/image') }}">Images</a></li>
+                                        @endif href="{{ url('admin/media/image') }}">Imagenes</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'video') class="active"
                                         @endif href="{{ url('admin/media/video') }}">Videos</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'partner') class="active"
-                                        @endif href="{{ url('admin/media/partner') }}">Partner Companies</a></li>
+                                        @endif href="{{ url('admin/media/partner') }}">Patrocinadores</a></li>
 
                                 <li>
                                     <a @if(request()->segment($count) == 'benefit') class="active"
@@ -512,19 +549,19 @@
                                 </li>
                                 <li>
                                     <a @if(request()->segment($count) == 'doctor') class="active"
-                                        @endif href="{{ url('/admin/user/doctor') }}">Doctors</a></li>
+                                        @endif href="{{ url('/admin/user/doctor') }}">Médicos</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'city') class="active"
-                                        @endif href="{{ url('/admin/user/city') }}">City Catalog</a></li>
+                                        @endif href="{{ url('/admin/user/city') }}">Ciudades</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'speciality') class="active"
-                                        @endif href="{{ url('/admin/user/speciality') }}">Speciality Catalog</a></li>
+                                        @endif href="{{ url('/admin/user/speciality') }}">Especialidades</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'formation') class="active"
-                                        @endif href="{{ url('/admin/user/formation') }}">Formation Catalog</a></li>
+                                        @endif href="{{ url('/admin/user/formation') }}">Formación</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'type') class="active"
-                                        @endif href="{{ url('/admin/user/type') }}">Doctor Type</a></li>
+                                        @endif href="{{ url('/admin/user/type') }}">Tipo de Doctor</a></li>
                                 <li>
                                     <a hidden @if(request()->segment($count) == 'type-list') class="active"
                                         @endif href="{{ url('/admin/user/type-list') }}"></a></li>
@@ -536,13 +573,13 @@
                                         @endif href="{{ url('/admin/user/service-list') }}"></a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'add-doctor-user') class="active"
-                                        @endif href="{{ url('/admin/user/add-doctor-user') }}">Add Doctor User</a></li>
+                                        @endif href="{{ url('/admin/user/add-doctor-user') }}">Add Usuario Profesional</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'doctor-user-list') class="active"
-                                        @endif href="{{ url('/admin/user/doctor-user-list') }}">Doctor User List</a></li>
+                                        @endif href="{{ url('/admin/user/doctor-user-list') }}">Listado Profesionales</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'contact-list') class="active"
-                                        @endif href="{{ url('/admin/user/contact-list') }}">Contact Messages</a></li>
+                                        @endif href="{{ url('/admin/user/contact-list') }}">Mensajes Contacto</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'doctors-forms') class="active"
                                         @endif href="{{ url('/admin/user/doctors-forms') }}">Doctors Forms</a></li>
@@ -654,16 +691,16 @@
                                 </li>
                                 <li>
                                     <a @if(request()->segment($count) == 'services') class="active"
-                                        @endif href="{{ route('service.manage') }}">Services</a></li>
+                                        @endif href="{{ route('service.manage') }}">Servicios Médicos</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'service_type') class="active"
-                                        @endif href="{{ route('service.type') }}">Service Type</a></li>
+                                        @endif href="{{ route('service.type') }}">Tipo de Servicio</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'tags') class="active"
-                                        @endif href="{{ route('tags') }}">Tags</a></li>
+                                        @endif href="{{ route('tags') }}">Etiquetas</a></li>
                                 <li>
                                     <a @if(request()->segment($count) == 'insurance') class="active"
-                                        @endif href="{{ route('insurance') }}">Insurance</a></li>
+                                        @endif href="{{ route('insurance') }}">Seguros</a></li>
                                 <li>
                                     <a hidden @if(request()->segment($count) == 'tags-list') class="active"
                                         @endif href="{{ route('tags-list') }}"></a></li>

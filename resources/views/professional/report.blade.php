@@ -2,7 +2,7 @@
 
 @extends('layouts.app_professional')
 
-@section('pageTitle', 'Scheduled Appointments')
+@section('pageTitle', 'Citas Agendadas')
 
 @section('head')
 <!-- Datatable -->
@@ -17,7 +17,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Scheduled Appointments</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Citas Agendadas</h6>
         </div>
         <div class="card-body">
 

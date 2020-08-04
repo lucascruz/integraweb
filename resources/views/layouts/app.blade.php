@@ -37,9 +37,9 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                        Telemedicina Colombia
+                <img src="{{ url('public'). '/images/page_logos/logo telemedicina. white and blue2.png' }}" alt="profile Pic" height="50" width="220">               
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -54,11 +54,12 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                                <a class="btn btn-primary" href="{{ route('login') }}">Iniciar Sesión</a>
                             </li>
+                            <div>&nbsp;</div>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+                                    <a class="btn btn-primary" href="{{ route('register') }}">Registrarse</a>
                                 </li>
                             @endif
                         @else

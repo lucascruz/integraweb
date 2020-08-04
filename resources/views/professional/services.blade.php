@@ -16,7 +16,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Add Doctor Service Type</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Agregar Servicio Profesional</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -30,7 +30,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="seguro">Service</label>
+                                <label for="seguro">Servicio</label>
                                 <select class="form-control" name="services_id" id="services_id" value="{{old('services_id')}}">
                                     <option>--- Escoja el Tipo de Servicio ---</option>
                                     @foreach ($services as $service)
@@ -40,17 +40,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="title">Price Face to Face</label>
+                                <label for="title">Precio Presencial</label>
                                 <input type="number" class="form-control" name="price1" id="price1" value="{{old('price1')}}" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="title">Price 2 Telemedicina</label>
+                                <label for="title">Precio Telemedicina</label>
                                 <input type="number" class="form-control" name="price2" id="price2" value="{{old('price2')}}" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="title">Price 3 Other</label>
+                                <label for="title">Precio Otro</label>
                                 <input type="number" class="form-control" name="price3" id="price3" value="{{old('price3')}}" required>
                             </div>
 

@@ -140,9 +140,9 @@ class HomeController extends Controller
         if($user->Patient()){
             return view('patient.accountpage', compact('param'));
         }elseif($user->Professional()){
-            return redirect('/professional');
+           return redirect('/professional'); // echo "Eres Professional";
         }elseif($user->Admin()){
-            return redirect('/admin');
+            return redirect('/admin'); // echo "Eres Admin"; 
         }
 
         return view('patient.accountpage', compact('param'));

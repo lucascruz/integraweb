@@ -80,19 +80,25 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+								</a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+								<a class="dropdown-item" href="{{ route('patient_account') }}">
+                                       <font color="blue">Mi Cuenta</font>
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                       <font color="red">Cerrar Sesión</font>
-                                    </a>
+                                       <font color="blue">Cerrar Sesión</font>
+									</a>			
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
+								</div>
+								
                             </li>
                         @endguest
                     </ul>
@@ -134,7 +140,7 @@
 						</div>
 						<div class="col-6 text-center">
 							<button class="btn btn-solid">
-								<a href="https://www.softwaremedico.com.co/inicio-2/software-de-historia-clinica-2-peru/">
+								<a href="https://www.softwaremedico.com.co/inicio-2/software-telemedicina/">
 									<h2 style="padding-left: 5px;">SOY PROFESIONAL</h2>
 								</a>
 							</button>
@@ -356,7 +362,7 @@
 				<div class="owl-carousel align-items-center" id="sponsor">
 					@foreach($param['partner_logos'] as $row)	
 						<div class="sponsors">
-							<img src="{{ url('public/images/partner_logos'). '/'. $row->title }}" height="40">
+							<img src="{{ url('public/images/partner_logos'). '/'. $row->title }}">
 						</div>
 					@endforeach
 				</div>

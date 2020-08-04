@@ -83,10 +83,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+								<a class="dropdown-item" href="{{ route('patient_account') }}">
+                                       <font color="blue">Mi Cuenta</font>
+									</a>
+									
+								<a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                       <font color="red">Cerrar Sesión</font>
+                                       <font color="blue">Cerrar Sesión</font>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

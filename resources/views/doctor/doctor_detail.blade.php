@@ -28,7 +28,7 @@
 									</div>
 									<div class="col-md-2 col-12 py-2">
 										<button class="btn-search">
-											<a href="">
+											<a href="{{ url('/doctor_list') }}">
 												VAMOS
 											</a>
 										</button>
@@ -78,10 +78,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ route('patient_account') }}">
+                                       <font color="blue">Mi Cuenta</font>
+									</a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                       <font color="red">Cerrar Sesión</font>
+                                       <font color="blue">Cerrar Sesión</font>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
