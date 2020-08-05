@@ -29,6 +29,44 @@
                     }
                 }
             },
+
+            dateClick:function(info){
+                $('#exampleModal').modal('toggle');
+                console.log(info);
+                calendar.addEvent({ title:"Evento x", date:info.dateStr });
+                
+            
+            },
+
+            eventClick:function(info){
+                console.log(info);
+                console.log(info.event.title);
+                console.log(info.event.start);
+
+                console.log(info.event.end);
+                console.log(info.event.textColor);
+                console.log(info.event.backgroundColor);
+
+                console.log(info.event.extendedProps.descripcion);
+            },
+
+            events:[
+                {
+                    title:"Mi evento 1",
+                    start:"2020-08-08 12:30:00",
+                    descripcion:"Descripcion evento 1"
+                },{
+                    title:"Mi evento 2",
+                    start:"2020-08-09 12:30:00",
+                    end:"2020-08-12 12:30:00",
+                    color:"#FFCCAA",
+                    textColor:"#000000",
+                    descripcion:"Descripcion evento 2"
+                }
+
+            ],
+
+
             initialView: 'dayGridMonth'
 
         });
