@@ -15,7 +15,7 @@
                 <div class="card-header">{{ __('Registro') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" onsubmit="return valida(this)">
                         @csrf
 
                         <h6><div class="text-center"><b>Debes registrarte para poder agendar citas y hacer uso completo de la plataforma</b></div></h6>
@@ -23,7 +23,7 @@
                             <input id="role_id" type="hidden" class="form-control{{ $errors->has('role_id') ? ' is-invalid' : '' }}" name="role_id" value="2" required>
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre y Apellidos') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre y Apellidos*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="cel" class="col-md-4 col-form-label text-md-right">{{ __('Celular o Telefono') }}</label>
+                                <label for="cel" class="col-md-4 col-form-label text-md-right">{{ __('Celular o Telefono*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="cel" type="text" class="form-control" name="cel" value="{{ old('cel') }}" required>
@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Ciudad') }}</label>
+                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Ciudad*') }}</label>
 
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="city" id="city" value="{{old('city')}}" required>
@@ -58,7 +58,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -86,7 +86,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar contraseña') }}</label>
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar contraseña*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
