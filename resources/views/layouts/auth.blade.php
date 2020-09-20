@@ -7,13 +7,13 @@
     <title>Nago - Admin & Dashboard HTML Template</title>
 
     <!-- Favicon -->
-    <!-- <link rel="shortcut icon" href="{{ url('public/assets/media/image/favicon.png') }}"/> -->
+    <!-- <link rel="shortcut icon" href="{{ url('/assets/media/image/favicon.png') }}"/> -->
 
     <!-- Plugin styles -->
-    <link rel="stylesheet" href="{{ url('public/vendors/bundle.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('/vendors/bundle.css') }}" type="text/css">
 
     <!-- App styles -->
-    <link rel="stylesheet" href="{{ url('public/assets/css/app.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('/assets/css/app.min.css') }}" type="text/css">
 </head>
 <body class="form-membership">
 
@@ -30,9 +30,9 @@
 </div>
 
 <!-- Plugin scripts -->
-<script src="{{ url('public/vendors/bundle.js') }}"></script>
+<script src="{{ url('/vendors/bundle.js') }}"></script>
 
 <!-- App scripts -->
-<script src="{{ url('public/assets/js/app.min.js') }}"></script>
+<script src="{{ url('/assets/js/app.min.js') }}"></script>
 </body>
 </html>

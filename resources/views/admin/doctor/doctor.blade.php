@@ -4,7 +4,7 @@
 
 @section('head')
     <!-- Select2 -->
-    <link rel="stylesheet" href="{{ url('public/vendors/select2/css/select2.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('/vendors/select2/css/select2.min.css') }}" type="text/css">
 @endsection
 
 @section('content')
@@ -43,7 +43,7 @@
                                 <div class="d-flex justify-content-around">
                                     <div>
                                         <figure class="avatar mr-3">
-                                            <img src="{{ url('public/images/doctor_images'). '/'. $row->image }}"
+                                            <img src="{{ url('/images/doctor_images'). '/'. $row->image }}"
                                              class="rounded"
                                              alt="avatar">
                                         </figure>
@@ -123,7 +123,7 @@
                                 <div class="d-flex justify-content-around">
                                     <div>
                                         <figure class="avatar mr-3">
-                                            <img src="{{ url('public/images/doctor_images'). '/'. $row->image }}"
+                                            <img src="{{ url('/images/doctor_images'). '/'. $row->image }}"
                                              class="rounded"
                                              alt="avatar">
                                         </figure>
@@ -202,7 +202,7 @@
                                 <div class="d-flex justify-content-around">
                                     <div>
                                         <figure class="avatar mr-3">
-                                            <img src="{{ url('public/images/doctor_images'). '/'. $row->image }}"
+                                            <img src="{{ url('/images/doctor_images'). '/'. $row->image }}"
                                              class="rounded"
                                              alt="avatar">
                                         </figure>
@@ -331,7 +331,7 @@
                                             <label for="imageUpload"></label>
                                         </div>
                                         <div class="avatar-preview">
-                                            <img id="imagePreview" src="{{ url('public/images/doctor_images'). '/'. $row->image }}" width="100%" alt="  Select Image" style="padding-left: 1 0px;">
+                                            <img id="imagePreview" src="{{ url('/images/doctor_images'). '/'. $row->image }}" width="100%" alt="  Select Image" style="padding-left: 1 0px;">
                                         </div>
                                     </div>
 
@@ -417,7 +417,7 @@
                                     <div class="col-md-6">
                                         <div class="avatar-upload">
                                             <div class="avatar-preview">
-                                                <img id="imagePreview_advance" src="{{ url('/public'). '/images/dr.jpg' }}" width="100%" alt="  Select Image" style="padding-left: 1 0px;">
+                                                <img id="imagePreview_advance" src="{{ url('/'). '/images/dr.jpg' }}" width="100%" alt="  Select Image" style="padding-left: 1 0px;">
                                             </div>
                                         </div>
                                     </div>
@@ -471,28 +471,28 @@
 @section('script')
 
     <!-- Apex chart -->
-    <script src="{{ url('public/vendors/charts/apex/apexcharts.min.js') }}"></script>
+    <script src="{{ url('/vendors/charts/apex/apexcharts.min.js') }}"></script>
 
     <!-- Chartjs -->
-    <script src="{{ url('public/vendors/charts/chartjs/chart.min.js') }}"></script>
+    <script src="{{ url('/vendors/charts/chartjs/chart.min.js') }}"></script>
 
     <!-- Circle progress -->
-    <script src="{{ url('public/vendors/circle-progress/circle-progress.min.js') }}"></script>
+    <script src="{{ url('/vendors/circle-progress/circle-progress.min.js') }}"></script>
 
     <!-- Datepicker -->
-    <script src="{{ url('public/vendors/datepicker/daterangepicker.js') }}"></script>
+    <script src="{{ url('/vendors/datepicker/daterangepicker.js') }}"></script>
 
     <!-- Peity -->
-    <script src="{{ url('public/vendors/charts/peity/jquery.peity.min.js') }}"></script>
-    <script src="{{ url('public/assets/js/examples/charts/peity.js') }}"></script>
+    <script src="{{ url('/vendors/charts/peity/jquery.peity.min.js') }}"></script>
+    <script src="{{ url('/assets/js/examples/charts/peity.js') }}"></script>
 
     <!-- Dashboard scripts -->
-    <script src="{{ url('public/assets/js/examples/dashboard.js') }}"></script>  
+    <script src="{{ url('/assets/js/examples/dashboard.js') }}"></script>  
 
     <!-- Multi Select Scripts -->
 
-    <script src="{{ url('public/vendors/select2/js/select2.min.js') }}"></script>
-    <script src="{{ url('public/assets/js/examples/select2.js') }}"></script>
+    <script src="{{ url('/vendors/select2/js/select2.min.js') }}"></script>
+    <script src="{{ url('/assets/js/examples/select2.js') }}"></script>
 
 
 

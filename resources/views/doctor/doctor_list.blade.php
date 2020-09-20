@@ -14,7 +14,7 @@
 					<div class="col-md-9 col-12 banner-sec">
 						<div class="row align-items-center">
 							<div class="col-md-3 col-12 py-2">
-								<img  src="{{ url('public'). '/'.  $param['medecina_logo_path'] }}" class="img-fluid">
+								<img  src="{{ url(''). '/'.  $param['medecina_logo_path'] }}" class="img-fluid">
 							</div>
 							<div class="col-md-9 col-12 py-2">
 								<div class="box">
@@ -46,7 +46,7 @@
 					</div>
 					<div class="col-md-3 col-12">
 						<div class="logo-sec">
-							<img  src="{{ url('public'). '/'.  $param['medecina_logo_header_footer_path'] }}" class="img-fluid">
+							<img  src="{{ url(''). '/'.  $param['medecina_logo_header_footer_path'] }}" class="img-fluid">
 						</div>
 					</div>
 				</div>
@@ -157,7 +157,7 @@
 					</div>
 					<div class="col-md-3 col-12 py-2">
 						<div class="google-map-img">
-							<img src="{{ url('public/images/By map button.png') }}" class="img-fluid">
+							<img src="{{ url('/images/By map button.png') }}" class="img-fluid">
 						</div>
 					</div>
 				</div>
@@ -177,7 +177,7 @@
 							@foreach($param['doctor_list'] as $row)
 							<div class="team-box text-center margin-section-one">
 								<div class="team-img">
-								<a href="{{ route('doctor.details', $row->id) }}"><img src="{{ url('public/images/doctor_images'). '/'. $row->image }}" class="img-fluid" alt="images" /></a>
+								<a href="{{ route('doctor.details', $row->id) }}"><img src="{{ url('/images/doctor_images'). '/'. $row->image }}" class="img-fluid" alt="images" /></a>
 								</div>
 								<div class="margin-section">
 									<h2>
@@ -192,7 +192,7 @@
 										<b>{{ $row->university }}</b>
 									</h3>
 									<div class="d-flex justify-content-center">
-										<img src="{{ url('public/images/price_image.png') }}" class="img-fluid" alt="images" style="width:60px;"/>
+										<img src="{{ url('/images/price_image.png') }}" class="img-fluid" alt="images" style="width:60px;"/>
 										<h3 style="padding-top: 20px;">COP $100.000</h3>
 									</div>									
 									<h3 style="color:rgb(137,141,143);">
@@ -222,7 +222,7 @@
 				<div class="row align-items-center">
 					<div class="col-md-3 col-12">
 						<div class="foot-logo">
-							<img  src="{{ url('public'). '/'.  $param['medecina_logo_middle_path'] }}" class="img-fluid">
+							<img  src="{{ url(''). '/'.  $param['medecina_logo_middle_path'] }}" class="img-fluid">
 						</div>
 					</div>
 					<div class="col-md-6 col-12">
@@ -301,7 +301,6 @@
 	var APP_URL = {!! json_encode(url('/')) !!};
 
     $(document).ready(function(){
-
         $("#doctor").owlCarousel({
         loop:true,
         autoplay:true,

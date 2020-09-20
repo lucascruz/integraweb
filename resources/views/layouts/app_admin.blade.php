@@ -9,17 +9,17 @@
     <title>Telemedicina Admin</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url('public/assets/media/image/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ url('/assets/media/image/favicon.png') }}" />
 
     <!-- Plugin styles -->
-    <link rel="stylesheet" href="{{ url('public/vendors/bundle.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('/vendors/bundle.css') }}" type="text/css">
 
     @yield('head')
 
     <!-- App styles -->
-    <link rel="stylesheet" href="{{ url('public/assets/css/app.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('/assets/css/app.min.css') }}" type="text/css">
 
-    <link rel="stylesheet" href="{{ url('public/css/image-preview.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('/css/image-preview.css') }}" type="text/css">
 
 </head>
 
@@ -36,9 +36,9 @@
 
         <!-- BEGIN: User Menu -->
         <div class="sidebar" id="user-menu">
-            <div class="py-4 text-center" data-backround-image="{{ url('public/assets/media/image/image1.jpg') }}">
+            <div class="py-4 text-center" data-backround-image="{{ url('/assets/media/image/image1.jpg') }}">
                 <figure class="avatar avatar-lg mb-3 border-0">
-                    <img src="{{ url('public/assets/media/image/user/women_avatar1.jpg') }}" class="rounded-circle" alt="image">
+                    <img src="{{ url('/assets/media/image/user/women_avatar1.jpg') }}" class="rounded-circle" alt="image">
                 </figure>
                 <h5 class="d-flex align-items-center justify-content-center">{{ Auth::user()->name }}</h5>
                 <div>
@@ -178,8 +178,8 @@
                 </div>
                 <div class="header-logo">
                     <a href="{{ url('/') }}">
-                        <img class="logo" src="{{ url('public/assets/media/image/logo.png') }}" alt="logo" style="width: 80%;">
-                        <!-- <img class="logo-light" src="{{ url('public/assets/media/image/logo-light.png') }}" alt="light logo"> -->
+                        <img class="logo" src="{{ url('/assets/media/image/logo.png') }}" alt="logo" style="width: 80%;">
+                        <!-- <img class="logo-light" src="{{ url('/assets/media/image/logo-light.png') }}" alt="light logo"> -->
                     </a>
                 </div>
             </div>
@@ -603,7 +603,7 @@
                                 <div class="avatar-group ml-4">
                                     <figure class="avatar avatar-sm">
                                         <a href="#" title="Krisha McAlees" data-toggle="tooltip">
-                                            <img src="{{ url('public/assets/media/image/user/women_avatar4.jpg') }}" class="rounded-circle"
+                                            <img src="{{ url('/assets/media/image/user/women_avatar4.jpg') }}" class="rounded-circle"
                                                  alt="avatar">
                                         </a>
                                     </figure>
@@ -614,13 +614,13 @@
                                     </figure>
                                     <figure class="avatar avatar-sm">
                                         <a href="#" title="Hilton Dew" data-toggle="tooltip">
-                                            <img src="{{ url('public/assets/media/image/user/man_avatar3.jpg') }}" class="rounded-circle"
+                                            <img src="{{ url('/assets/media/image/user/man_avatar3.jpg') }}" class="rounded-circle"
                                                  alt="avatar">
                                         </a>
                                     </figure>
                                     <figure class="avatar avatar-sm">
                                         <a href="#" title="Mellie Smittoune" data-toggle="tooltip">
-                                            <img src="{{ url('public/assets/media/image/user/man_avatar1.jpg') }}" class="rounded-circle"
+                                            <img src="{{ url('/assets/media/image/user/man_avatar1.jpg') }}" class="rounded-circle"
                                                  alt="avatar">
                                         </a>
                                     </figure>
@@ -631,7 +631,7 @@
                                     </figure>
                                     <figure class="avatar avatar-sm">
                                         <a href="#" title="Krisha McAlees" data-toggle="tooltip">
-                                            <img src="{{ url('public/assets/media/image/user/women_avatar2.jpg') }}" class="rounded-circle"
+                                            <img src="{{ url('/assets/media/image/user/women_avatar2.jpg') }}" class="rounded-circle"
                                                  alt="avatar">
                                         </a>
                                     </figure>
@@ -652,7 +652,7 @@
                                 <div class="avatar-group ml-4">
                                     <figure class="avatar avatar-sm">
                                         <a href="#" title="Krisha McAlees" data-toggle="tooltip">
-                                            <img src="{{ url('public/assets/media/image/user/women_avatar5.jpg') }}" class="rounded-circle"
+                                            <img src="{{ url('/assets/media/image/user/women_avatar5.jpg') }}" class="rounded-circle"
                                                  alt="avatar">
                                         </a>
                                     </figure>
@@ -663,13 +663,13 @@
                                     </figure>
                                     <figure class="avatar avatar-sm">
                                         <a href="#" title="Hilton Dew" data-toggle="tooltip">
-                                            <img src="{{ url('public/assets/media/image/user/man_avatar5.jpg') }}" class="rounded-circle"
+                                            <img src="{{ url('/assets/media/image/user/man_avatar5.jpg') }}" class="rounded-circle"
                                                  alt="avatar">
                                         </a>
                                     </figure>
                                     <figure class="avatar avatar-sm">
                                         <a href="#" title="Mellie Smittoune" data-toggle="tooltip">
-                                            <img src="{{ url('public/assets/media/image/user/man_avatar2.jpg') }}" class="rounded-circle"
+                                            <img src="{{ url('/assets/media/image/user/man_avatar2.jpg') }}" class="rounded-circle"
                                                  alt="avatar">
                                         </a>
                                     </figure>
@@ -734,12 +734,12 @@
     <!-- end::main -->
 
     <!-- Plugin scripts -->
-    <script src="{{ url('public/vendors/bundle.js') }}"></script>
+    <script src="{{ url('/vendors/bundle.js') }}"></script>
 
     @yield('script')
 
     <!-- App scripts -->
-    <script src="{{ url('public/assets/js/app.min.js') }}"></script>
+    <script src="{{ url('/assets/js/app.min.js') }}"></script>
 
 </body>
 
