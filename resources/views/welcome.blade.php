@@ -160,18 +160,18 @@
 										<p class="mb-2 text-light">
 											Busco un:
 										</p>
-										<input type="text" placeholder="EJE. DERMATOLOGO" name=""> 
+										<input id="specialization" type="text" placeholder="EJE. DERMATOLOGO" name=""> 
 									
 									</div>
 									<div class="col-5 p-0 p-md-2">
 										<p class="mb-2 text-light">
 											En:
 										</p>
-										<input type="text" placeholder="BUCARAMANGA" name="">
+										<input id="city" type="text" placeholder="BUCARAMANGA" name="">
 									</div>
 									<div class="col-md-2 col-12 p-0 p-md-2">
-										<button class="btn-search">
-											<a href="{{ url('/doctor_list') }}" style="font-size: 18px;">
+										<button id="doctor-list-search" class="btn-search">
+											<a style="font-size: 18px;">
 												VAMOS
 											</a>
 										</button>
@@ -425,6 +425,7 @@
 
 @section('custom_js')
 	<script>
+		var APP_URL = {!! json_encode(url('/')) !!};
 	    $(document).ready(function(){
 
 		//   $.ajaxSetup({
@@ -458,6 +459,14 @@
 	            	}
 	            }
 	      	});
+			  
+		 function goToDoctorList() {
+			const city = $('#city').val();
+			const specialization = $('#specialization').val();
+			window.location.href = APP_URL + '/doctor_list?city='+city+'&specialization='+specialization;
+		 }
+		 $('#doctor-list-search').click(goToDoctorList);
+
 	    });
 	</script>
 @endsection

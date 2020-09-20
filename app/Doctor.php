@@ -10,10 +10,21 @@ class Doctor extends Model
     protected $guarded = [];
 
     ///// ============  Doctor Find Part (For Homepage) =============  /////////
-    public function getActiveDoctorList()
+    public function getActiveDoctorList($filterParams)
     {
-        $result =  DB::table('doctors')->leftJoin('city', 'doctors.city_id', '=', 'city.id')
-            ->where('doctors.active', 1)
+        $city = $filterParams['city'];
+        $specialization = $filterParams['specialization'];
+
+        $query = DB::table('doctors')->leftJoin('city', 'doctors.city_id', '=', 'city.id')
+                                     ->where('doctors.active', 1);
+        if(!empty($city)){
+            $query->where('city.name', $city);
+        }
+        if(!empty($specialization)){
+            $query->where('specialization', $specialization);
+        }
+
+        $result = $query  
             ->select('doctors.*', 'city.name AS city_name')
             ->get();
         return $result;
