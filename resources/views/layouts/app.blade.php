@@ -29,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="public/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
     
 </head>
 <body class="bg-gradient-primary">
@@ -37,7 +37,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ url(''). '/images/page_logos/logo telemedicina. white and blue2.png' }}" alt="profile Pic" height="50" width="220">               
+                <img src="{{ url('public'). '/images/page_logos/logo telemedicina. white and blue2.png' }}" alt="profile Pic" height="50" width="220">               
                 </a>
                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

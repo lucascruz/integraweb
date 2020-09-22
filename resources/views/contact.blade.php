@@ -10,8 +10,8 @@
       <div class="row text-center">
         <div class="col-12">
           <div class="logo-sec">
-            <img src="{{ url(''). '/'.  $param['medecina_logo_header_footer_path'] }}" class="img-fluid">
-            <!-- <img src="{{ url('/images/page_logos/logo telemedicina. white and blue 1.png') }}" class="img-fluid" alt="logo images" /> -->
+            <img src="{{ url('public'). '/'.  $param['medecina_logo_header_footer_path'] }}" class="img-fluid">
+            <!-- <img src="{{ url('public/images/page_logos/logo telemedicina. white and blue 1.png') }}" class="img-fluid" alt="logo images" /> -->
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@
       <div class="row align-items-center">
         <div class="col-md-3 col-12">
           <div class="foot-logo">
-            <img src="{{ url(''). '/'.  $param['medecina_logo_header_footer_path'] }}" class="img-fluid">
+            <img src="{{ url('public'). '/'.  $param['medecina_logo_header_footer_path'] }}" class="img-fluid">
           </div>
         </div>
         <div class="col-md-6 col-12">

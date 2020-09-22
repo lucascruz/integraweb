@@ -4,7 +4,7 @@
 
 @section('head')
     <!-- Datatable -->
-    <link rel="stylesheet" href="{{ url('/vendors/dataTable/datatables.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('public/vendors/dataTable/datatables.min.css') }}" type="text/css">
 @endsection
 
 @section('content')
@@ -61,8 +61,8 @@
                                         <a href="#">{{ $row->id }}</a>
                                     </td>
                                     <td>
-                                        <a href="{{ url(''). '/'. $row->basic_path. '/'. $row->title }}" class="d-flex align-items-center">
-                                            <img width="120" src="{{ url(''). '/'. $row->basic_path. '/'. $row->title }}"
+                                        <a href="{{ url('public'). '/'. $row->basic_path. '/'. $row->title }}" class="d-flex align-items-center">
+                                            <img width="120" src="{{ url('public'). '/'. $row->basic_path. '/'. $row->title }}"
                                                 class=" mr-3" alt="grape">
                                             <span>{{ $row->type }}</span>
                                         </a>
@@ -163,8 +163,8 @@
 
 @section('script')
     <!-- Datatable -->
-    <script src="{{ url('/vendors/dataTable/datatables.min.js') }}"></script>
-    <script src="{{ url('/assets/js/examples/pages/orders.js') }}"></script>
+    <script src="{{ url('public/vendors/dataTable/datatables.min.js') }}"></script>
+    <script src="{{ url('public/assets/js/examples/pages/orders.js') }}"></script>
     <script>
 
         var APP_URL = {!! json_encode(url('/')) !!};

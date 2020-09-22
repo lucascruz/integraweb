@@ -9,8 +9,8 @@
 				<div class="row text-center">
 					<div class="col-12">
 						<div class="logo-sec">
-							<img  src="{{ url('/'). '/'.  $param['medecina_logo_header_footer_path'] }}" class="img-fluid">
-							<!-- <img src="{{ url('/images/page_logos/logo telemedicina. white and blue 1.png') }}" class="img-fluid" alt="logo images" /> -->
+							<img  src="{{ url('public'). '/'.  $param['medecina_logo_header_footer_path'] }}" class="img-fluid">
+							<!-- <img src="{{ url('public/images/page_logos/logo telemedicina. white and blue 1.png') }}" class="img-fluid" alt="logo images" /> -->
 						</div>
 					</div>
 				</div>
@@ -114,8 +114,8 @@
 				</div>
 				<div class="col-8 p-0">
 					<div class="img-sec">
-						<!-- <img  src="{{ url(''). '/'.  $param['medecina_logo_path'] }}" class="img-fluid"> -->
-						<img src="{{ url(''). '/'.  $param['home_big_back_ground'] }}" class="img-fluid" style="width: 100%;">
+						<!-- <img  src="{{ url('public'). '/'.  $param['medecina_logo_path'] }}" class="img-fluid"> -->
+						<img src="{{ url('public'). '/'.  $param['home_big_back_ground'] }}" class="img-fluid" style="width: 100%;">
 					</div>
 				</div>
 			</div>
@@ -149,7 +149,7 @@
 					<div class="row mt-1 mt-md-5 d-none d-md-flex d-md-block align-items-center" id="patient_part">
 						<div class="col-md-3 col-12">
 							<a href="{{ url('/doctor_list') }}">
-								<img  src="{{ url(''). '/'.  $param['medecina_logo_path'] }}" class="img-fluid">
+								<img  src="{{ url('public'). '/'.  $param['medecina_logo_path'] }}" class="img-fluid">
 							</a>
 						
 						</div>
@@ -209,7 +209,7 @@
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-md-3 col-12">
-					<img  src="{{ url(''). '/'.  $param['medecina_logo_middle_path'] }}" class="img-fluid">
+					<img  src="{{ url('public'). '/'.  $param['medecina_logo_middle_path'] }}" class="img-fluid">
 				</div>
 				<div class="col-md-9 col-12">
 					<div class="cantent-section text-center">
@@ -342,7 +342,7 @@
 				<div class="owl-carousel align-items-center" id="sponsor">
 					@foreach($param['partner_logos'] as $row)	
 						<div class="sponsors">
-							<img src="{{ url('/images/partner_logos'). '/'. $row->title }}">
+							<img src="{{ url('public/images/partner_logos'). '/'. $row->title }}">
 						</div>
 					@endforeach
 				</div>
@@ -358,7 +358,7 @@
 				<div class="row align-items-center">
 					<div class="col-md-3 col-12">
 						<div class="foot-logo">
-						<img  src="{{ url(''). '/'.  $param['medecina_logo_header_footer_path'] }}" class="img-fluid">
+						<img  src="{{ url('public'). '/'.  $param['medecina_logo_header_footer_path'] }}" class="img-fluid">
 						</div>
 					</div>
 					<div class="col-md-6 col-12">

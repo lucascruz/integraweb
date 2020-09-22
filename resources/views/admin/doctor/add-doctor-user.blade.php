@@ -4,7 +4,7 @@
 
 @section('head')
 <!-- Datatable -->
-<link rel="stylesheet" href="{{ url('/vendors/dataTable/datatables.min.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ url('public/vendors/dataTable/datatables.min.css') }}" type="text/css">
 @endsection
 
 @section('content')
