@@ -113,8 +113,7 @@ class HomeController extends Controller
         $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
         $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
         $param['doctor_list'] = $doctor->getActiveDoctorList($filterParams);
-        $param['city'] = $city;
-        $param['specialization'] = $specialization;
+        
 
         return view('doctor.doctor_list', compact('param'));
     }
