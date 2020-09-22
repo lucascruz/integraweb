@@ -29,8 +29,6 @@
     <script src="{{ url('/vendors/select2/js/select2.min.js') }}"></script>
     <script src="{{ url('/assets/js/examples/select2.js') }}"></script>
     @yield('custom_js')
-
-    
 </body>
 
 </html>

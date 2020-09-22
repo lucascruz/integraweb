@@ -155,34 +155,14 @@
 						</div>
 						<div class="col-md-9 col-12">
 							<div class="box">
-								<div class="row align-items-end justify-content-center justify-content-md-left">
-									<div class="col-5 p-0 p-md-2">
-										<p class="mb-2 text-light">
-											Busco un:
-										</p>
-										<input id="specialization" type="text" placeholder="EJE. DERMATOLOGO" name=""> 
-									
-									</div>
-									<div class="col-5 p-0 p-md-2">
-										<p class="mb-2 text-light">
-											En:
-										</p>
-										<input id="city" type="text" placeholder="BUCARAMANGA" name="">
-									</div>
-									<div class="col-md-2 col-12 p-0 p-md-2">
-										<button id="doctor-list-search" class="btn-search">
-											<a style="font-size: 18px;">
-												VAMOS
-											</a>
-										</button>
+								@component('doctor.doctor_search')
+								@endcomponent
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 	</section>
 	<!-- ============== BANNER SECTION END ============== -->
 
@@ -459,14 +439,6 @@
 	            	}
 	            }
 	      	});
-			  
-		 function goToDoctorList() {
-			const city = $('#city').val();
-			const specialization = $('#specialization').val();
-			window.location.href = APP_URL + '/doctor_list?city='+city+'&specialization='+specialization;
-		 }
-		 $('#doctor-list-search').click(goToDoctorList);
-
 	    });
 	</script>
 @endsection
