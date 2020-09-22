@@ -155,34 +155,14 @@
 						</div>
 						<div class="col-md-9 col-12">
 							<div class="box">
-								<div class="row align-items-end justify-content-center justify-content-md-left">
-									<div class="col-5 p-0 p-md-2">
-										<p class="mb-2 text-light">
-											Busco un:
-										</p>
-										<input type="text" placeholder="EJE. DERMATOLOGO" name=""> 
-									
-									</div>
-									<div class="col-5 p-0 p-md-2">
-										<p class="mb-2 text-light">
-											En:
-										</p>
-										<input type="text" placeholder="BUCARAMANGA" name="">
-									</div>
-									<div class="col-md-2 col-12 p-0 p-md-2">
-										<button class="btn-search">
-											<a href="{{ url('/doctor_list') }}" style="font-size: 18px;">
-												VAMOS
-											</a>
-										</button>
+								@component('doctor.doctor_search')
+								@endcomponent
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 	</section>
 	<!-- ============== BANNER SECTION END ============== -->
 
@@ -425,6 +405,7 @@
 
 @section('custom_js')
 	<script>
+		var APP_URL = {!! json_encode(url('/')) !!};
 	    $(document).ready(function(){
 
 		//   $.ajaxSetup({

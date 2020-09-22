@@ -102,10 +102,18 @@ class HomeController extends Controller
         $logo = new Logo();
         $doctor = new Doctor();
 
+        $city = $request->query('city');
+        $specialization = $request->query('specialization');
+        $filterParams = [
+            "city" => $city,
+            "specialization" => $specialization
+        ];
+        
         $param['medecina_logo_path'] = $logo->getLogoBasePath(1) . '/' . $logo->getLogoByCatalog(1);
         $param['medecina_logo_header_footer_path'] = $logo->getLogoBasePath(2) . '/' . $logo->getLogoByCatalog(2);
         $param['medecina_logo_middle_path'] = $logo->getLogoBasePath(3) . '/' . $logo->getLogoByCatalog(3);
-        $param['doctor_list'] = $doctor->getActiveDoctorList();
+        $param['doctor_list'] = $doctor->getActiveDoctorList($filterParams);
+        
 
         return view('doctor.doctor_list', compact('param'));
     }
