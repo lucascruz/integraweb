@@ -18,10 +18,10 @@ class Doctor extends Model
         $query = DB::table('doctors')->leftJoin('city', 'doctors.city_id', '=', 'city.id')
                                      ->where('doctors.active', 1);
         if(!empty($city)){
-            $query->where('city.name', $city);
+            $query->where('city.name', 'LIKE', '%'.$city.'%');
         }
         if(!empty($specialization)){
-            $query->where('specialization', $specialization);
+            $query->where('specialization', 'LIKE', '%'.$specialization.'%');
         }
 
         $result = $query  
