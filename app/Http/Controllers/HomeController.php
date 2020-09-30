@@ -118,6 +118,30 @@ class HomeController extends Controller
         return view('doctor.doctor_list', compact('param'));
     }
 
+    public function getAutocompleteDataForCity(Request $request)
+    {
+        $cityModel = new City();
+        $keyword = $request->query('keyword');
+        $filterParams = [
+            "name" => $keyword,
+            "limit" => 5
+        ];
+        $cities = $cityModel->getCityNames($filterParams);
+        return $cities;
+    }
+
+    public function getAutocompleteDataForSpecialization(Request $request)
+    {
+        $doctor = new Doctor();
+        $keyword = $request->query('keyword');
+        $filterParams = [
+            "name" => $keyword,
+            "limit" => 5
+        ];
+        $specializationNames = $doctor->getSpecializations($filterParams);
+        return $specializationNames;
+    }
+
 
     public function showDoctorDetail($id)
     {

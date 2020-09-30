@@ -103,6 +103,18 @@ class Doctor extends Model
         return $result;
     }
 
+    public function getSpecializations($filterParams)
+    {
+        $name = $filterParams['name'];
+        $limit = $filterParams['limit'];
+        $query = DB::table('doctors')->take($limit);
+        if(!empty($name)) {
+            $query->where('specialization', 'LIKE', '%'.$name.'%');
+        }
+        $result = $query->groupBy('specialization')->select('specialization AS name')->get();
+        return $result;
+    }
+
     public function addAdminDoctor($param)
     {
         DB::table('doctors')->insert($param);
