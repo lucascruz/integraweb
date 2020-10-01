@@ -96,8 +96,8 @@
                 }
                 });
             }
-            $("#city").keyup($.debounce(100, true, sendCityAutoComplete));
-            $("#specialization").keyup($.debounce(100, true, sendSpecializationAutoComplete));
+            $("#city").keyup(sendCityAutoComplete);
+            $("#specialization").keyup(sendSpecializationAutoComplete);
             function selectSpecialization(val) {
                 $("#specialization").val(val);
                 $("#suggesstion-specialization").hide();
