@@ -8,6 +8,7 @@ use App\Doctor;
 use App\Insurance;
 use App\Service;
 use App\Tags;
+use App\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Comment\Doc;

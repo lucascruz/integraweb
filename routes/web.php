@@ -101,6 +101,8 @@ Route::delete('/eliminarInsurance/{id}' , 'InsuranceController@destroyInsurance'
 Route::get('/doctor_list', 'HomeController@showDoctorList')->name('doctor_list');
 Route::get('/doctor_detail/{id}', 'HomeController@showDoctorDetail')->name('doctor.details');
 Route::get('/patient_account' , 'HomeController@showPatientAccount')->name('patient_account');
+Route::get('/autocomplete/especialization', 'HomeController@getAutocompleteDataForSpecialization');
+Route::get('/autocomplete/city', 'HomeController@getAutocompleteDataForCity');
 
 // BUSCADOR DOCTOR LIST
 
