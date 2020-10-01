@@ -13,7 +13,10 @@
         <p class="mb-2 text-light">
             En:
         </p>
-        <input id="city" type="text" placeholder="EJE. BUCARAMANGA" name="">
+        <div class="input-wrapper">
+            <input id="city" type="text" placeholder="EJE. BUCARAMANGA" name="" autocomplete="off">
+            <div id="suggesstion-city"></div>
+        </div>
     </div>
     <div class="col-md-2 col-12 p-0 p-md-2">
         <button id="doctor-list-search" class="btn-search">
@@ -24,9 +27,13 @@
     </div>
     <script>
         window.addEventListener('load', function() {
+            $.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+		    });
             var APP_URL = {!! json_encode(url('/')) !!};
             const params = new URLSearchParams(window.location.search);
-            console.log(params.get('city'))
             if(params.has('specialization')) document.getElementById("specialization").value = params.get('specialization')
             if(params.has('city')) document.getElementById("city").value = params.get('city')
             function goToDoctorList() {
