@@ -13,28 +13,8 @@
 						</div>
 						<div class="col-md-9 col-12 py-2">
 							<div class="box">
-								<div class="row align-items-end justify-content-center justify-content-md-left">
-									<div class="col-md-5 col-12 py-2">
-										<p class="mb-2 text-light">
-											Busco un:
-										</p>
-										<input type="text" placeholder="EJE. DERMATOLOGO" name="">
-									</div>
-									<div class="col-md-5 col-12 py-2">
-										<p class="mb-2 text-light">
-											En:
-										</p>
-										<input type="text" placeholder="BUCARAMANGA" name="">
-									</div>
-									<div class="col-md-2 col-12 py-2">
-										<button class="btn-search">
-											<a href="{{ url('/doctor_list') }}">
-												VAMOS
-											</a>
-										</button>
-									</div>
-									<!-- <div class="col-2"></div> -->
-								</div>
+								@component('doctor.doctor_search')
+                                @endcomponent
 							</div>
 						</div>
 					</div>
